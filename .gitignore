@@ -67,3 +67,4 @@ Build/**/*results.xml
 /InceptionDeck/InceptionDeck20012012003827.llblgenproj
 csx
 /InceptionDeck/UpgradeLog2.XML
+*.publishsettings

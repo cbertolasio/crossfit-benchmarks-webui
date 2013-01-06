@@ -183,7 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Calculator\CalculatorViewModel.cs" />
     <Compile Include="Modules\NinjectModules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -253,7 +255,8 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\crossfitbenchmarks.js" />
+    <Content Include="Scripts\crossfitbenchmarks.calculator.js" />
+    <Content Include="Scripts\crossfitbenchmarks.site.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

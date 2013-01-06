@@ -24,7 +24,9 @@ namespace CrossFitTools.Web
                         "~/Scripts/knockout.mapping-latest.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/crossfitbenchmarks").Include(
-                        "~/Scripts/crossfitbenchmarks.js"));
+                        "~/Scripts/crossfitbenchmarks.site.js",
+                        "~/Scripts/crossfitbenchmarks.calculator.js"
+                        ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

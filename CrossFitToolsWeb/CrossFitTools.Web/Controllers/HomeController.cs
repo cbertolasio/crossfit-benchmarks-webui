@@ -8,10 +8,11 @@ namespace CrossFitTools.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDateTimeManager dateTimeManager;
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            ViewBag.DateTime = dateTimeManager.GetDateTime().ToShortDateString();
             return View();
         }
 
@@ -28,5 +29,30 @@ namespace CrossFitTools.Web.Controllers
 
             return View();
         }
+
+        public HomeController(IDateTimeManager dateTimeManager)
+        {
+            this.dateTimeManager = dateTimeManager;
+        }
     }
+
+    public interface IDateTimeManager
+    {
+        DateTime GetDateTime();
+    }
+
+    public class DateTimeManager : IDateTimeManager
+    {
+        
+        public DateTime GetDateTime()
+        {
+            return DateTime.UtcNow;
+        }
+        public  DateTimeManager()
+        {
+            
+        }
+    }
+
+
 }

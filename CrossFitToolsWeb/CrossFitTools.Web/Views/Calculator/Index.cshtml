@@ -14,23 +14,47 @@
     calculator to help you figure out what weight you need to use.
             </p>
 
-            <label>Weight:</label>
-            <input data-bind="value: weight" />
+            <label class="radio">
+                <input type="radio" name="roundingRadio" id="round" value="toNearest5" checked /> Round to the nearest 5#
+            </label>
+            <label class="radio">
+                <input type="radio" name="roundingRadio" id="dontRound" value="dontRound"/> Don't Round
+            </label>
 
-            <span class="btn" data-bind="click:calculate">Calculate</span>
-            <span class="btn" data-bind="click:clear">Clear</span>
+            <div class="control-group">
+                <label class="control-label" for="weight">Weight:</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input data-bind="value: weight" type="number" class="span2" id="weight" />
+
+                        <button class="btn btn-primary" data-bind="click:calculate" type="button">Calculate</button>
+                        <button class="btn " data-bind="click:clear" type="button">Clear</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <br />
     </div>
 
     <div class="row">
-        <div class="span4" data-bind="foreach:percentages,visible:percentages().length > 0" style="display:none">
-            <div style="float: left; min-height: 3em; width: 3.5em; padding: .5em; margin: .5em;" class="thumbnail">
+        <div class="span4" data-bind="foreach:percentages,visible:percentages().length > 0" style="display: none">
+            <div style="float: left; min-height: 3em; width: 3.8em; padding: .5em; margin: .5em;" class="thumbnail">
                 <small data-bind="text: label" class="muted"></small></br>
-                    <strong class="text-info" data-bind="text: value" style="font-size:1.3em"></strong>
+                    <strong class="text-info" data-bind="text: value" style="font-size: 1.3em"></strong>
             </div>
         </div>
+
+        <div class="clearfix"></div>
+
     </div>
+
+    <div class="row" data-bind="visible:percentages().length > 0 && valueIsRounded()" style="display: none;">
+        <div class="span12">
+            <small class="muted"><strong>NOTE:</strong> the numbers above are rounded to the nearest 5#</small>
+        </div>
+    </div>
+
 
 
     <script type="text/javascript">

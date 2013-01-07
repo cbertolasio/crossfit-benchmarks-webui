@@ -19,3 +19,25 @@
 }
 
 
+.hero-unit
+{
+    background-color:#000;
+}
+
+.header-icon
+{
+    background: url("images/logo-main-large.png") no-repeat #000;
+    height:270px;
+    width:360px;
+}
+
+.header-title
+{
+    margin-top:3em;
+}
+
+
+footer
+{
+    margin-top:5em;
+}

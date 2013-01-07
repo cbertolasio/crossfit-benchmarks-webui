@@ -3,3 +3,19 @@
     color:#fff;
     background-color:#000;
 }
+
+.thumbnail.percentage-thumbnail
+{
+    float: left; 
+    min-height: 3em; 
+    width: 3.8em; 
+    padding: .5em; 
+    margin: .5em;
+}
+
+.percentage-text
+{
+    font-size: 1.3em;
+}
+
+

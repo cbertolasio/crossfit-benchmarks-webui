@@ -25,7 +25,7 @@
                 <label class="control-label" for="weight">Weight:</label>
                 <div class="controls">
                     <div class="input-append">
-                        <input data-bind="value: weight" type="number" class="span2" id="weight" />
+                        <input data-bind="value: weight" type="number" class="span1" id="weight" />
 
                         <button class="btn btn-primary" data-bind="click:calculate" type="button">Calculate</button>
                         <button class="btn " data-bind="click:clear" type="button">Clear</button>
@@ -38,10 +38,10 @@
     </div>
 
     <div class="row">
-        <div class="span4" data-bind="foreach:percentages,visible:percentages().length > 0" style="display: none">
-            <div style="float: left; min-height: 3em; width: 3.8em; padding: .5em; margin: .5em;" class="thumbnail">
+        <div class="span6" data-bind="foreach:percentages,visible:percentages().length > 0" style="display: none">
+            <div class="thumbnail percentage-thumbnail">
                 <small data-bind="text: label" class="muted"></small></br>
-                    <strong class="text-info" data-bind="text: value" style="font-size: 1.3em"></strong>
+                    <strong class="text-info percentage-text" data-bind="text: value"  style=""></strong>
             </div>
         </div>
 

@@ -186,6 +186,8 @@
     <Compile Include="HtmlHelpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Calculator\CalculatorViewModel.cs" />
+    <Compile Include="Models\Logger\BenchmarkItemViewModel.cs" />
+    <Compile Include="Models\Logger\BenchmarksViewModel.cs" />
     <Compile Include="Modules\NinjectModules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -256,6 +258,7 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\crossfitbenchmarks.benchmarks.js" />
     <Content Include="Scripts\crossfitbenchmarks.calculator.js" />
     <Content Include="Scripts\crossfitbenchmarks.site.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -274,6 +277,8 @@
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -315,6 +320,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Calculator\Index.cshtml" />
     <Content Include="Views\Logger\Index.cshtml" />
+    <Content Include="Views\Logger\Benchmarks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CrossFitTools.Web.Models.Logger;
 
 namespace CrossFitTools.Web.Controllers
 {
@@ -11,9 +12,17 @@ namespace CrossFitTools.Web.Controllers
         //
         // GET: /Logger/
 
-        public ActionResult Index()
-        {
-            return View();
+        public ActionResult Index(string val)
+        {            
+            switch (val)
+            {
+                case "benchmark":
+                    return View("Benchmarks", new BenchmarksViewModel(true));
+
+                default:
+                    return new EmptyResult();
+            }
+            
         }
 
     }

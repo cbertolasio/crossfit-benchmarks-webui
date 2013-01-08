@@ -21,11 +21,13 @@ namespace CrossFitTools.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/knockout-2.2.0.js",
-                        "~/Scripts/knockout.mapping-latest.js"));
+                        "~/Scripts/knockout.mapping-latest.js",
+                        "~/Scripts/moment.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/crossfitbenchmarks").Include(
                         "~/Scripts/crossfitbenchmarks.site.js",
-                        "~/Scripts/crossfitbenchmarks.calculator.js"
+                        "~/Scripts/crossfitbenchmarks.calculator.js",
+                        "~/Scripts/crossfitbenchmarks.benchmarks.js"
                         ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

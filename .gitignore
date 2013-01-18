@@ -36,7 +36,7 @@ httpd.parse.errors
  
 # Exclude ALL DLLs? (
 # *.dll
-
+packages
 Build/TestResults
 Build/TestResults/*
 Build/Artifacts

@@ -1,7 +1,7 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(CrossFitTools.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(CrossFitTools.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(CrossfitBenchmarks.WebUi.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(CrossfitBenchmarks.WebUi.App_Start.NinjectWebCommon), "Stop")]
 
-namespace CrossFitTools.Web.App_Start
+namespace CrossfitBenchmarks.WebUi.App_Start
 {
     using System;
     using System.Web;

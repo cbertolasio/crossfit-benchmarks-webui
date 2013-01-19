@@ -1,0 +1,10 @@
+﻿@using CrossfitBenchmarks.Data.DataTransfer
+@model IEnumerable<WorkoutTypeDto>
+
+
+<h2>Workout Types</h2>
+<ul>
+@foreach (var item in Model) {
+    <li>@item.Name - @item.WorkoutTypeId</li>
+}
+</ul>

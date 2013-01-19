@@ -1,0 +1,11 @@
+﻿@using CrossfitBenchmarks.WebUi.Models.Admin
+
+@model AdminIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@Html.Partial("WorkoutTypes", Model.WorkoutTypes)

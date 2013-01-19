@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CrossFitTools.Web
+namespace CrossfitBenchmarks.WebUi
 {
+    using CrossFitTools.Web;
+
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

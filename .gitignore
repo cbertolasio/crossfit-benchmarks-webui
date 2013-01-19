@@ -56,3 +56,4 @@ Graphics
 *.publishsettings
 /CrossFitToolsWeb/CrossFitTools.Web/App_Data/aspnet-CrossFitTools.Web-20130105194114.mdf
 /CrossFitToolsWeb/CrossFitTools.Web/App_Data/aspnet-CrossFitTools.Web-20130105194114_log.ldf
+/CrossFitToolsWeb/CrossFitTools.Web/*.ncrunchproject

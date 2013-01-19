@@ -1,8 +1,8 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace CrossFitTools.Web
+namespace CrossfitBenchmarks.WebUi
 {
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

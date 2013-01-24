@@ -15,7 +15,7 @@ namespace CrossFitTools.Web.HtmlHelpers
     /// </summary>
     public static class HtmlHelperExtensions
     {
-        #region ToJson
+        
 
         public static MvcHtmlString ToJson(this HtmlHelper htmlHelper, object data)
         {
@@ -38,12 +38,14 @@ namespace CrossFitTools.Web.HtmlHelpers
         /// </summary>
         /// <remarks>
         /// Helper should be used within a <script>block</script>
+
+        /// </remarks>
         /// </remarks>
         public static MvcHtmlString ToJSVar(this HtmlHelper htmlHelper, string varName, object data)
         {
             return new MvcHtmlString("var " + varName + " = " + htmlHelper.ToJson(data) + ";");
         }
 
-        #endregion
+        
     }
 }

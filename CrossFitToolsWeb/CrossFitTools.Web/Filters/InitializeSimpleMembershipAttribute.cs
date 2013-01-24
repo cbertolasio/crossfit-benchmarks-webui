@@ -17,7 +17,7 @@ namespace CrossFitTools.Web.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // Ensure ASP.NET Simple Membership is initialized only once per app start
+            
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
@@ -30,7 +30,7 @@ namespace CrossFitTools.Web.Filters
                 try {
                     using (var context = new UsersContext()) {
                         if (!context.Database.Exists()) {
-                            // Create the SimpleMembership database without Entity Framework migration schema
+                            
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }

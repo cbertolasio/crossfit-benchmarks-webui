@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Configuration;
-using System.Net;
 
 namespace CrossfitBenchmarks.WebUi.Utility
 {
@@ -14,7 +11,7 @@ namespace CrossfitBenchmarks.WebUi.Utility
         /// <returns>The base URI for the Business Services</returns>
         public static string GetRootUri()
         {
-            // Get the root URI from Web.config
+            
             var uri = ConfigurationManager.AppSettings["BusinessServicesUrlBase"];
             return uri;
         }

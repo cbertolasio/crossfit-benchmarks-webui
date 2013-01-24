@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Services;
@@ -12,8 +11,8 @@ namespace CrossFitTools.Web.Controllers
     public class LoggerController : Controller
     {
         private readonly ICrossfitBenchmarksServices webServiceApi;
-        //
-        // GET: /Logger/
+        
+        
 
         public ActionResult Index(string val)
         {

@@ -1,4 +1,4 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(CrossfitBenchmarks.WebUi.App_Start.NinjectWebCommon), "Start")]
+﻿[assembly: WebActivator.PreApplicationStartMethod(typeof(CrossfitBenchmarks.WebUi.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(CrossfitBenchmarks.WebUi.App_Start.NinjectWebCommon), "Stop")]
 
 namespace CrossfitBenchmarks.WebUi.App_Start

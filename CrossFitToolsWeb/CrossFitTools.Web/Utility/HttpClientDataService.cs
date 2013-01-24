@@ -1,32 +1,30 @@
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Configuration;
-using System.Net;
 using CrossfitBenchmarks.WebUi.Exceptions;
 
 namespace CrossfitBenchmarks.WebUi.Utility
 {
     public class HttpClientDataService : IUIDataService
     {
-        //private ICurrentUserService _userService;
-        //private bool _useEncryption = true;
+        
+        
 
-        //public HttpClientDataService(ICurrentUserService userService)
+        
         public HttpClientDataService()
         {
-            //if (userService == null)
-            //    throw new ArgumentNullException("userService");
-            //_userService = userService;
-            //if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["TokenEncryptionEnabled"]) && ConfigurationManager.AppSettings["TokenEncryptionEnabled"].ToLower() == "false")
-            //    _useEncryption = false;
+            
+            
+            
+            
+            
         }
 
         public async Task<T> GetServiceDataAsync<T>(string endpoint, object id = null)
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
                 HttpResponseMessage response = null;
                 if (id != null)
                     response = await client.GetAsync(HttpClientUtilities.GetServiceUri(endpoint) + "/" + id.ToString());
@@ -34,7 +32,7 @@ namespace CrossfitBenchmarks.WebUi.Utility
                     response = await client.GetAsync(HttpClientUtilities.GetServiceUri(endpoint));
                 try
                 {
-                    response.EnsureSuccessStatusCode(); // Throw on error code. 
+                    response.EnsureSuccessStatusCode(); 
                 }
                 catch (HttpRequestException)
                 {
@@ -49,11 +47,11 @@ namespace CrossfitBenchmarks.WebUi.Utility
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
                 var response = await client.PostAsJsonAsync(HttpClientUtilities.GetServiceUri(endpoint), objectData);
                 try
                 {
-                    response.EnsureSuccessStatusCode(); // Throw on error code. 
+                    response.EnsureSuccessStatusCode(); 
                 }
                 catch (HttpRequestException)
                 {
@@ -68,7 +66,7 @@ namespace CrossfitBenchmarks.WebUi.Utility
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
                 var response = await client.PutAsJsonAsync(HttpClientUtilities.GetServiceUri(endpoint), objectData);
                 try
                 {
@@ -88,11 +86,11 @@ namespace CrossfitBenchmarks.WebUi.Utility
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
                 var response = await client.PostAsJsonAsync(HttpClientUtilities.GetServiceUri(endpoint), objectData);
                 try
                 {
-                    response.EnsureSuccessStatusCode(); // Throw on error code. 
+                    response.EnsureSuccessStatusCode(); 
                 }
                 catch (HttpRequestException)
                 {
@@ -105,11 +103,11 @@ namespace CrossfitBenchmarks.WebUi.Utility
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
                 var response = await client.PutAsJsonAsync(HttpClientUtilities.GetServiceUri(endpoint), objectData);
                 try
                 {
-                    response.EnsureSuccessStatusCode(); // Throw on error code. 
+                    response.EnsureSuccessStatusCode(); 
                 }
                 catch (HttpRequestException)
                 {
@@ -125,7 +123,7 @@ namespace CrossfitBenchmarks.WebUi.Utility
         {
             using (HttpClient client = new HttpClient())
             {
-                //client.SetAuthHeaders(_userService, _useEncryption);
+                
 
                 var uri = string.Empty;
                 if (id != null)
@@ -142,7 +140,7 @@ namespace CrossfitBenchmarks.WebUi.Utility
 
                 try
                 {
-                    response.EnsureSuccessStatusCode(); // Throw on error code. 
+                    response.EnsureSuccessStatusCode(); 
                 }
                 catch (HttpRequestException)
                 {

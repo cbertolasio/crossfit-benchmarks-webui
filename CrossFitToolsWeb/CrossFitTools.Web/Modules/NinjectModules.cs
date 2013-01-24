@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using CrossfitBenchmarks.WebUi.Services;
 using CrossfitBenchmarks.WebUi.Utility;
 using CrossFitTools.Web.Controllers;

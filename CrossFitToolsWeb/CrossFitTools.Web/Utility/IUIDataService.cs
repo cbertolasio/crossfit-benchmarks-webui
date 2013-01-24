@@ -1,8 +1,5 @@
-using System;
-using System.Net.Http;
+﻿using System;
 using System.Threading.Tasks;
-using System.Configuration;
-using System.Net;
 
 namespace CrossfitBenchmarks.WebUi.Utility
 {

@@ -16,6 +16,7 @@ namespace CrossfitBenchmarks.WebUi
     {
         protected void Application_Start()
         {
+            AutomapBootstrap.Initialize();
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

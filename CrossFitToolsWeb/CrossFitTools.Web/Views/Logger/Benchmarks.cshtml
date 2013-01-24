@@ -5,32 +5,32 @@
     ViewBag.Title = "My Benchmarks";
 }
 
-<section id="benchmarks-content">
-<div class="row">
+    <div id="benchmarks-content" class="span12">
 
-    <h2>Review Your Benchmarks</h2>
+        <h2>Review Your Benchmarks</h2>
 
-    <ul id="benchmarkItems" data-bind="foreach: benchmarks()" class="unstyled">
-        <li class="span4 thumbnail" data-bind="attr:{id:id}" style="margin:1em;padding:1em;">
-            <h4 data-bind="text:name" style="display:inline-block"></h4>
+        <ul id="benchmarkItems" data-bind="foreach: benchmarks()" class="thumbnails">
+            <li data-bind="attr:{id:id}" class="span4">
+                <div class="thumbnail" style="min-height:140px;">
+                    <h4 data-bind="text:name" style="display: inline-block"></h4>
 
-            <!-- ko if:lastScore() != null -->
-            <span style="display: inline-block">Last: <span data-bind="text:lastScore"></span><small class="muted"> about <span data-bind="text:lastAttemptDateHumanized"></span></small></span>
-            <span style="display:inline-block">PR: <span data-bind="text:personalRecordScore"></span><small class="muted"> about <span data-bind="text:lastPrDateHumanized()"></span></small></span>
-            <br />
-            <!-- /ko -->
+                    <!-- ko if:lastScore() != null -->
+                    <p><span style="display: inline-block">Last: <span data-bind="text:lastScore"></span><small class="muted">about <span data-bind="text:lastAttemptDateHumanized"></span></small></span></p>
+                    <p><span style="display: inline-block">PR: <span data-bind="text:personalRecordScore"></span><small class="muted">about <span data-bind="text:lastPrDateHumanized()"></span></small></span></p>
+                    <!-- /ko -->
 
-            <!-- ko if:lastScore() == null -->
-            <span style="display:inline-block"><em class="text-warning">You should create an entry for this benchmark!</em></span><br />
-            <!-- /ko -->
+                    <!-- ko if:lastScore() == null -->
+                    <p><span style="display: inline-block"><em class="text-warning">You should create an entry for this benchmark!</em></span></p>
+                    <!-- /ko -->
 
-            <br />
-            <span id="buttons" style="display:inline-block" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i> Add New</span>
-        </li>
-    </ul>
-</div>
+                    <div class="clearfix"></div>
+                    <span id="buttons" style="display: inline-block" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Add New</span>
 
-</section>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 
 <script type="text/javascript">
     @Html.ToJSVar("benchmarksViewModel", Model)

@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F7536E
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossfitBenchmarks.WebUi.Tests", "CrossfitBenchmarks.WebUi.Tests\CrossfitBenchmarks.WebUi.Tests.csproj", "{8CB77DBF-DAA3-49CB-A6A9-509405625A60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{B3382397-97C5-41CB-867B-4C7BE5F17956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3382397-97C5-41CB-867B-4C7BE5F17956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3382397-97C5-41CB-867B-4C7BE5F17956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB77DBF-DAA3-49CB-A6A9-509405625A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB77DBF-DAA3-49CB-A6A9-509405625A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB77DBF-DAA3-49CB-A6A9-509405625A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB77DBF-DAA3-49CB-A6A9-509405625A60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

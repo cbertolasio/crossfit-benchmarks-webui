@@ -13,11 +13,14 @@
     <body>
 
         <div class="container">
-            @RenderSection("featured", required: false)
-            <section>
-                @RenderBody()
-            </section>
+            <div class="row">
 
+            
+            @RenderSection("featured", required: false)
+            
+            @RenderBody()
+            
+            </div>
         </div>
 
         @Scripts.Render("~/bundles/jquery")

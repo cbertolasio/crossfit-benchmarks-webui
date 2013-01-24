@@ -11,7 +11,7 @@ namespace CrossFitTools.Web.Models.Logger
         public string Name { get; set; }
         public string LastScore { get; set; }
         public string PersonalRecordScore { get; set; }
-        public DateTime LastAttemptDate { get; set; }
-        public DateTime LastPersonalRecordDate { get; set; }
+        public DateTimeOffset LastAttemptDate { get; set; }
+        public DateTimeOffset LastPersonalRecordDate { get; set; }
     }
 }

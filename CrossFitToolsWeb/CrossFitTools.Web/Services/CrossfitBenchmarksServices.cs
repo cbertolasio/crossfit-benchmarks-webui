@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Utility;
+using RestSharp;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -16,21 +17,17 @@ namespace CrossfitBenchmarks.WebUi.Services
     {
         public IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks(string userId)
         {
-            var task = Task.Factory.StartNew(async() => {
-                var data = (await dataProvider.GetServiceDataAsync<IEnumerable<WorkoutLogEntryDto>>("TheBenchmarks", userId));
-                return data;
-            });
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
+            var request = new RestSharp.RestRequest("TheBenchmarks/{id}", RestSharp.Method.GET);
+            request.AddUrlSegment("id", userId);
+            request.AddHeader("Accept", "application/json");
 
-
-
-
-
-            return task.Result.Result;
+            var response = client.Execute<List<WorkoutLogEntryDto>>(request);
+            return response.Data;
         }
 
-        public CrossfitBenchmarksServices(IUIDataService dataProvider)
+        public CrossfitBenchmarksServices()
         {
-            this.dataProvider = dataProvider;
         }
 
         private readonly IUIDataService dataProvider;

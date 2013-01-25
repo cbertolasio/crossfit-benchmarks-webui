@@ -13,7 +13,7 @@ namespace CrossFitTools.Web.Modules
         public override void Load()
         {
             Kernel.Bind<IDateTimeManager>().To<DateTimeManager>();
-            Bind<IUIDataService>().To<HttpClientDataService>();
+            //Bind<IUIDataService>().To<HttpClientDataService>();
             Bind<ICrossfitBenchmarksServices>().To<CrossfitBenchmarksServices>();
         }
     }

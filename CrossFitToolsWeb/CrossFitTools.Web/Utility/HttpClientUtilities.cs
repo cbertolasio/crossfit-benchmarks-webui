@@ -9,11 +9,11 @@ namespace CrossfitBenchmarks.WebUi.Utility
         /// Gets the base URI for the Business Services
         /// </summary>
         /// <returns>The base URI for the Business Services</returns>
-        public static string GetRootUri()
+        public static Uri GetRootUri()
         {
             
             var uri = ConfigurationManager.AppSettings["BusinessServicesUrlBase"];
-            return uri;
+            return new Uri(uri);
         }
 
         /// <summary>
@@ -21,9 +21,14 @@ namespace CrossfitBenchmarks.WebUi.Utility
         /// </summary>
         /// <param name="service">Name of the Service (i.e. productionclass)</param>
         /// <returns>The full URI string for the specified service</returns>
-        public static string GetServiceUri(string service)
+        public static Uri GetBaseUri()
         {
-            return GetRootUri() + "api/" + service;
+            return new Uri(GetRootUri(), "api/");
+        }
+
+        public static Uri GetServiceUri(string service)
+        {
+            return new Uri(GetBaseUri(), service);
         }
     }
 }

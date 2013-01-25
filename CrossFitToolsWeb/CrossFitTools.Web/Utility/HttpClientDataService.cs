@@ -13,18 +13,23 @@ namespace CrossfitBenchmarks.WebUi.Utility
         
         public HttpClientDataService()
         {
-            
-            
-            
-            
-            
+        }
+        
+        private HttpClient GetClient()
+        {
+            WebRequestHandler handler = new WebRequestHandler { AllowAutoRedirect = false, UseProxy = false };
+            var client = new HttpClient(handler);
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            return client;
         }
 
         public async Task<T> GetServiceDataAsync<T>(string endpoint, object id = null)
         {
-            using (HttpClient client = new HttpClient())
+            
+            using (HttpClient client = GetClient())
             {
-                
+
                 HttpResponseMessage response = null;
                 if (id != null)
                     response = await client.GetAsync(HttpClientUtilities.GetServiceUri(endpoint) + "/" + id.ToString());

@@ -23,6 +23,8 @@ namespace CrossfitBenchmarks.WebUi.Services
 
 
 
+
+
             return task.Result.Result;
         }
 

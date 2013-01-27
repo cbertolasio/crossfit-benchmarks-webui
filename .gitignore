@@ -57,3 +57,5 @@ Graphics
 *.ncrunchproject
 *.mdf
 *.ldf
+
+*.ncrunchsolution

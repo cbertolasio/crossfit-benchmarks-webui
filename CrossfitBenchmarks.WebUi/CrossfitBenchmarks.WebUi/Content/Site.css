@@ -48,3 +48,13 @@ footer
     border-color:#ededed;
 }
 
+.modal-header .close
+{
+    color:#ffffff;
+    filter:alpha(opacity=80);
+}
+    .modal-header .close:hover
+    {
+        color:#ffffff;
+        filter:alpha(opacity=100);
+    }

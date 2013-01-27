@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Services;
-using CrossFitTools.Web.Models.Logger;
+
 
 namespace CrossFitTools.Web.Controllers
 {
@@ -20,8 +20,8 @@ namespace CrossFitTools.Web.Controllers
             {
                 case "benchmark":
                     var result = webServiceApi.GetTheBenchmarks("3");
-                    var listItems = AutoMapper.Mapper.Map<IEnumerable<WorkoutLogEntryDto>,IEnumerable<BenchmarkItemViewModel>>(result);
-                    var viewModel = new BenchmarksViewModel { Benchmarks = listItems.ToList() };
+                    var listItems = AutoMapper.Mapper.Map<IEnumerable<WorkoutLogEntryDto>,IEnumerable<CrossfitBenchmarks.WebUi.Models.Logger.BenchmarkItemViewModel>>(result);
+                    var viewModel = new CrossfitBenchmarks.WebUi.Models.Logger.BenchmarksViewModel { Benchmarks = listItems.ToList() };
                     return View("Benchmarks", viewModel );
 
                 default:

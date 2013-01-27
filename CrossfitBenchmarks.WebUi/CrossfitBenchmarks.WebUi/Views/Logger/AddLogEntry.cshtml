@@ -1,0 +1,59 @@
+﻿@model WorkoutLogEntryViewModel
+
+<div id="addLogEntry-modal" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Add a Benchmark Log Entry</h3>
+    </div>
+
+    <div class="modal-body">
+
+
+        <form class="form-horizontal">
+
+        <div class="control-group">
+            <label class="control-label">Score</label>
+            <div class="controls">
+                <input id="score" type="text" data-bind="value:addLogEntryViewModel.score" value="" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Date</label>
+            <div class="controls">
+                <input id="dateCreated" type="datetime-local" data-bind="value:addLogEntryViewModel.dateCreated" value="" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" data-bind="checked:addLogEntryViewModel.isAPersonalRecord" />
+                    Is this a PR?
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Note</label>
+            <div class="controls">
+                <textarea id="note" rows="6" data-bind="text:addLogEntryViewModel.note"></textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <input type="hidden" id="WorkoutId" data-bind="value:addLogEntryViewModel.workoutId" value="0" />
+            </div>
+        </div>
+        
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal"><i class="icon-remove-sign"></i>Cancel</button>
+        <button class="btn btn-primary"><i class="icon-ok-sign icon-white"></i>Save</button>
+
+    </div>
+
+</div>

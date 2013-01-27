@@ -69,13 +69,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrossFitTools.Web\CrossFitTools.Web.csproj">
-      <Project>{b3382397-97c5-41cb-867b-4c7be5f17956}</Project>
-      <Name>CrossFitTools.Web</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\CrossfitBenchmarks.WebUi\CrossfitBenchmarks.WebUi.csproj">
+      <Project>{b3382397-97c5-41cb-867b-4c7be5f17956}</Project>
+      <Name>CrossfitBenchmarks.WebUi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

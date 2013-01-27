@@ -1,5 +1,4 @@
-﻿@using CrossFitTools.Web.HtmlHelpers
-@model CrossFitTools.Web.Models.Logger.BenchmarksViewModel
+﻿@model BenchmarksViewModel
 
 @{
     ViewBag.Title = "My Benchmarks";
@@ -8,7 +7,7 @@
     <div id="benchmarks-content" class="span12">
 
         <h2>Review Your Benchmarks</h2>
-
+        
         <ul id="benchmarkItems" data-bind="foreach: benchmarks()" class="thumbnails">
             <li data-bind="attr:{id:id}" class="span4">
                 <div class="thumbnail" style="min-height:140px;">
@@ -27,7 +26,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div style="min-height:40px;">
-                        <span id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Add New</span>
+                        <a id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary" href="#addLogEntry-modal" data-toggle="modal"><i class="icon-plus-sign icon-white"></i> Add New</a>
                     </div>
                     
                     
@@ -37,8 +36,10 @@
         </ul>
     </div>
 
+@Html.Partial("AddLogEntry", new WorkoutLogEntryViewModel())
 
 <script type="text/javascript">
     @Html.ToJSVar("benchmarksViewModel", Model)
+    @Html.ToJSVar("addLogEntryViewModel", new WorkoutLogEntryViewModel())
 </script>
 

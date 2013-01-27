@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace CrossFitTools.Web.HtmlHelpers
+namespace CrossfitBenchmarks.WebUi.HtmlHelpers
 {
     /// <summary>
     /// use @Html.ToJson(Model) output json as a string into the dom

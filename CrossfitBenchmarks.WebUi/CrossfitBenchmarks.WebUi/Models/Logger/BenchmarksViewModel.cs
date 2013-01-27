@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CrossFitTools.Web.Models.Logger
+namespace CrossfitBenchmarks.WebUi.Models.Logger
 {
+
     public class BenchmarksViewModel
     {
         public List<BenchmarkItemViewModel> Benchmarks { get; set; }

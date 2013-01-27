@@ -3,11 +3,13 @@
 CFBM.namespace("CFBM.Benchmarks");
 CFBM.Benchmarks = (function () {
     var viewModel = null,
+        addLogEntryViewModel = null,
         $container = $("#benchmarks-content");
 
     function onReady() {
         viewModel = ko.mapping.fromJS(benchmarksViewModel);
-        
+        viewModel.addLogEntryViewModel = ko.mapping.fromJS(addLogEntryViewModel);
+
         $.each(viewModel.benchmarks(), function (index, benchmark) {
             benchmark.lastPrDateHumanized = ko.computed(function () {
                 return moment(benchmark.lastPersonalRecordDate()).fromNow();

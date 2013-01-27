@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CrossFitTools.Web.Models.Logger;
+
 using CrossfitBenchmarks.Data.DataTransfer;
 
 namespace CrossfitBenchmarks.WebUi
@@ -10,7 +10,7 @@ namespace CrossfitBenchmarks.WebUi
     {
         public static void Initialize()
         {
-            AutoMapper.Mapper.CreateMap<WorkoutLogEntryDto, BenchmarkItemViewModel>()
+            AutoMapper.Mapper.CreateMap<WorkoutLogEntryDto, CrossfitBenchmarks.WebUi.Models.Logger.BenchmarkItemViewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.WorkoutId))
                 .ForMember(dest => dest.LastAttemptDate, opt => opt.MapFrom(src => src.LastEntry != null ? src.LastEntry.DateCreated : DateTime.MinValue ))
                 .ForMember(dest => dest.LastScore, opt => opt.MapFrom(src => src.LastEntry != null ? src.LastEntry.Score : null))

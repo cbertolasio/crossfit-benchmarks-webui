@@ -11,6 +11,8 @@ CFBM.Benchmarks = (function () {
 
         tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
         viewModel.addNewViewModel = ko.observable(tempViewModel);
+        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
+        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
 
         $.each(viewModel.benchmarks(), function (index, benchmark) {
             benchmark.lastPrDateHumanized = ko.computed(function () {
@@ -33,6 +35,8 @@ CFBM.Benchmarks = (function () {
 
         $(".addNew-button", $container).click(function () {
             viewModel.beginEdit();
+            viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
+            viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
         });
     };
 

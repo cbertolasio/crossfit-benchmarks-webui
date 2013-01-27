@@ -9,14 +9,14 @@
         <h2>Review Your Benchmarks</h2>
         
         <ul id="benchmarkItems" data-bind="foreach: benchmarks()" class="thumbnails">
-            <li data-bind="attr:{id:id}" class="span4">
-                <div class="thumbnail" style="min-height:140px;">
+            <li class="span4">
+                <div class="thumbnail" style="min-height:140px;" data-bind="attr:{id:id}">
                     <div style="min-height:100px;">
                         <h4 data-bind="text:name" style="display: inline-block"></h4>
 
                     <!-- ko if:lastScore() != null -->
-                    <p><span style="display: inline-block">Last: <span data-bind="text:lastScore"></span><small class="muted">about <span data-bind="text:lastAttemptDateHumanized"></span></small></span></p>
-                    <p><span style="display: inline-block">PR: <span data-bind="text:personalRecordScore"></span><small class="muted">about <span data-bind="text:lastPrDateHumanized()"></span></small></span></p>
+                    <p><span style="display: inline-block">Last: <span data-bind="text:lastScore"></span><small class="muted"> about <span data-bind="text:lastAttemptDateHumanized"></span></small></span></p>
+                    <p><span style="display: inline-block">PR: <span data-bind="text:personalRecordScore"></span><small class="muted"> about <span data-bind="text:lastPrDateHumanized()"></span></small></span></p>
                     <!-- /ko -->
 
                     <!-- ko if:lastScore() == null -->
@@ -28,9 +28,6 @@
                     <div style="min-height:40px;">
                         <a id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary addNew-button" href="#addLogEntry-modal" data-toggle="modal"><i class="icon-plus-sign icon-white"></i> Add New</a>
                     </div>
-                    
-                    
-
                 </div>
             </li>
         </ul>

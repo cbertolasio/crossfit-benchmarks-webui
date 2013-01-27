@@ -12,6 +12,13 @@
         <form class="form-horizontal">
 
         <div class="control-group">
+            <label class="control-label key-field">Selected Workout</label>
+            <div class="controls">
+                <h3 class="text-info" id="selectedWorkoutName" data-bind="text:addNewViewModel().selectedWorkoutName()"></h3>
+            </div>
+        </div>
+            
+        <div class="control-group">
             <label class="control-label">Score</label>
             <div class="controls">
                 <input id="score" type="text" data-bind="value:addNewViewModel().score()" value="" />

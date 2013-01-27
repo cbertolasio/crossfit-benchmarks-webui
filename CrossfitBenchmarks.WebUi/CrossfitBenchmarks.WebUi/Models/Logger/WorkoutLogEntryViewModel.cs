@@ -6,7 +6,7 @@ using System.Linq;
 namespace CrossfitBenchmarks.WebUi.Models.Logger
 {
 
-    public class WorkoutLogEntryViewModel
+    public class AddLogEntryViewModel
     {
         public string LogEntryType { get; set; }
 
@@ -15,7 +15,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
         [Required]
         public string UserId { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTimeOffset? DateCreated { get; set; }
         public bool IsAPersonalRecord { get; set; }
 
         public string Score { get; set; }
@@ -23,7 +23,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
         [MaxLength(1024)]
         public string Note { get; set; }
 
-        public WorkoutLogEntryViewModel()
+        public AddLogEntryViewModel()
         {
             DateCreated = DateTime.Now;
         }

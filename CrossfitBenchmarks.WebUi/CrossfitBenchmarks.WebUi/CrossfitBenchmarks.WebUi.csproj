@@ -185,6 +185,7 @@
     <Compile Include="AutomapBootstrap.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="CustomActionResults\CustomJsonResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggerController.cs" />
     <Compile Include="Dto\WorkoutType.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Modules\NinjectModules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrossfitBenchmarksServices.cs" />
+    <Compile Include="Services\JsonSerializer.cs" />
     <Compile Include="Utility\HttpClientUtilities.cs" />
     <Compile Include="Exceptions\HttpStatusException.cs" />
     <Compile Include="Utility\HttpClientDataService.cs" />

@@ -27,9 +27,13 @@ namespace CrossfitBenchmarks.Data.DataTransfer
     public class LogEntryDto
     {
         public long WorkoutLogId { get; set; }
-        public DateTimeOffset? DateCreated { get; set; }
+        public DateTimeOffset DateCreated { get; set; }
+        public string DateCreatedAsString { get; set; }
         public string Score { get; set; }
         public bool IsAPersonalRecord { get; set; }
+        public string Note { get; set; }
+        public int WorkoutId { get; set; }
+        public string UserId { get; set; }
 
         public LogEntryDto()
         {

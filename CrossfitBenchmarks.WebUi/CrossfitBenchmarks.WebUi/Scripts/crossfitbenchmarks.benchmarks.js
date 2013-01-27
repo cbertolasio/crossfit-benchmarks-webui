@@ -13,6 +13,8 @@ CFBM.Benchmarks = (function () {
         viewModel.addNewViewModel = ko.observable(tempViewModel);
         viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
         viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
+        viewModel.addNewViewModel().userId = ko.observable(0);
+        viewModel.addNewViewModel().logEntryType = ko.observable("B");
 
         $.each(viewModel.benchmarks(), function (index, benchmark) {
             benchmark.lastPrDateHumanized = ko.computed(function () {
@@ -29,6 +31,10 @@ CFBM.Benchmarks = (function () {
         $("#dp3", $container).datepicker();
 
 
+        $(".save-button", $(".modal-footer")).click(function () {
+            $(".addNewLogEntry-form", $(".modal-body")).submit();
+        });
+
         $(".cancel-button", $(".modal-footer")).click(function () {
             viewModel.rollback();
         });
@@ -37,6 +43,8 @@ CFBM.Benchmarks = (function () {
             viewModel.beginEdit();
             viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
             viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
+            viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
+            viewModel.addNewViewModel().logEntryType("B"); //not sure why i need this exactly... but i will get it worked out
         });
     };
 

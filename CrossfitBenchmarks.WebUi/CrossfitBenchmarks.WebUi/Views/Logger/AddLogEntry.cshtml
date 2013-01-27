@@ -8,7 +8,7 @@
 
     <div class="modal-body">
 
-        @using(Ajax.BeginForm("AddLogEntry", "Logger", null, new AjaxOptions{ HttpMethod = "POST", Url="/Logger/AddLogEntry"}, new {@class="form-horizontal addNewLogEntry-form"})){
+        @using (Ajax.BeginForm("AddLogEntry", "Logger", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CFBM.Benchmarks.onAddLogEntrySuccess" }, new { @class = "form-horizontal addNewLogEntry-form" })) {
         
         <div class="control-group">
             <label class="control-label key-field">Selected Workout</label>

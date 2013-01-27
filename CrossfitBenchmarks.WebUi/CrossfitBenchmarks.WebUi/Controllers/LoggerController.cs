@@ -21,9 +21,9 @@ namespace CrossFitTools.Web.Controllers
     {
         private readonly ICrossfitBenchmarksServices webServiceApi;
         
+        [HttpPost]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
-            
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
             var result = webServiceApi.CreateLogEntry(dto);
             return new CustomJsonResult { Data = result };

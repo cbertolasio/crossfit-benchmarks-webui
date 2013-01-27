@@ -24,7 +24,6 @@ namespace CrossfitBenchmarks.WebUi.Services
             
             var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.PUT);
             request.RequestFormat = DataFormat.Json;
-            request.DateFormat = @"yyyy-MM-ddTHH\:mm\:ss.fffffffzzz";
             request.AddBody(dto);
             request.JsonSerializer = new JsonSerializer();
 

@@ -58,3 +58,9 @@ footer
         color:#ffffff;
         filter:alpha(opacity=100);
     }
+
+.datepicker
+{
+    z-index:1100;
+    color:#000;
+}

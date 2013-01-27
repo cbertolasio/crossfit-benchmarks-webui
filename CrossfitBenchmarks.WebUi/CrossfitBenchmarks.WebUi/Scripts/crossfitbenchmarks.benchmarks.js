@@ -3,12 +3,14 @@
 CFBM.namespace("CFBM.Benchmarks");
 CFBM.Benchmarks = (function () {
     var viewModel = null,
-        addLogEntryViewModel = null,
+        tempViewModel = null,
         $container = $("#benchmarks-content");
 
     function onReady() {
         viewModel = ko.mapping.fromJS(benchmarksViewModel);
-        viewModel.addLogEntryViewModel = ko.mapping.fromJS(addLogEntryViewModel);
+
+        tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
+        viewModel.addNewViewModel = ko.observable(tempViewModel);
 
         $.each(viewModel.benchmarks(), function (index, benchmark) {
             benchmark.lastPrDateHumanized = ko.computed(function () {
@@ -20,7 +22,18 @@ CFBM.Benchmarks = (function () {
             });
         });
 
+        ko.editable(viewModel);
         ko.applyBindings(viewModel, $container[0]);
+        $("#dp3", $container).datepicker();
+
+
+        $(".cancel-button", $(".modal-footer")).click(function () {
+            viewModel.rollback();
+        });
+
+        $(".addNew-button", $container).click(function () {
+            viewModel.beginEdit();
+        });
     };
 
     return {

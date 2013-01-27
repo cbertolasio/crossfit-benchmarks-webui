@@ -20,8 +20,10 @@ namespace CrossfitBenchmarks.WebUi
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-datepicker.js",
                         "~/Scripts/knockout-2.2.0.js",
                         "~/Scripts/knockout.mapping-latest.js",
+                        "~/Scripts/ko.editables.js",
                         "~/Scripts/moment.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/crossfitbenchmarks").Include(
@@ -38,6 +40,7 @@ namespace CrossfitBenchmarks.WebUi
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-responsive.css",
+                        "~/Content/datepicker.css",
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",

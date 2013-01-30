@@ -45,7 +45,7 @@ namespace CrossfitBenchmarks.WebUi.Services
         public IEnumerable<WorkoutLogEntryDto> GetTheGirls(string userId)
         {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
-            var request = new RestSharp.RestRequest("TheBenchmarks/{id}", RestSharp.Method.GET);
+            var request = new RestSharp.RestRequest("TheGirls/{id}", RestSharp.Method.GET);
             request.JsonSerializer = new JsonSerializer();
             request.AddUrlSegment("id", userId);
             request.AddHeader("Accept", "application/json");

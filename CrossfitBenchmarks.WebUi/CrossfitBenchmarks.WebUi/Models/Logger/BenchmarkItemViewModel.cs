@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CrossfitBenchmarks.WebUi.Models.Logger
 {
-    public class BenchmarkItemViewModel
+    public class WodItemViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

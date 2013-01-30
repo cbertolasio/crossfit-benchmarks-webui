@@ -16,7 +16,7 @@ namespace CrossfitBenchmarks.WebUi
                 .ForMember(dest => dest.WorkoutLogId, opt => opt.Ignore())
                 .ForMember(dest => dest.DateCreatedAsString, opt => opt.MapFrom(src => src.DateCreated.Value.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")));
 
-            Mapper.CreateMap<WorkoutLogEntryDto, CrossfitBenchmarks.WebUi.Models.Logger.BenchmarkItemViewModel>()
+            Mapper.CreateMap<WorkoutLogEntryDto, CrossfitBenchmarks.WebUi.Models.Logger.WodItemViewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.WorkoutId))
                 .ForMember(dest => dest.LastAttemptDate, opt => opt.MapFrom(src => src.LastEntry != null ? src.LastEntry.DateCreated : DateTime.MinValue ))
                 .ForMember(dest => dest.LastScore, opt => opt.MapFrom(src => src.LastEntry != null ? src.LastEntry.Score : null))

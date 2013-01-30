@@ -31,13 +31,21 @@ namespace CrossFitTools.Web.Controllers
 
         public ActionResult Index(string val)
         {
+            IEnumerable<WorkoutLogEntryDto> result = null;
+            IEnumerable<WodItemViewModel> listItems = null;
             switch (val)
             {
                 case "benchmark":
-                    var result = webServiceApi.GetTheBenchmarks("3");
-                    var listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<CrossfitBenchmarks.WebUi.Models.Logger.BenchmarkItemViewModel>>(result);
-                    var viewModel = new CrossfitBenchmarks.WebUi.Models.Logger.BenchmarksViewModel { Benchmarks = listItems.ToList() };
+                    result = webServiceApi.GetTheBenchmarks("3");
+                    listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
+                    var viewModel = new BenchmarksViewModel { Benchmarks = listItems.ToList() };
                     return View("Benchmarks", viewModel );
+
+                case "thegirls":
+                    result = webServiceApi.GetTheGirls("3");
+                    listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
+                    var theGirlsViewModel = new TheGirlsViewModel { WodList = listItems.ToList() };
+                    return View("TheGirls", theGirlsViewModel);
 
                 default:
                     return new EmptyResult();

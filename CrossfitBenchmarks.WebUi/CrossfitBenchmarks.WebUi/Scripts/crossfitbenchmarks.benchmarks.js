@@ -1,4 +1,57 @@
 ﻿
+CFBM.namespace("CFBM.TheGirls");
+CFBM.TheGirls = (function () {
+    var viewModel = null,
+        tempViewModel = null,
+        $container = $("#theGirls-content");
+
+    function onReady() {
+        viewModel = ko.mapping.fromJS(theGirlsViewModel);
+
+        tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
+        viewModel.addNewViewModel = ko.observable(tempViewModel);
+        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
+        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
+        viewModel.addNewViewModel().userId = ko.observable(0);
+        viewModel.addNewViewModel().logEntryType = ko.observable("B");
+
+        $.each(viewModel.wodList(), function (index, item) {
+            item.lastPrDateHumanized = ko.computed(function () {
+                return moment(item.lastPersonalRecordDate()).fromNow();
+            });
+
+            item.lastAttemptDateHumanized = ko.computed(function () {
+                return moment(item.lastAttemptDate()).fromNow();
+            });
+        });
+
+        ko.editable(viewModel);
+        ko.applyBindings(viewModel, $container[0]);
+        $("#dp3", $container).datepicker();
+
+
+        $(".save-button", $(".modal-footer")).click(function () {
+            $(".addNewLogEntry-form", $(".modal-body")).submit();
+
+        });
+
+        $(".cancel-button", $(".modal-footer")).click(function () {
+            viewModel.rollback();
+        });
+
+        $(".addNew-button", $container).click(function () {
+            viewModel.beginEdit();
+            viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
+            viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
+            viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
+            viewModel.addNewViewModel().logEntryType("G"); //not sure why i need this exactly... but i will get it worked out
+        });
+    };
+
+    return {
+        ready:onReady
+    }
+}());
 
 CFBM.namespace("CFBM.Benchmarks");
 CFBM.Benchmarks = (function () {
@@ -61,8 +114,14 @@ CFBM.Benchmarks = (function () {
 }());
 
 $(document).ready(function () {
-    var module = CFBM.Benchmarks;
+    var module = CFBM.Benchmarks,
+        theGirlsModule = CFBM.TheGirls;
+
     if ($("#benchmarks-content").length) {
         module.ready();
+    }
+
+    if ($("#theGirls-content").length) {
+        theGirlsModule.ready();
     }
 });

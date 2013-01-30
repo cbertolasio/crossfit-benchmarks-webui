@@ -40,12 +40,21 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
             webServiceApi.VerifyAllExpectations();
         }
 
+
         [TestCase("benchmark")]
-        public void Index_Returns_ExpectedView(string arg)
+        public void Index_Returns_ExpectedView_ForTheBenchmarks(string arg)
         {
             controller.Index(arg)
                 .As<ViewResult>()
                 .ViewName.Should().Be("Benchmarks");
+        }
+
+        [TestCase("thegirls")]
+        public void Index_Returns_ExpectedView_ForTheGirls(string arg)
+        {
+            controller.Index(arg)
+                .As<ViewResult>()
+                .ViewName.Should().Be("TheGirls");
         }
 
         [TestCase("")]

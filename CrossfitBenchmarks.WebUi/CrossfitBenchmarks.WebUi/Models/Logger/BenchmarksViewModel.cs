@@ -7,13 +7,13 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
     public class BenchmarksViewModel
     {
-        public List<BenchmarkItemViewModel> Benchmarks { get; set; }
+        public List<WodItemViewModel> Benchmarks { get; set; }
 
         public BenchmarksViewModel(bool createSampleData)
         {
-            Benchmarks = new List<BenchmarkItemViewModel>();
+            Benchmarks = new List<WodItemViewModel>();
 
-            var item = new BenchmarkItemViewModel {
+            var item = new WodItemViewModel {
                 Id = 1,
                 LastAttemptDate = new DateTime(2012, 12, 18, 12, 00, 00, 00, DateTimeKind.Local),
                 LastPersonalRecordDate = new DateTime(2012, 10, 13, 12, 00, 00, 00, DateTimeKind.Local),
@@ -24,7 +24,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
             Benchmarks.Add(item);
 
-            item = new BenchmarkItemViewModel {
+            item = new WodItemViewModel {
                 Id = 2,
                 LastAttemptDate = new DateTime(2013, 01, 01, 12, 00, 00, 00, DateTimeKind.Local),
                 LastPersonalRecordDate = new DateTime(2013, 01, 01, 12, 00, 00, 00, DateTimeKind.Local),
@@ -35,7 +35,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
             Benchmarks.Add(item);
 
-            item = new BenchmarkItemViewModel {
+            item = new WodItemViewModel {
                 Id = 3,
                 LastAttemptDate = new DateTime(2013, 01, 06, 12, 00, 00, 00, DateTimeKind.Local),
                 LastPersonalRecordDate = new DateTime(2013, 01, 06, 12, 00, 00, 00, DateTimeKind.Local),
@@ -46,7 +46,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
             Benchmarks.Add(item);
 
-            item = new BenchmarkItemViewModel {
+            item = new WodItemViewModel {
                 Id = 4,
                 LastAttemptDate = DateTime.MinValue,
                 LastPersonalRecordDate = DateTime.MinValue,
@@ -60,7 +60,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
         public  BenchmarksViewModel()
         {
-            Benchmarks = new List<BenchmarkItemViewModel>();
+            Benchmarks = new List<WodItemViewModel>();
         }
     }
 }

@@ -185,6 +185,7 @@
     <Compile Include="AutomapBootstrap.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Models\Logger\TheHerosViewModel.cs" />
     <Compile Include="Models\Logger\TheGirlsViewModel.cs" />
     <Compile Include="CustomActionResults\CustomJsonResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -349,6 +350,7 @@
     <Content Include="Views\Admin\WorkoutTypes.cshtml" />
     <Content Include="Views\Logger\AddLogEntry.cshtml" />
     <Content Include="Views\Logger\TheGirls.cshtml" />
+    <Content Include="Views\Logger\TheHeros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

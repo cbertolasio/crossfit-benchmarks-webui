@@ -47,6 +47,12 @@ namespace CrossFitTools.Web.Controllers
                     var theGirlsViewModel = new TheGirlsViewModel { WodList = listItems.ToList() };
                     return View("TheGirls", theGirlsViewModel);
 
+                case "theheros":
+                    result = webServiceApi.GetTheHeros("3");
+                    listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
+                    var theHerosViewModel = new TheHerosViewModel { WodList = listItems.ToList() };
+                    return View("TheHeros", theHerosViewModel);
+                    break;
                 default:
                     return new EmptyResult();
             }

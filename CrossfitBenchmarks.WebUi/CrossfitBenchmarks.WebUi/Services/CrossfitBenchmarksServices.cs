@@ -13,6 +13,7 @@ namespace CrossfitBenchmarks.WebUi.Services
     {
         LogEntryDto CreateLogEntry(LogEntryDto dto);
         IEnumerable<WorkoutLogEntryDto> GetTheGirls(string userId);
+        IEnumerable<WorkoutLogEntryDto> GetTheHeros(string userId);
         IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks(string userId);
     }
 
@@ -32,26 +33,31 @@ namespace CrossfitBenchmarks.WebUi.Services
 
         public IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks(string userId)
         {
-            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
-            var request = new RestSharp.RestRequest("TheBenchmarks/{id}", RestSharp.Method.GET);
-            request.JsonSerializer = new JsonSerializer();
-            request.AddUrlSegment("id", userId);
-            request.AddHeader("Accept", "application/json");
-
-            var response = client.Execute<List<WorkoutLogEntryDto>>(request);
-            return response.Data;
+            var baseUri = "TheBenchmarks/{id}";
+            return GetWorkoutLogEntries(baseUri, userId).Data;
         }
 
         public IEnumerable<WorkoutLogEntryDto> GetTheGirls(string userId)
         {
+            string baseUri = "TheGirls/{id}";
+            return GetWorkoutLogEntries(baseUri, userId).Data;
+        }
+
+        public IEnumerable<WorkoutLogEntryDto> GetTheHeros(string userId)
+        {
+            var baseUri = "TheHeros/{id}";
+            return GetWorkoutLogEntries(baseUri, userId).Data;
+        }
+
+        private static IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri, string userId)
+        {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
-            var request = new RestSharp.RestRequest("TheGirls/{id}", RestSharp.Method.GET);
+            var request = new RestSharp.RestRequest(baseUri, RestSharp.Method.GET);
             request.JsonSerializer = new JsonSerializer();
             request.AddUrlSegment("id", userId);
             request.AddHeader("Accept", "application/json");
-
             var response = client.Execute<List<WorkoutLogEntryDto>>(request);
-            return response.Data;
+            return response;
         }
 
         public CrossfitBenchmarksServices()

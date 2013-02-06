@@ -15,6 +15,7 @@ namespace CrossFitTools.Web.Modules
             Kernel.Bind<IDateTimeManager>().To<DateTimeManager>();
             //Bind<IUIDataService>().To<HttpClientDataService>();
             Bind<ICrossfitBenchmarksServices>().To<CrossfitBenchmarksServices>();
+            Bind<ITokenProvider>().To<TokenProvider>().InSingletonScope();
         }
     }
 }

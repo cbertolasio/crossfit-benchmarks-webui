@@ -39,7 +39,7 @@
             <div class="controls">
                 <label class="checkbox">
                     @*<input name="IsAPersonalRecord" id="IsAPersonalRecord" type="checkbox" data-bind="checked:addNewViewModel().isAPersonalRecord()" />*@
-                    @Html.CheckBoxFor(model => model.IsAPersonalRecord, new {data_bind="checked:addNewViewModel().isAPersonalRecord()"})
+                    @Html.CheckBoxFor(model => model.IsAPersonalRecord, new {data_bind="checked:addNewViewModel().isaPersonalRecord()"})
                     Is this a PR?
                 </label>
             </div>

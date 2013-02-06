@@ -17,4 +17,3 @@ namespace CrossfitBenchmarks.WebUi.Utility
         Task DeleteServiceDataAsync(string endpoint, object id = null);
     }
 }
-

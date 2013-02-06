@@ -6,6 +6,8 @@ using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Utility;
 using RestSharp;
 using RestSharp.Serializers;
+using CrossfitBenchmarks.WebUi.Extensions;
+using System.Configuration;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -24,6 +26,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
             var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.PUT);
             request.RequestFormat = DataFormat.Json;
+            request.AddAuthorizationHeader(tokenProvider, scope);
             request.AddBody(dto);
             request.JsonSerializer = new JsonSerializer();
 
@@ -49,21 +52,26 @@ namespace CrossfitBenchmarks.WebUi.Services
             return GetWorkoutLogEntries(baseUri, userId).Data;
         }
 
-        private static IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri, string userId)
+        private IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri, string userId)
         {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
             var request = new RestSharp.RestRequest(baseUri, RestSharp.Method.GET);
             request.JsonSerializer = new JsonSerializer();
+            request.AddAuthorizationHeader(tokenProvider, scope);
             request.AddUrlSegment("id", userId);
             request.AddHeader("Accept", "application/json");
             var response = client.Execute<List<WorkoutLogEntryDto>>(request);
             return response;
         }
 
-        public CrossfitBenchmarksServices()
+        public CrossfitBenchmarksServices(ITokenProvider tokenProvider)
         {
+            this.tokenProvider = tokenProvider;
+            this.scope = ConfigurationManager.AppSettings["AcsScope"];
         }
 
         private readonly IUIDataService dataProvider;
+        private string scope;
+        private readonly ITokenProvider tokenProvider;
     }
 }

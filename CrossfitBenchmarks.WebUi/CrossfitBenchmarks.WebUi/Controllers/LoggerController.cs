@@ -17,6 +17,7 @@ using AutoMapper;
 
 namespace CrossFitTools.Web.Controllers
 {
+     [Authorize]
     public class LoggerController : Controller
     {
         private readonly ICrossfitBenchmarksServices webServiceApi;

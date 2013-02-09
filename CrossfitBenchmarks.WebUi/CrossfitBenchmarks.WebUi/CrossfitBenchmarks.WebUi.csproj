@@ -187,6 +187,7 @@
     <Compile Include="AutomapBootstrap.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\OAuth2TokenResponse.cs" />
     <Compile Include="Controllers\RestRequestExtension.cs" />
     <Compile Include="Controllers\SamplesConfiguration.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -359,6 +361,8 @@
     <Content Include="Views\Logger\TheHeros.cshtml" />
     <Content Include="Views\Home\RegisterClient.cshtml" />
     <Content Include="Views\Home\RegistrationComplete.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\LoginError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

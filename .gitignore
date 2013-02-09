@@ -59,3 +59,6 @@ Graphics
 *.ldf
 
 *.ncrunchsolution
+
+Web.config.backup.1
+*.pubxml

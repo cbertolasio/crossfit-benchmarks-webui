@@ -6,6 +6,7 @@ using CrossFitTools.Web.Models.Calculator;
 
 namespace CrossFitTools.Web.Controllers
 {
+     [Authorize]
     public class CalculatorController : Controller
     {
         

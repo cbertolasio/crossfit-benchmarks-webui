@@ -12,6 +12,7 @@ using RestSharp.Serializers;
 
 namespace CrossfitBenchmarks.WebUi.Controllers
 {
+     [Authorize]
     public class AdminController : Controller
     {
         private readonly ITokenProvider tokenProvider;

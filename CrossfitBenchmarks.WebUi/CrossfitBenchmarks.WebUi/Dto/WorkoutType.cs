@@ -35,9 +35,25 @@ namespace CrossfitBenchmarks.Data.DataTransfer
         public int WorkoutId { get; set; }
         public string UserId { get; set; }
 
+        public UserInfoDto UserInfo { get; set; }
         public LogEntryDto()
         {
 
+        }
+    }
+
+
+    public class UserInfoDto
+    {
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string IdentityProvider { get; set; }
+        public string LastName { get; set; }
+        public string NameIdentifier { get; set; }
+        public int UserId { get; set; }
+
+        public UserInfoDto()
+        {
         }
     }
 }

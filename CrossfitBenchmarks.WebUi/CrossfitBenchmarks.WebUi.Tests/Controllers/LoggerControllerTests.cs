@@ -33,7 +33,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         public void Index_Uses_WebApi(string val)
         {
             IEnumerable<WorkoutLogEntryDto> testData = new List<WorkoutLogEntryDto>();
-            webServiceApi.Expect(it => it.GetTheBenchmarks(Arg<string>.Is.NotNull)).Return(testData);
+            webServiceApi.Expect(it => it.GetTheBenchmarks()).Return(testData);
 
             controller.Index(val);
 

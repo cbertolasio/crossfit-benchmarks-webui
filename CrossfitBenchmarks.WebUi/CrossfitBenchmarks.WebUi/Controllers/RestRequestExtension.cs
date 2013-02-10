@@ -12,6 +12,15 @@ namespace CrossfitBenchmarks.WebUi.Extensions
         {
             request.AddHeader("Authorization", tokenProvider.GetOAuthHeader(tokenProvider.GetTokenFromACS(scope)));
         }
+
+        public static void AddNameIdentifierHeader(this RestRequest request, string nameIdentifierValue)
+        {
+            request.AddHeader("NameIdentifier", nameIdentifierValue);
+        }
+        public static void AddIdentityProviderHeader(this RestRequest request, string identityProviderValue)
+        {
+            request.AddHeader("IdentityProvider", identityProviderValue);
+        }
     }
 }
 

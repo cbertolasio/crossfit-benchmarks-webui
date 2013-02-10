@@ -1,27 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Models.Logger;
 using CrossfitBenchmarks.WebUi.Services;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using CrossFitTools.Web.CustomActionResults;
-using AutoMapper;
 
 
 namespace CrossFitTools.Web.Controllers
 {
-     [Authorize]
+    [Authorize]
     public class LoggerController : Controller
     {
         private readonly ICrossfitBenchmarksServices webServiceApi;
-        
         [HttpPost]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
@@ -37,19 +30,19 @@ namespace CrossFitTools.Web.Controllers
             switch (val)
             {
                 case "benchmark":
-                    result = webServiceApi.GetTheBenchmarks("3");
+                    result = webServiceApi.GetTheBenchmarks();
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
                     var viewModel = new BenchmarksViewModel { Benchmarks = listItems.ToList() };
                     return View("Benchmarks", viewModel );
 
                 case "thegirls":
-                    result = webServiceApi.GetTheGirls("3");
+                    result = webServiceApi.GetTheGirls();
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
                     var theGirlsViewModel = new TheGirlsViewModel { WodList = listItems.ToList() };
                     return View("TheGirls", theGirlsViewModel);
 
                 case "theheros":
-                    result = webServiceApi.GetTheHeros("3");
+                    result = webServiceApi.GetTheHeros();
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
                     var theHerosViewModel = new TheHerosViewModel { WodList = listItems.ToList() };
                     return View("TheHeros", theHerosViewModel);

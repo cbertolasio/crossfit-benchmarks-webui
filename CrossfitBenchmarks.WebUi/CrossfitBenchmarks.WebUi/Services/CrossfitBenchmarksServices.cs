@@ -14,63 +14,78 @@ namespace CrossfitBenchmarks.WebUi.Services
     public interface ICrossfitBenchmarksServices
     {
         LogEntryDto CreateLogEntry(LogEntryDto dto);
-        IEnumerable<WorkoutLogEntryDto> GetTheGirls(string userId);
-        IEnumerable<WorkoutLogEntryDto> GetTheHeros(string userId);
-        IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks(string userId);
+        IEnumerable<WorkoutLogEntryDto> GetTheGirls();
+        IEnumerable<WorkoutLogEntryDto> GetTheHeros();
+        IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks();
     }
 
     public class CrossfitBenchmarksServices : ICrossfitBenchmarksServices
     {
+        private void AddHeaders(RestRequest request)
+        {
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            //request.AddIdentityProviderHeader(claimsProvider.GetIdentityProvider());
+            //request.AddNameIdentifierHeader(claimsProvider.GetNameIdentifier());
+
+            request.AddParameter("nameIdentifier", claimsProvider.GetNameIdentifier(), ParameterType.GetOrPost);
+            request.AddParameter("identityProvider", claimsProvider.GetIdentityProvider(), ParameterType.GetOrPost);
+
+            //request.AddParameter("nameIdentifier", claimsProvider.GetNameIdentifier(), ParameterType.RequestBody);
+            //request.AddParameter("identityProvider", claimsProvider.GetIdentityProvider(), ParameterType.RequestBody);
+        }
+
         public LogEntryDto CreateLogEntry(LogEntryDto dto)
         {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
             var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddAuthorizationHeader(tokenProvider, scope);
+            dto.UserInfo = new UserInfoDto { IdentityProvider = claimsProvider.GetIdentityProvider(), NameIdentifier = claimsProvider.GetNameIdentifier() };
             request.AddBody(dto);
+
             request.JsonSerializer = new JsonSerializer();
 
             var response = client.Execute<LogEntryDto>(request);
             return response.Data;
         }
 
-        public IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks(string userId)
+        public IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks()
         {
-            var baseUri = "TheBenchmarks/{id}";
-            return GetWorkoutLogEntries(baseUri, userId).Data;
+            var baseUri = "TheBenchmarks";
+            return GetWorkoutLogEntries(baseUri).Data;
         }
 
-        public IEnumerable<WorkoutLogEntryDto> GetTheGirls(string userId)
+        public IEnumerable<WorkoutLogEntryDto> GetTheGirls()
         {
-            string baseUri = "TheGirls/{id}";
-            return GetWorkoutLogEntries(baseUri, userId).Data;
+            string baseUri = "TheGirls";
+            return GetWorkoutLogEntries(baseUri).Data;
         }
 
-        public IEnumerable<WorkoutLogEntryDto> GetTheHeros(string userId)
+        public IEnumerable<WorkoutLogEntryDto> GetTheHeros()
         {
-            var baseUri = "TheHeros/{id}";
-            return GetWorkoutLogEntries(baseUri, userId).Data;
+            var baseUri = "TheHeros";
+            return GetWorkoutLogEntries(baseUri).Data;
         }
 
-        private IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri, string userId)
+        private IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri)
         {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
             var request = new RestSharp.RestRequest(baseUri, RestSharp.Method.GET);
             request.JsonSerializer = new JsonSerializer();
-            request.AddAuthorizationHeader(tokenProvider, scope);
-            request.AddUrlSegment("id", userId);
+            AddHeaders(request);
             request.AddHeader("Accept", "application/json");
             var response = client.Execute<List<WorkoutLogEntryDto>>(request);
             return response;
         }
 
-        public CrossfitBenchmarksServices(ITokenProvider tokenProvider)
+        public CrossfitBenchmarksServices(ITokenProvider tokenProvider, IClaimsProvider claimsProvider)
         {
+            this.claimsProvider = claimsProvider;
             this.tokenProvider = tokenProvider;
             this.scope = ConfigurationManager.AppSettings["AcsScope"];
         }
 
-        private readonly IUIDataService dataProvider;
+        private readonly IClaimsProvider claimsProvider;
         private string scope;
         private readonly ITokenProvider tokenProvider;
     }

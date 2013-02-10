@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Claims Viewer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Claims Viewer</h2>
+<h3>Values from Identity</h3>
+<ul>
+    <li>IsAuthenticated: @ViewBag.ClaimsIdentity.IsAuthenticated</li>
+    <li>Name: @ViewBag.ClaimsIdentity.Name</li>
+    <li>Name Identifier: @ViewBag.NameIdentifierValue</li>
+    <li>Identity Provider: @ViewBag.IdentityProviderValue</li>
+</ul>
+
+
+<h3>Values from Claims Identity</h3>
+<table>
+    <tr>
+        <th>
+            Claim Type
+        </th>
+        <th>
+            Claim Value
+        </th>
+        <th>
+            Value Type
+        </th>
+        <th>
+            Subject Name
+        </th>        
+        <th>
+            Issuer Name
+        </th>        
+    </tr>
+        @foreach (System.Security.Claims.Claim claim in ViewBag.ClaimsIdentity.Claims ) {
+    <tr>
+        <td>
+            @claim.Type
+        </td>
+        <td>
+            @claim.Value
+        </td>
+        <td>
+            @claim.ValueType
+        </td>
+        <td>
+            @claim.Subject.Name
+        </td>
+        <td>
+            @claim.Issuer
+        </td>
+    </tr>
+}
+</table>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading;
 using System.Web.Mvc;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Extensions;
@@ -32,6 +34,17 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             model.WorkoutTypes = response.Data;
             return View(model);
         }
+
+        public ActionResult ViewClaims()
+        {
+            ViewBag.ClaimsIdentity = Thread.CurrentPrincipal.Identity;
+            var claimsIdentity = (ClaimsIdentity)Thread.CurrentPrincipal.Identity;
+            var nameIdentifierClaim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            ViewBag.NameIdentifierValue = nameIdentifierClaim.Value;
+            ViewBag.IdentityProviderValue = claimsIdentity.FindFirst("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider").Value;
+            return View();
+        }
+
 
 
         public AdminController(ITokenProvider tokenProvider)

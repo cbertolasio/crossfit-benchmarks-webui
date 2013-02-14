@@ -13,6 +13,26 @@
     <body>
 
         <div class="container">
+                <div class="navbar navbar-inverse navbar-static-top">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <ul class="nav">
+                                <li>
+                                    <a href="home">Home</a></li>
+                                <li>
+                                    <a href='@Url.Action("Index", "Logger", new { @val = "benchmark" })'>Benchmarks</a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Logger", new { @val = "thegirls" })">The Girls</a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Logger", new { @val = "theheros" })">The Heros</a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Calculator")" >% Calculator</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        
+
             <div class="row">
 
             

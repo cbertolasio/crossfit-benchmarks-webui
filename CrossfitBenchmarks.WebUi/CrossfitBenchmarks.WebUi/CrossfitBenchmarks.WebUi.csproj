@@ -219,6 +219,7 @@
     <Compile Include="Utility\IClaimsProvider.cs" />
     <Compile Include="Utility\ITokenProvider.cs" />
     <Compile Include="Utility\IUIDataService.cs" />
+    <Compile Include="Utility\NoCacheAttribute.cs" />
     <Compile Include="Utility\TokenProvider.cs" />
   </ItemGroup>
   <ItemGroup>

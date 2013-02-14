@@ -7,11 +7,11 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
     public class BenchmarksViewModel
     {
-        public List<WodItemViewModel> Benchmarks { get; set; }
+        public List<WodItemViewModel> WodList { get; set; }
 
         public BenchmarksViewModel(bool createSampleData)
         {
-            Benchmarks = new List<WodItemViewModel>();
+            WodList = new List<WodItemViewModel>();
 
             var item = new WodItemViewModel {
                 Id = 1,
@@ -22,7 +22,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
                 PersonalRecordScore = "5:45"
             };
 
-            Benchmarks.Add(item);
+            WodList.Add(item);
 
             item = new WodItemViewModel {
                 Id = 2,
@@ -33,7 +33,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
                 PersonalRecordScore = "21"
             };
 
-            Benchmarks.Add(item);
+            WodList.Add(item);
 
             item = new WodItemViewModel {
                 Id = 3,
@@ -44,7 +44,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
                 PersonalRecordScore = "345 #"
             };
 
-            Benchmarks.Add(item);
+            WodList.Add(item);
 
             item = new WodItemViewModel {
                 Id = 4,
@@ -55,12 +55,12 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
                 PersonalRecordScore = string.Empty
             };
 
-            Benchmarks.Add(item);
+            WodList.Add(item);
         }
 
         public  BenchmarksViewModel()
         {
-            Benchmarks = new List<WodItemViewModel>();
+            WodList = new List<WodItemViewModel>();
         }
     }
 }

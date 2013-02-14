@@ -1,137 +1,34 @@
-﻿CFBM.namespace("CFBM.TheHeros");
-CFBM.TheHeros = (function () {
-    var viewModel = null,
-        tempViewModel = null,
-        $container = $("#theHeros-content");
-
-    function onReady() {
-        viewModel = ko.mapping.fromJS(theHerosViewModel);
-
-        tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
-        viewModel.addNewViewModel = ko.observable(tempViewModel);
-        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
-        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
-        viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable("B");
-
-        $.each(viewModel.wodList(), function (index, item) {
-            item.lastPrDateHumanized = ko.computed(function () {
-                return moment(item.lastPersonalRecordDate()).fromNow();
-            });
-
-            item.lastAttemptDateHumanized = ko.computed(function () {
-                return moment(item.lastAttemptDate()).fromNow();
-            });
-        });
-
-        ko.editable(viewModel);
-        ko.applyBindings(viewModel, $container[0]);
-        $("#dp3", $container).datepicker();
-        $("#dp3", $container).data("placement", "top");
-
-        $(".save-button", $(".modal-footer")).click(function () {
-            $(".addNewLogEntry-form", $(".modal-body")).submit();
-
-        });
-
-        $(".cancel-button", $(".modal-footer")).click(function () {
-            viewModel.rollback();
-        });
-
-        $(".addNew-button", $container).click(function () {
-            viewModel.beginEdit();
-            viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
-            viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
-            viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
-            viewModel.addNewViewModel().logEntryType("G"); //not sure why i need this exactly... but i will get it worked out
-        });
-    };
-
-    return {
-        ready: onReady
-    }
-}());
-
-CFBM.namespace("CFBM.TheGirls");
-CFBM.TheGirls = (function () {
-    var viewModel = null,
-        tempViewModel = null,
-        $container = $("#theGirls-content");
-
-    function onReady() {
-        viewModel = ko.mapping.fromJS(theGirlsViewModel);
-
-        tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
-        viewModel.addNewViewModel = ko.observable(tempViewModel);
-        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
-        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
-        viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable("B");
-
-        $.each(viewModel.wodList(), function (index, item) {
-            item.lastPrDateHumanized = ko.computed(function () {
-                return moment(item.lastPersonalRecordDate()).fromNow();
-            });
-
-            item.lastAttemptDateHumanized = ko.computed(function () {
-                return moment(item.lastAttemptDate()).fromNow();
-            });
-        });
-
-        ko.editable(viewModel);
-        ko.applyBindings(viewModel, $container[0]);
-        $("#dp3", $container).datepicker();
-
-
-        $(".save-button", $(".modal-footer")).click(function () {
-            $(".addNewLogEntry-form", $(".modal-body")).submit();
-
-        });
-
-        $(".cancel-button", $(".modal-footer")).click(function () {
-            viewModel.rollback();
-        });
-
-        $(".addNew-button", $container).click(function () {
-            viewModel.beginEdit();
-            viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
-            viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
-            viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
-            viewModel.addNewViewModel().logEntryType("G"); //not sure why i need this exactly... but i will get it worked out
-        });
-    };
-
-    return {
-        ready:onReady
-    }
-}());
-
-CFBM.namespace("CFBM.Benchmarks");
+﻿CFBM.namespace("CFBM.Benchmarks");
 CFBM.Benchmarks = (function () {
     var viewModel = null,
         tempViewModel = null,
-        $container = $("#benchmarks-content");
+        $container = null;
 
-    function onReady() {
-        viewModel = ko.mapping.fromJS(benchmarksViewModel);
+    function onReady(jsModel, rootContainer, logEntryType) {
+        $container = rootContainer;
+        viewModel = ko.mapping.fromJS(jsModel);
 
         tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
         viewModel.addNewViewModel = ko.observable(tempViewModel);
         viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
         viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
         viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable("B");
+        viewModel.addNewViewModel().logEntryType = ko.observable(logEntryType);
 
-        $.each(viewModel.benchmarks(), function (index, benchmark) {
-            benchmark.lastPrDateHumanized = ko.computed(function () {
-                return moment(benchmark.lastPersonalRecordDate()).fromNow();
+        $.each(viewModel.wodList(), function (index, item) {
+            item.lastPrDateHumanized = ko.computed(function () {
+                return moment(item.lastPersonalRecordDate()).fromNow();
             });
 
-            benchmark.lastAttemptDateHumanized = ko.computed(function () {
-                return moment(benchmark.lastAttemptDate()).fromNow();
+            item.lastAttemptDateHumanized = ko.computed(function () {
+                return moment(item.lastAttemptDate()).fromNow();
             });
         });
 
+        viewModel.selectedHeader = ko.observable("");
+        viewModel.setHeader = function (data) {
+            viewModel.selectedHeader(data.name);
+        };
         ko.editable(viewModel);
         ko.applyBindings(viewModel, $container[0]);
         $("#dp3", $container).datepicker();
@@ -151,12 +48,23 @@ CFBM.Benchmarks = (function () {
             viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
             viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
             viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
-            viewModel.addNewViewModel().logEntryType("B"); //not sure why i need this exactly... but i will get it worked out
+            viewModel.addNewViewModel().logEntryType(logEntryType); //not sure why i need this exactly... but i will get it worked out
         });
     };
 
 
     function onAddLogEntrySuccess(data) {
+        var updatedItem = ko.utils.arrayFirst(viewModel.wodList(), function (item) {
+            return item.id() == data.id;
+        });
+
+        if (updatedItem != null)
+        {
+            updatedItem.lastScore(data.lastScore);
+            updatedItem.personalRecordScore(data.personalRecordScore);
+            updatedItem.lastAttemptDate(data.lastAttemptDate);
+            updatedItem.lastPersonalRecordDate(data.lastPersonalRecordDate);
+        }
         $("#addLogEntry-modal").modal("hide");
     };
 
@@ -167,19 +75,20 @@ CFBM.Benchmarks = (function () {
 }());
 
 $(document).ready(function () {
-    var module = CFBM.Benchmarks,
-        theGirlsModule = CFBM.TheGirls,
-        theHerosModule = CFBM.TheHeros;
+    var module = CFBM.Benchmarks;
 
     if ($("#benchmarks-content").length) {
-        module.ready();
+        module.ready(benchmarksViewModel, $("#benchmarks-content"), "B");
     }
 
     if ($("#theGirls-content").length) {
-        theGirlsModule.ready();
+        //theGirlsModule.ready();
+        module.ready(theGirlsViewModel, $("#theGirls-content"), "G");
+
     }
 
     if ($("#theHeros-content").length) {
-        theHerosModule.ready();
+        //theHerosModule.ready();
+        module.ready(theHerosViewModel, $("#theHeros-content"), "H");
     }
 });

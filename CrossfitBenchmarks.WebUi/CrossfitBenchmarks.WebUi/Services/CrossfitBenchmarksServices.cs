@@ -13,7 +13,7 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public interface ICrossfitBenchmarksServices
     {
-        LogEntryDto CreateLogEntry(LogEntryDto dto);
+        WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto);
         IEnumerable<WorkoutLogEntryDto> GetTheGirls();
         IEnumerable<WorkoutLogEntryDto> GetTheHeros();
         IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks();
@@ -34,7 +34,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             //request.AddParameter("identityProvider", claimsProvider.GetIdentityProvider(), ParameterType.RequestBody);
         }
 
-        public LogEntryDto CreateLogEntry(LogEntryDto dto)
+        public WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto)
         {
             var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
             var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.PUT);
@@ -45,7 +45,7 @@ namespace CrossfitBenchmarks.WebUi.Services
 
             request.JsonSerializer = new JsonSerializer();
 
-            var response = client.Execute<LogEntryDto>(request);
+            var response = client.Execute<WorkoutLogEntryDto>(request);
             return response.Data;
         }
 

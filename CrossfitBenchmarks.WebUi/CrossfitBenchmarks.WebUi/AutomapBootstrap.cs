@@ -14,6 +14,7 @@ namespace CrossfitBenchmarks.WebUi
         {
             Mapper.CreateMap<AddLogEntryViewModel, LogEntryDto>()
                 .ForMember(dest => dest.WorkoutLogId, opt => opt.Ignore())
+                .ForMember(dest => dest.UserInfo, opt=> opt.Ignore())
                 .ForMember(dest => dest.DateCreatedAsString, opt => opt.MapFrom(src => src.DateCreated.Value.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz")));
 
             Mapper.CreateMap<WorkoutLogEntryDto, CrossfitBenchmarks.WebUi.Models.Logger.WodItemViewModel>()

@@ -6,6 +6,7 @@ using AutoMapper;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Models.Logger;
 using CrossfitBenchmarks.WebUi.Services;
+using CrossfitBenchmarks.WebUi.Utility;
 using CrossFitTools.Web.CustomActionResults;
 
 
@@ -16,11 +17,13 @@ namespace CrossFitTools.Web.Controllers
     {
         private readonly ICrossfitBenchmarksServices webServiceApi;
         [HttpPost]
+        [NoCache]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
             var result = webServiceApi.CreateLogEntry(dto);
-            return new CustomJsonResult { Data = result };
+            var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
+            return new CustomJsonResult { Data = updatedViewModel };
         }
 
         public ActionResult Index(string val)
@@ -32,7 +35,7 @@ namespace CrossFitTools.Web.Controllers
                 case "benchmark":
                     result = webServiceApi.GetTheBenchmarks();
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
-                    var viewModel = new BenchmarksViewModel { Benchmarks = listItems.ToList() };
+                    var viewModel = new BenchmarksViewModel { WodList = listItems.ToList() };
                     return View("Benchmarks", viewModel );
 
                 case "thegirls":

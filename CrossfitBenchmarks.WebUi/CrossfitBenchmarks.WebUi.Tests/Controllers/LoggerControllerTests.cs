@@ -21,7 +21,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         [Test]
         public void AddLogEntry_Returns_JsonResut()
         {
-            var testResult = new LogEntryDto();
+            var testResult = new WorkoutLogEntryDto();
             webServiceApi.Stub(it => it.CreateLogEntry(Arg<LogEntryDto>.Is.NotNull)).Return(testResult);
             var dataToSave = new AddLogEntryViewModel();
             controller.AddLogEntry(dataToSave)

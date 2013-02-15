@@ -10,12 +10,47 @@ using Newtonsoft.Json.Serialization;
 
 namespace CrossfitBenchmarks.WebUi.HtmlHelpers
 {
+
+    using System.Web.Mvc.Html;
+    using System.Web.Routing;
+
     /// <summary>
     /// use @Html.ToJson(Model) output json as a string into the dom
     /// </summary>
     public static class HtmlHelperExtensions
     {
-        
+        public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues = null, object htmlAttributes = null)
+        {
+            var currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
+            var currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
+
+            var builder = new TagBuilder("li") {
+                InnerHtml = htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes).ToHtmlString()
+            };
+
+            var queryString = htmlHelper.ViewContext.RequestContext.HttpContext.Request.QueryString;
+            if (controllerName == currentController && actionName == currentAction && routeValues != null && queryString != null)
+            {
+                var rvd = new RouteValueDictionary(routeValues);
+                foreach (var key in queryString.AllKeys)
+                {
+                    if (queryString[key].Equals(rvd[key]))
+                    {
+                        builder.AddCssClass("active");
+                        break;
+                    }
+                }
+                
+
+            }
+            else if (controllerName == currentController && actionName == currentAction)
+            {
+                builder.AddCssClass("active");
+            }
+                
+
+            return new MvcHtmlString(builder.ToString());
+        }
 
         public static MvcHtmlString ToJson(this HtmlHelper htmlHelper, object data)
         {

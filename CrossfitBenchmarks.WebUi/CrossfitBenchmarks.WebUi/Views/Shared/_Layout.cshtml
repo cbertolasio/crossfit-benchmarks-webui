@@ -17,7 +17,13 @@
                     <div class="navbar-inner">
                         <div class="container">
                             <ul class="nav">
-                                <li>
+                                @Html.MenuLink("Home","Index","Home")
+                                @Html.MenuLink("Benchmarks","Index", "Logger", new { @val = "benchmark" })
+                                @Html.MenuLink("The Girls","Index", "Logger", new { @val = "thegirls" })
+                                @Html.MenuLink("The Heros","Index", "Logger", new { @val = "theheros" })
+                                @Html.MenuLink("% Calculator","Index", "Calculator")
+
+                                @*<li>
                                     <a href="home">Home</a></li>
                                 <li>
                                     <a href='@Url.Action("Index", "Logger", new { @val = "benchmark" })'>Benchmarks</a></li>
@@ -26,7 +32,7 @@
                                 <li>
                                     <a href="@Url.Action("Index", "Logger", new { @val = "theheros" })">The Heros</a></li>
                                 <li>
-                                    <a href="@Url.Action("Index", "Calculator")" >% Calculator</a></li>
+                                    <a href="@Url.Action("Index", "Calculator")" >% Calculator</a></li>*@
                             </ul>
                         </div>
                     </div>

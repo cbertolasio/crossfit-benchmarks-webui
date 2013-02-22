@@ -42,11 +42,14 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             var nameIdentifierClaim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             ViewBag.NameIdentifierValue = nameIdentifierClaim.Value;
             ViewBag.IdentityProviderValue = claimsIdentity.FindFirst("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider").Value;
+
             return View();
         }
 
         public ActionResult FbTestClient()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            ViewBag.AccessToken = claimsIdentity.FindFirst("http://www.facebook.com/claims/AccessToken").Value;
             return View();
         }
 

@@ -8,25 +8,77 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# crossfitbenchmarks: http://ogp.me/ns/fb/crossfitbenchmarks#">
     <meta property="fb:app_id" content="460497347351482" />
     <meta property="og:type" content="crossfitbenchmarks:personal_record" />
-    <meta property="og:url" content="Put your own URL to the object here" />
+    <meta property="og:url" content="http://samples.ogp.me/469076229826927" />
     <meta property="og:title" content="Sample Personal Record" />
     <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
     <meta property="crossfitbenchmarks:score" content="Sample score" />
-    <meta property="crossfitbenchmarks:workout_name" content="Sample workout_name" />
 
 
     <script type="text/javascript">
-        function create() 
-        {
-                FB.api( "me/crossfitbenchmarks:log","post", {personal_record: "http://samples.ogp.me/469076229826927"},
-        function(response) 
-        {
+        function handleResponse(response) {
                 if (!response || response.error) {
-                    alert('Error occurred' + response.error.type + " - " + response.error.code + " - " + response.error.message );
+                    alert('Error occurred' + response.error.type + " - " + response.error.code + " - " + response.error.message);
                 } else {
                     alert('create was successful! Action ID: ' + response.id);
                 }
-        });
+        }
+
+        function createBenchmark() {
+            //http://localhost:2901/admin/fbtestclient
+            //http://samples.ogp.me/469076229826927
+            FB.api("me/crossfitbenchmarks:log", "post", {
+                access_token: "@ViewBag.AccessToken",
+                benchmark: "http://samples.ogp.me/469076229826927"
+            },
+               function (response) { handleResponse(response); });
+
+        };
+
+        function createBasic() {
+            //http://localhost:2901/admin/fbtestclient
+            //http://samples.ogp.me/469076229826927
+            FB.api("me/crossfitbenchmarks:log", "post", {
+                access_token: "@ViewBag.AccessToken",
+                basic_workout: "http://samples.ogp.me/469076229826927"
+            },
+               function (response) { handleResponse(response); });
+
+        };
+
+        function createGirl() {
+            //http://localhost:2901/admin/fbtestclient
+            //http://samples.ogp.me/469076229826927
+            FB.api("me/crossfitbenchmarks:log", "post", {
+                access_token: "@ViewBag.AccessToken",
+                girl_workout: "http://samples.ogp.me/469076229826927"
+            },
+               function (response) { handleResponse(response); });
+
+        };
+
+        function createHero() {
+            //http://localhost:2901/admin/fbtestclient
+            //http://samples.ogp.me/469076229826927
+            FB.api("me/crossfitbenchmarks:log", "post", {
+                access_token: "@ViewBag.AccessToken",
+                hero_workout: "http://samples.ogp.me/469076229826927"
+            },
+
+               function (response) { handleResponse(response); });
+
+        };
+        function createPr() 
+        {
+            //http://localhost:2901/admin/fbtestclient
+            //http://samples.ogp.me/469076229826927
+            FB.api("me/crossfitbenchmarks:log", "post", {
+                access_token: "@ViewBag.AccessToken",
+                personal_record: "http://samples.ogp.me/469076229826927",
+                score: "42",
+                title: "ME Burpees in 1 Min"
+            },
+
+                function (response) { handleResponse(response); });
 
         };
 
@@ -99,16 +151,16 @@ function deleteAction(){
         }(document));
     </script>
 
-    <fb:login-button show-faces="true" width="200" max-rows="1" scope="publish_actions">
-  </fb:login-button>
-
-    <h3>Stuffed Cookies</h3>
-    <br>
     <form>
-    <input type="button" value="Create" onclick="create()" />
+    <input type="button" value="Log a PR" onclick="createPr()" />
+        <input type="button" value="Log a Basic WOD" onclick="createBasic()" />
+        <input type="button" value="Log a Benchmark" onclick="createBenchmark()" />
+        <input type="button" value="Log a Hero" onclick="createHero()" />
+        <input type="button" value="Log a Girl" onclick="createGirl()" />
         <input type="button" value="Show List" onclick="showLog()" />
         <input type="button" value="Delete" onclick="deleteAction()" />
         <input type="button" value="Update" onclick="update()" />
     </form>
+
 </body>
 </html>

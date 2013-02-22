@@ -45,6 +45,11 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             return View();
         }
 
+        public ActionResult FbTestClient()
+        {
+            return View();
+        }
+
 
 
         public AdminController(ITokenProvider tokenProvider)

@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
+xmlns:fb="https://www.facebook.com/2008/fbml">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# crossfitbenchmarks: http://ogp.me/ns/fb/crossfitbenchmarks#">
+    <meta property="fb:app_id" content="460497347351482" />
+    <meta property="og:type" content="crossfitbenchmarks:personal_record" />
+    <meta property="og:url" content="Put your own URL to the object here" />
+    <meta property="og:title" content="Sample Personal Record" />
+    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
+    <meta property="crossfitbenchmarks:score" content="Sample score" />
+    <meta property="crossfitbenchmarks:workout_name" content="Sample workout_name" />
+
+
+    <script type="text/javascript">
+        function create() 
+        {
+                FB.api( "me/crossfitbenchmarks:log","post", {personal_record: "http://samples.ogp.me/469076229826927"},
+        function(response) 
+        {
+                if (!response || response.error) {
+                    alert('Error occurred' + response.error.type + " - " + response.error.code + " - " + response.error.message );
+                } else {
+                    alert('create was successful! Action ID: ' + response.id);
+                }
+        });
+
+        };
+
+        function showLog() {
+            FB.api(
+  '/me/crossfitbenchmarks:log',
+  'get',
+  function (response) {
+      if (!response || response.error) {
+          alert('Error occurred');
+      } else {
+          alert('showLog was successful! Action ID: ' + response.id);
+      }
+  }
+);
+        }
+
+        function update() {
+            FB.api(
+  '{id_from_create_call}',
+  'post',
+        {
+            personal_record: "http://samples.ogp.me/469076229826927"
+        },
+        function(response) {
+            if (!response || response.error) {
+                alert('Error occurred' + response.error);
+            } else {
+                alert('update was successful! Action ID: ' + response.id);
+            }
+        }
+);
+        }
+
+function deleteAction(){
+    FB.api(
+  '/{id_from_create_call}',
+  'delete',
+  function(response) {
+      if (!response || response.error) {
+          alert('Error occurred' + response.error);
+      } else {
+          alert('deleteAction was successful! Action ID: ' + response.id);
+      }
+  }
+);
+}
+
+    </script>
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '460497347351482', // App ID
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true  // parse XFBML
+            });
+        };
+
+        // Load the SDK Asynchronously
+        (function (d) {
+            var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            d.getElementsByTagName('head')[0].appendChild(js);
+        }(document));
+    </script>
+
+    <fb:login-button show-faces="true" width="200" max-rows="1" scope="publish_actions">
+  </fb:login-button>
+
+    <h3>Stuffed Cookies</h3>
+    <br>
+    <form>
+    <input type="button" value="Create" onclick="create()" />
+        <input type="button" value="Show List" onclick="showLog()" />
+        <input type="button" value="Delete" onclick="deleteAction()" />
+        <input type="button" value="Update" onclick="update()" />
+    </form>
+</body>
+</html>

@@ -44,6 +44,9 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.2.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.1.4\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,6 +68,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.identitymodel.services" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -188,6 +192,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FacebookObjectsController.cs" />
     <Compile Include="Controllers\OAuth2TokenResponse.cs" />
     <Compile Include="Controllers\RestRequestExtension.cs" />
     <Compile Include="Controllers\SamplesConfiguration.cs" />
@@ -316,7 +321,9 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -368,6 +375,12 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\LoginError.cshtml" />
     <Content Include="Views\Admin\ViewClaims.cshtml" />
+    <Content Include="Views\Admin\FbTestClient.cshtml" />
+    <Content Include="Views\FacebookObjects\PersonalRecord.cshtml" />
+    <Content Include="Views\FacebookObjects\Benchmark.cshtml" />
+    <Content Include="Views\FacebookObjects\GirlWorkout.cshtml" />
+    <Content Include="Views\FacebookObjects\HeroWorkout.cshtml" />
+    <Content Include="Views\FacebookObjects\BasicWorkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

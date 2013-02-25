@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Services;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -7,6 +8,12 @@ namespace CrossFitTools.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Logout() {
+            WSFederationAuthenticationModule authModule = FederatedAuthentication.WSFederationAuthenticationModule;
+            WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(authModule.Realm));
+
+            return RedirectToAction("Index", "Home");
+        }
         private readonly IDateTimeManager dateTimeManager;
         public ActionResult Index()
         {

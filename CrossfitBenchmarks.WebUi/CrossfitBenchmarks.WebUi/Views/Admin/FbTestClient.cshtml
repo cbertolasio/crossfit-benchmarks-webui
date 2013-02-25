@@ -2,137 +2,11 @@
     Layout = null;
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-xmlns:fb="https://www.facebook.com/2008/fbml">
-
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# crossfitbenchmarks: http://ogp.me/ns/fb/crossfitbenchmarks#">
-    <meta property="fb:app_id" content="460497347351482" />
-    <meta property="og:type" content="crossfitbenchmarks:personal_record" />
-    <meta property="og:url" content="http://samples.ogp.me/469076229826927" />
-    <meta property="og:title" content="Sample Personal Record" />
-    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
-    <meta property="crossfitbenchmarks:score" content="Sample score" />
-
-
-    <script type="text/javascript">
-        function handleResponse(response) {
-                if (!response || response.error) {
-                    alert('Error occurred' + response.error.type + " - " + response.error.code + " - " + response.error.message);
-                } else {
-                    alert('create was successful! Action ID: ' + response.id);
-                }
-        }
-
-        function createBenchmark() {
-            //http://localhost:2901/admin/fbtestclient
-            //http://samples.ogp.me/469076229826927
-            FB.api("me/crossfitbenchmarks:log", "post", {
-                access_token: "@ViewBag.AccessToken",
-                benchmark: "http://samples.ogp.me/469076229826927"
-            },
-               function (response) { handleResponse(response); });
-
-        };
-
-        function createBasic() {
-            //http://localhost:2901/admin/fbtestclient
-            //http://samples.ogp.me/469076229826927
-            FB.api("me/crossfitbenchmarks:log", "post", {
-                access_token: "@ViewBag.AccessToken",
-                basic_workout: "http://samples.ogp.me/469076229826927"
-            },
-               function (response) { handleResponse(response); });
-
-        };
-
-        function createGirl() {
-            //http://localhost:2901/admin/fbtestclient
-            //http://samples.ogp.me/469076229826927
-            FB.api("me/crossfitbenchmarks:log", "post", {
-                access_token: "@ViewBag.AccessToken",
-                girl_workout: "http://samples.ogp.me/469076229826927"
-            },
-               function (response) { handleResponse(response); });
-
-        };
-
-        function createHero() {
-            //http://localhost:2901/admin/fbtestclient
-            //http://samples.ogp.me/469076229826927
-            FB.api("me/crossfitbenchmarks:log", "post", {
-                access_token: "@ViewBag.AccessToken",
-                hero_workout: "http://samples.ogp.me/469076229826927"
-            },
-
-               function (response) { handleResponse(response); });
-
-        };
-        function createPr() 
-        {
-            //http://localhost:2901/admin/fbtestclient
-            //http://samples.ogp.me/469076229826927
-            FB.api("me/crossfitbenchmarks:log", "post", {
-                access_token: "@ViewBag.AccessToken",
-                personal_record: "http://samples.ogp.me/469076229826927",
-                score: "42",
-                title: "ME Burpees in 1 Min"
-            },
-
-                function (response) { handleResponse(response); });
-
-        };
-
-        function showLog() {
-            FB.api(
-  '/me/crossfitbenchmarks:log',
-  'get',
-  function (response) {
-      if (!response || response.error) {
-          alert('Error occurred');
-      } else {
-          alert('showLog was successful! Action ID: ' + response.id);
-      }
-  }
-);
-        }
-
-        function update() {
-            FB.api(
-  '{id_from_create_call}',
-  'post',
-        {
-            personal_record: "http://samples.ogp.me/469076229826927"
-        },
-        function(response) {
-            if (!response || response.error) {
-                alert('Error occurred' + response.error);
-            } else {
-                alert('update was successful! Action ID: ' + response.id);
-            }
-        }
-);
-        }
-
-function deleteAction(){
-    FB.api(
-  '/{id_from_create_call}',
-  'delete',
-  function(response) {
-      if (!response || response.error) {
-          alert('Error occurred' + response.error);
-      } else {
-          alert('deleteAction was successful! Action ID: ' + response.id);
-      }
-  }
-);
-}
-
-    </script>
-
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+    
 <body>
-    <div id="fb-root"></div>
-    <script>
+    @*<div id="fb-root"></div>*@
+    @*<script>
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '460497347351482', // App ID
@@ -149,20 +23,13 @@ function deleteAction(){
             js.src = "//connect.facebook.net/en_US/all.js";
             d.getElementsByTagName('head')[0].appendChild(js);
         }(document));
-    </script>
+    </script>*@
 
-    <form>
-    <input type="button" value="Log a PR" onclick="createPr()" />
-        <input type="button" value="Log a Basic WOD" onclick="createBasic()" />
-        <input type="button" value="Log a Benchmark" onclick="createBenchmark()" />
-        <input type="button" value="Log a Hero" onclick="createHero()" />
-        <input type="button" value="Log a Girl" onclick="createGirl()" />
-        <input type="button" value="Show List" onclick="showLog()" />
-        <input type="button" value="Delete" onclick="deleteAction()" />
-        <input type="button" value="Update" onclick="update()" />
-    </form>
-
+    
     @Html.ActionLink("Logout", "Logout", "Home")
+    @Html.ActionLink("Post a new PR", "PostPr", "Admin")
+    @Html.ActionLink("Post a new PR", "PostPr", "Admin")
+    @Html.ActionLink("Post a new PR", "PostPr", "Admin")
     @Html.ActionLink("Post a new PR", "PostPr", "Admin")
     <span>Posted Result: @ViewBag.PostedResult</span>
 </body>

@@ -66,14 +66,14 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             parameters["access_token"] = accessToken;
             parameters["personal_record"] = "http://samples.ogp.me/469076229826927";
             parameters["fb:app_id"] = "460497347351482";
-            parameters["og:type"] = "crossfitbenchmarks:personal_record";
+            parameters["og:type"] = "everywod:personal_record";
             parameters["og:url"] = "http://samples.ogp.me/469076229826927";
             parameters["og:title"] = "Personal Record";
             parameters["og:image"] = "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png";
-            parameters["crossfitbenchmarks:score"] = "2:30";
+            parameters["everywod:score"] = "2:30";
             parameters["score"] = "2:30";
 
-            var result = client.Post("me/crossfitbenchmarks:log", parameters);
+            var result = client.Post("me/everywod:log", parameters);
             if (result == null)
             {
                 result = "null value was returned...";

@@ -162,5 +162,8 @@ function deleteAction(){
         <input type="button" value="Update" onclick="update()" />
     </form>
 
+    @Html.ActionLink("Logout", "Logout", "Home")
+    @Html.ActionLink("Post a new PR", "PostPr", "Admin")
+    <span>Posted Result: @ViewBag.PostedResult</span>
 </body>
 </html>

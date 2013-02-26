@@ -238,6 +238,7 @@
     <Content Include="Content\images\ew-logo-x16.jpg" />
     <Content Include="Content\images\ew-logo-x52.jpg" />
     <Content Include="Content\images\ew-logo-x75.jpg" />
+    <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\logo-banner-x155.png" />

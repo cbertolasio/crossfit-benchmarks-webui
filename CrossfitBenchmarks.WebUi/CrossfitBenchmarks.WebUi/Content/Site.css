@@ -26,9 +26,10 @@
 
 .header-icon
 {
-    background: url("images/logo-main-large.png") no-repeat #000;
-    height:270px;
+    background: url("images/logo-main-large_01.png") no-repeat #000;
+    height:82px;
     width:360px;
+    margin-top:4em;
 }
 
 .header-title

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Services;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace CrossFitTools.Web.Controllers
 {
@@ -10,7 +11,15 @@ namespace CrossFitTools.Web.Controllers
     {
         public ActionResult Logout() {
             WSFederationAuthenticationModule authModule = FederatedAuthentication.WSFederationAuthenticationModule;
-            WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(authModule.Realm));
+            //WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(authModule.Realm));
+            try
+            {
+                FormsAuthentication.SignOut();
+            }
+            finally
+            {
+                authModule.SignOut(true);
+            }
 
             return RedirectToAction("Index", "Home");
         }
@@ -36,6 +45,17 @@ namespace CrossFitTools.Web.Controllers
             return View();
         }
 
+        public ActionResult Privacy()
+        {
+            return View("Privacy");
+        }
+
+
+
+        public ActionResult Terms()
+        {
+            return View("Terms");
+        }
         public HomeController(IDateTimeManager dateTimeManager)
         {
             this.dateTimeManager = dateTimeManager;

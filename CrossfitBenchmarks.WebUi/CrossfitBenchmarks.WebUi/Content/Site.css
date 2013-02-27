@@ -1,4 +1,35 @@
-﻿body
+﻿html, body {
+            height: 100%;
+        }
+        footer {
+            color: #666;
+            background: #222;
+            padding: 17px 0 18px 0;
+            border-top: 1px solid #000;
+        }
+
+        footer a {
+            color: #999;
+        }
+        footer a:hover {
+            color: #efefef;
+        }
+        .wrapper {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -195px;
+        }
+        .push {
+            height: 195px;
+        }
+        /* not required for sticky footer; just pushes hero down a bit 
+        .wrapper > .container {
+            padding-top: 60px;
+        }*/
+
+
+body
 {
     color:#fff;
     background-color:#000;
@@ -26,9 +57,10 @@
 
 .header-icon
 {
-    background: url("images/logo-main-large.png") no-repeat #000;
-    height:270px;
+    background: url("images/logo-main-large_01.png") no-repeat #000;
+    height:82px;
     width:360px;
+    margin-top:4em;
 }
 
 .header-title
@@ -68,4 +100,8 @@ footer
 .form-horizontal .control-label.key-field
 {
     padding-top:15px;
+}
+
+.thumbnail {
+    background-color:#121212;
 }

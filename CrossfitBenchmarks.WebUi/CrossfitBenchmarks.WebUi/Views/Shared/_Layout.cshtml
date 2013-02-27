@@ -11,8 +11,8 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-
-        <div class="container">
+        <div class="wrapper">
+        <div  class="container clear-top">
                 <div class="navbar navbar-inverse navbar-static-top">
                     <div class="navbar-inner">
 
@@ -65,7 +65,13 @@
             
             </div>
         </div>
+        <div class="push"><!--//--></div>
+            </div>
+    @Html.Partial("footer")
 
+
+
+        
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/bootstrap")

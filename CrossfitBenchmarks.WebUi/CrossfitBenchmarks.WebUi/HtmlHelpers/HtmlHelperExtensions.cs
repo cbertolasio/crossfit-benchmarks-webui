@@ -19,6 +19,34 @@ namespace CrossfitBenchmarks.WebUi.HtmlHelpers
     /// </summary>
     public static class HtmlHelperExtensions
     {
+        public static string IsActiveLink(this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues = null)
+        {
+            var currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
+            var currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
+
+            var queryString = htmlHelper.ViewContext.RequestContext.HttpContext.Request.QueryString;
+            if (controllerName == currentController && actionName == currentAction && routeValues != null && queryString != null)
+            {
+                var rvd = new RouteValueDictionary(routeValues);
+                foreach (var key in queryString.AllKeys)
+                {
+                    if (queryString[key].Equals(rvd[key]))
+                    {
+                        return "active";
+                        break;
+                    }
+                }
+
+
+            }
+            else if (controllerName == currentController && actionName == currentAction)
+            {
+                return "active";
+            }
+
+            return string.Empty;
+        }
+
         public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues = null, object htmlAttributes = null)
         {
             var currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");

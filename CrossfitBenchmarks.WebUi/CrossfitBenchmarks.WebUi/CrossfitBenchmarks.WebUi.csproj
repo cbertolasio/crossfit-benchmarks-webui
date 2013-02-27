@@ -191,6 +191,7 @@
     <Compile Include="AutomapBootstrap.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FacebookObjectsController.cs" />
     <Compile Include="Controllers\OAuth2TokenResponse.cs" />
@@ -233,9 +234,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Content\images\ew-logo-x128.jpg" />
+    <Content Include="Content\images\ew-logo-x16.jpg" />
+    <Content Include="Content\images\ew-logo-x52.jpg" />
+    <Content Include="Content\images\ew-logo-x75.jpg" />
+    <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\logo-banner-x155.png" />
     <Content Include="Content\images\logo-main-large.png" />
+    <Content Include="Content\images\logo-main-large_01.png" />
+    <Content Include="Content\images\logo-web-banner-x155.png" />
     <Content Include="Content\themes\base\images\glyphicons-halflings-white.png" />
     <Content Include="Content\themes\base\images\glyphicons-halflings.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -381,6 +390,12 @@
     <Content Include="Views\FacebookObjects\GirlWorkout.cshtml" />
     <Content Include="Views\FacebookObjects\HeroWorkout.cshtml" />
     <Content Include="Views\FacebookObjects\BasicWorkout.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\Settings.cshtml" />
+    <Content Include="Views\Dashboard\Profile.cshtml" />
+    <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\Terms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

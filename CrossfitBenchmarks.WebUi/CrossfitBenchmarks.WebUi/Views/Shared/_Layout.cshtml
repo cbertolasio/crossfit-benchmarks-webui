@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - My Crossfit Benchmarks</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="~/favicon.ico?v=2" rel="shortcut icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         @Styles.Render("~/Content/themes/base/css")
@@ -11,30 +11,47 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-
-        <div class="container">
+        <div class="wrapper">
+        <div  class="container clear-top">
                 <div class="navbar navbar-inverse navbar-static-top">
                     <div class="navbar-inner">
-                        <div class="container">
-                            <ul class="nav">
-                                @Html.MenuLink("Home","Index","Home")
-                                @Html.MenuLink("Benchmarks","Index", "Logger", new { @val = "benchmark" })
-                                @Html.MenuLink("The Girls","Index", "Logger", new { @val = "thegirls" })
-                                @Html.MenuLink("The Heros","Index", "Logger", new { @val = "theheros" })
-                                @Html.MenuLink("% Calculator","Index", "Calculator")
 
-                                @*<li>
-                                    <a href="home">Home</a></li>
-                                <li>
-                                    <a href='@Url.Action("Index", "Logger", new { @val = "benchmark" })'>Benchmarks</a></li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Logger", new { @val = "thegirls" })">The Girls</a></li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Logger", new { @val = "theheros" })">The Heros</a></li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Calculator")" >% Calculator</a></li>*@
+                            <ul class="nav">
+                                <li class="@Html.IsActiveLink("Index","Home")">
+                                    <a href="/"><i class="icon-home icon-white"></i> Home</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" id="drop1" role="button" href="#" data-toggle="dropdown"><i class="icon-edit icon-white"></i> Tools <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li>@Html.MenuLink("Summary","Index", "Dashboard")</li>
+                                        <li class="divider">@Html.MenuLink("Benchmarks","Index", "Logger", new { @val = "benchmark" })</li>
+                                        <li>@Html.MenuLink("The Girls","Index", "Logger", new { @val = "thegirls" })</li>
+                                        <li>@Html.MenuLink("The Heros","Index", "Logger", new { @val = "theheros" })</li>
+                                        <li class="divider">@Html.MenuLink("% Calculator","Index", "Calculator")</li>
+                                    </ul>
+                                
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" id="drop2" role="button" href="#" data-toggle="dropdown">
+                                       <i class="icon-user icon-white"></i>  <b class="caret"></b>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li>@Html.MenuLink("Profile","Profile", "Dashboard", new { @val = "benchmark" })</li>
+                                        <li>@Html.MenuLink("Settings","Settings", "Dashboard", new { @val = "thegirls" })</li>
+                                        <li>@Html.MenuLink("Sign Out","Logout", "Home", new { @val = "theheros" })</li>
+                                    </ul>
+                                </li>
+                                
+
+                               @* 
+                               
+                               
+                                
+                                *@
                             </ul>
-                        </div>
                     </div>
                 </div>
         
@@ -48,7 +65,13 @@
             
             </div>
         </div>
+        <div class="push"><!--//--></div>
+            </div>
+    @Html.Partial("footer")
 
+
+
+        
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/bootstrap")

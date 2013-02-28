@@ -47,7 +47,7 @@ namespace CrossfitBenchmarks.WebUi.HtmlHelpers
             return string.Empty;
         }
 
-        public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues = null, object htmlAttributes = null)
+        public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues = null, object htmlAttributes = null, bool isADivider = false)
         {
             var currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
             var currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
@@ -55,6 +55,11 @@ namespace CrossfitBenchmarks.WebUi.HtmlHelpers
             var builder = new TagBuilder("li") {
                 InnerHtml = htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes).ToHtmlString()
             };
+
+            if (isADivider) {
+                builder.Attributes["class"] = "divider";
+            }
+                
 
             var queryString = htmlHelper.ViewContext.RequestContext.HttpContext.Request.QueryString;
             if (controllerName == currentController && actionName == currentAction && routeValues != null && queryString != null)

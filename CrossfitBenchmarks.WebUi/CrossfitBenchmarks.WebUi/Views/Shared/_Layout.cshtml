@@ -24,11 +24,13 @@
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" id="drop1" role="button" href="#" data-toggle="dropdown"><i class="icon-edit icon-white"></i> Tools <b class="caret"></b></a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li>@Html.MenuLink("Summary","Index", "Dashboard")</li>
-                                        <li class="divider">@Html.MenuLink("Benchmarks","Index", "Logger", new { @val = "benchmark" })</li>
-                                        <li>@Html.MenuLink("The Girls","Index", "Logger", new { @val = "thegirls" })</li>
-                                        <li>@Html.MenuLink("The Heros","Index", "Logger", new { @val = "theheros" })</li>
-                                        <li class="divider">@Html.MenuLink("% Calculator","Index", "Calculator")</li>
+                                        @Html.MenuLink("Summary","Index", "Dashboard")
+                                        <li class="divider"></li>
+                                        @Html.MenuLink("Benchmarks","Index", "Logger", new { @val = "benchmark" })
+                                        @Html.MenuLink("The Girls","Index", "Logger", new { @val = "thegirls" })
+                                        @Html.MenuLink("The Heros","Index", "Logger", new { @val = "theheros" })
+                                        <li class="divider"></li>
+                                        @Html.MenuLink("% Calculator","Index", "Calculator")
                                     </ul>
                                 
                                 </li>
@@ -39,18 +41,13 @@
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li>@Html.MenuLink("Profile","Profile", "Dashboard", new { @val = "benchmark" })</li>
-                                        <li>@Html.MenuLink("Settings","Settings", "Dashboard", new { @val = "thegirls" })</li>
-                                        <li>@Html.MenuLink("Sign Out","Logout", "Home", new { @val = "theheros" })</li>
+                                        @Html.MenuLink("Profile","Profile", "Dashboard", new { @val = "benchmark" })
+                                        @Html.MenuLink("Settings","Settings", "Dashboard", new { @val = "thegirls" })
+                                        <li class="divider"></li>
+                                        @Html.MenuLink("Sign Out","Logout", "Home")
                                     </ul>
                                 </li>
                                 
-
-                               @* 
-                               
-                               
-                                
-                                *@
                             </ul>
                     </div>
                 </div>
@@ -58,10 +55,11 @@
 
             <div class="row">
 
+            <div class="span12">
+                @RenderBody()
+            </div>
             
-            @RenderSection("featured", required: false)
             
-            @RenderBody()
             
             </div>
         </div>

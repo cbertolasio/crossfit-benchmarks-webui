@@ -64,15 +64,25 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             var client = new Facebook.FacebookClient(accessToken);
             var parameters = new Dictionary<string, object>();
             parameters["access_token"] = accessToken;
-            parameters["personal_record"] = "http://samples.ogp.me/469076229826927";
+            parameters["personal_record"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/personalrecord";
             parameters["fb:app_id"] = "460497347351482";
             parameters["og:type"] = "everywod:personal_record";
-            parameters["og:url"] = "http://samples.ogp.me/469076229826927";
+            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/personalrecord";
             parameters["og:title"] = "Personal Record";
-            parameters["og:image"] = "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png";
-            parameters["everywod:score"] = "2:30";
+            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
             parameters["score"] = "2:30";
+            parameters["everywod:score"] = "2:30";
 
+
+ //<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# everywod: http://ogp.me/ns/fb/everywod#">
+ // <meta property="fb:app_id"      content="460497347351482" /> 
+ // <meta property="og:type"        content="everywod:personal_record" /> 
+ // <meta property="og:url"         content="Put your own URL to the object here" /> 
+ // <meta property="og:title"       content="Sample Personal Record" /> 
+ // <meta property="og:image"       content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" /> 
+ // <meta property="everywod:score" content="Sample score" /> 
+
+//jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);
             if (result == null)
             {

@@ -71,16 +71,6 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             parameters["og:title"] = "Personal Record";
             parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
             parameters["score"] = "2:30";
-            parameters["everywod:score"] = "2:30";
-
-
- //<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# everywod: http://ogp.me/ns/fb/everywod#">
- // <meta property="fb:app_id"      content="460497347351482" /> 
- // <meta property="og:type"        content="everywod:personal_record" /> 
- // <meta property="og:url"         content="Put your own URL to the object here" /> 
- // <meta property="og:title"       content="Sample Personal Record" /> 
- // <meta property="og:image"       content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" /> 
- // <meta property="everywod:score" content="Sample score" /> 
 
 //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);

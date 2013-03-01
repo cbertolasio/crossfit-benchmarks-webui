@@ -396,6 +396,7 @@
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Dashboard\AddNew.cshtml" />
+    <Content Include="Views\Shared\_FbObjectLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

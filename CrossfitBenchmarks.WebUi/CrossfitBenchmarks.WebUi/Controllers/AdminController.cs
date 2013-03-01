@@ -12,6 +12,7 @@ using CrossfitBenchmarks.WebUi.Utility;
 using RestSharp;
 using RestSharp.Serializers;
 using System.Dynamic;
+using System.Text.RegularExpressions;
 
 namespace CrossfitBenchmarks.WebUi.Controllers
 {
@@ -72,7 +73,7 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
             parameters["score"] = "2:30";
 
-//jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
+            //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);
             if (result == null)
             {
@@ -80,6 +81,106 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             }
             ViewBag.PostedResult = result;
             return View("FbTestClient");
+        }
+
+        public ActionResult PostBenchmark()
+        {
+            var accessToken = GetAccessToken();
+            var client = new Facebook.FacebookClient(accessToken);
+            var parameters = new Dictionary<string, object>();
+            parameters["access_token"] = accessToken;
+            parameters["benchmark"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/benchmark";
+            parameters["fb:app_id"] = "460497347351482";
+            parameters["og:type"] = "everywod:benchmark";
+            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/benchmark";
+            parameters["og:title"] = "Benchmark";
+            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
+            parameters["score"] = "220#";
+
+            //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
+            var result = client.Post("me/everywod:log", parameters);
+            if (result == null)
+            {
+                result = "null value was returned...";
+            }
+            ViewBag.PostedResult = result;
+            return View("FbTestClient");
+
+        }
+
+        public ActionResult PostABasicWod()
+        {
+            var accessToken = GetAccessToken();
+            var client = new Facebook.FacebookClient(accessToken);
+            var parameters = new Dictionary<string, object>();
+            parameters["access_token"] = accessToken;
+            parameters["basic_workout"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/basicworkout";
+            parameters["fb:app_id"] = "460497347351482";
+            parameters["og:type"] = "everywod:basic_workout";
+            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/basicworkout";
+            parameters["og:title"] = "Basic WOD";
+            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
+            parameters["score"] = "220";
+
+            //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
+            var result = client.Post("me/everywod:log", parameters);
+            if (result == null)
+            {
+                result = "null value was returned...";
+            }
+            ViewBag.PostedResult = result;
+            return View("FbTestClient");
+
+        }
+
+        public ActionResult PostAGirl()
+        {
+            var accessToken = GetAccessToken();
+            var client = new Facebook.FacebookClient(accessToken);
+            var parameters = new Dictionary<string, object>();
+            parameters["access_token"] = accessToken;
+            parameters["girl_workout"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/girlworkout";
+            parameters["fb:app_id"] = "460497347351482";
+            parameters["og:type"] = "everywod:girl_workout";
+            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/girlworkout";
+            parameters["og:title"] = "Basic WOD";
+            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
+            parameters["score"] = "220";
+
+            //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
+            var result = client.Post("me/everywod:log", parameters);
+            if (result == null)
+            {
+                result = "null value was returned...";
+            }
+            ViewBag.PostedResult = result;
+            return View("FbTestClient");
+
+        }
+
+        public ActionResult PostAHero()
+        {
+            var accessToken = GetAccessToken();
+            var client = new Facebook.FacebookClient(accessToken);
+            var parameters = new Dictionary<string, object>();
+            parameters["access_token"] = accessToken;
+            parameters["hero_workout"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/heroworkout";
+            parameters["fb:app_id"] = "460497347351482";
+            parameters["og:type"] = "everywod:hero_workout";
+            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/heroworkout";
+            parameters["og:title"] = "Basic WOD";
+            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-logo-x128.jpg";
+            parameters["score"] = "220";
+
+            //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
+            var result = client.Post("me/everywod:log", parameters);
+            if (result == null)
+            {
+                result = "null value was returned...";
+            }
+            ViewBag.PostedResult = result;
+            return View("FbTestClient");
+
         }
 
 

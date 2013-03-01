@@ -2,18 +2,24 @@
 CFBM.Benchmarks = (function () {
     var viewModel = null,
         tempViewModel = null,
-        $container = null;
+        $container = null,
+            type = null;
 
-    function onReady(jsModel, rootContainer, logEntryType) {
-        $container = rootContainer;
-        viewModel = ko.mapping.fromJS(jsModel);
-
+    function initAddNewViewModel() {
         tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
         viewModel.addNewViewModel = ko.observable(tempViewModel);
         viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
         viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
         viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable(logEntryType);
+        viewModel.addNewViewModel().logEntryType = ko.observable(type);
+    };
+    function onReady(jsModel, rootContainer, logEntryType) {
+        $container = rootContainer;
+        viewModel = ko.mapping.fromJS(jsModel);
+        type = logEntryType;
+
+
+        initAddNewViewModel();
 
         $.each(viewModel.wodList(), function (index, item) {
             item.lastPrDateHumanized = ko.computed(function () {
@@ -40,11 +46,11 @@ CFBM.Benchmarks = (function () {
         });
 
         $(".cancel-button", $(".modal-footer")).click(function () {
-            viewModel.rollback();
+            //viewModel.rollback();
         });
 
         $(".addNew-button", $container).click(function () {
-            viewModel.beginEdit();
+            //viewModel.beginEdit();
             viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
             viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
             viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
@@ -65,6 +71,18 @@ CFBM.Benchmarks = (function () {
             updatedItem.lastAttemptDate(data.lastAttemptDate);
             updatedItem.lastPersonalRecordDate(data.lastPersonalRecordDate);
         }
+
+        
+        //viewModel.rollback();
+        viewModel.addNewViewModel(undefined);
+        initAddNewViewModel();
+        viewModel.addNewViewModel().selectedWorkoutName("");
+        viewModel.addNewViewModel().score("");
+        viewModel.addNewViewModel().dateCreated(moment().format("MM/DD/YYYY"));
+        viewModel.addNewViewModel().isaPersonalRecord(false);
+        viewModel.addNewViewModel().note("");
+        viewModel.addNewViewModel().selectedWorkoutId("");
+        
         $("#addLogEntry-modal").modal("hide");
     };
 

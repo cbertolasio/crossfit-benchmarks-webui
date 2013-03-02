@@ -2,7 +2,8 @@
 CFBM.Benchmarks = (function () {
     var viewModel = null,
         addNewViewModel = null,
-        $container = null;
+        $container = null,
+        $modalContainer=$("#addLogEntry-modal")[0];
 
     function initAddNewViewModel() {
         viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
@@ -33,9 +34,9 @@ CFBM.Benchmarks = (function () {
         };
         ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
-        ko.applyBindings(addNewViewModel, $("#addLogEntry-modal")[0]);
+        ko.applyBindings(addNewViewModel, $modalContainer);
 
-        $("#dp3", $container).datepicker();
+        $("#dp3", $modalContainer).datepicker();
 
 
         $(".save-button", $(".modal-footer")).click(function () {
@@ -58,9 +59,19 @@ CFBM.Benchmarks = (function () {
 
         $(".thumbnail", $("ul#wodItems")).on("hover", function (event) {
             $(this).toggleClass("hover");
-            //$(".note", $(this)).toggleClass("text-error")
-            //$("em", $(this)).toggleClass("text-success");
         });
+
+        $(".timepicker", $modalContainer).timepicker(
+        //    {
+        //    minuteStep: 5,
+        //    secondStep: 5,
+        //    showInputs: true,
+        //    template: 'modal',
+        //    modalBackdrop: true,
+        //    showSeconds: false,
+        //    showMeridian: true
+        //}
+        );
     };
 
 

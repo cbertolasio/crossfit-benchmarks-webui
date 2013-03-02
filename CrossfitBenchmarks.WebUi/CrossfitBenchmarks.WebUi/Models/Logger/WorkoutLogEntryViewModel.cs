@@ -23,6 +23,10 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
         [MaxLength(1024)]
         public string Note { get; set; }
 
+        public string SelectedWorkoutName { get; set; }
+        public string SelectedWorkoutId { get; set; }
+        public string SelectedHeader { get; set; }
+
         public AddLogEntryViewModel()
         {
             DateCreated = DateTime.Now;

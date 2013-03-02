@@ -112,3 +112,15 @@ footer
 {
     background-color: #121212;
 }
+
+.thumbnail.hover
+{
+    border-color:#b94a48;
+    background-color: #000000;
+    /*color:#121212;*/
+}
+
+    .thumbnail.hover .muted
+    {
+        /*color:#000000;*/
+    }

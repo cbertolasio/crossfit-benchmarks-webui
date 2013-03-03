@@ -3,20 +3,15 @@ CFBM.Benchmarks = (function () {
     var viewModel = null,
         addNewViewModel = null,
         $container = null,
-        $modalContainer=$("#addLogEntry-modal")[0];
+        $modalContainer=$("#addLogEntry-modal")[0],
+        logEntryType = null;
 
-    function initAddNewViewModel() {
-        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
-        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
-        viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable(type);
-    };
     function onReady(jsModel, rootContainer, logEntryType) {
         $container = rootContainer;
         viewModel = ko.mapping.fromJS(jsModel);
         addNewViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
         addNewViewModel.logEntryType(logEntryType);
-
+        this.logEntryType = logEntryType;
         
         $.each(viewModel.wodList(), function (index, item) {
             item.lastPrDateHumanized = ko.computed(function () {
@@ -47,6 +42,10 @@ CFBM.Benchmarks = (function () {
 
         $(".cancel-button", $(".modal-footer")).click(function () {
             addNewViewModel.rollback();
+            addNewViewModel.score("");
+            addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+            addNewViewModel.note("");
+            addNewViewModel.isaPersonalRecord(false);
         });
 
         $(".addNew-button", $container).click(function () {
@@ -89,6 +88,11 @@ CFBM.Benchmarks = (function () {
         }
 
         addNewViewModel.commit();
+        addNewViewModel.score("");
+        addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+        addNewViewModel.note("");
+        addNewViewModel.isaPersonalRecord(false);
+
         
         $("#addLogEntry-modal").modal("hide");
     };

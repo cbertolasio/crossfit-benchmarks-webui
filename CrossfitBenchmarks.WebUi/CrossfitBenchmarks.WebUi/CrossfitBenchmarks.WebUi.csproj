@@ -222,6 +222,8 @@
     <Compile Include="Services\IOpenGraphAction.cs" />
     <Compile Include="Services\IOpenGraphActionFactory.cs" />
     <Compile Include="Services\IOpenGraphServices.cs" />
+    <Compile Include="Services\OpenGraphActionBase.cs" />
+    <Compile Include="Services\OpenGraphActionContext.cs" />
     <Compile Include="Services\OpenGraphActionFactory.cs" />
     <Compile Include="Services\OpenGraphService.cs" />
     <Compile Include="Services\JsonSerializer.cs" />

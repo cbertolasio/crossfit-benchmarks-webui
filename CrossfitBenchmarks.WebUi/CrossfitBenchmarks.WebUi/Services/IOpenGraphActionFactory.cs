@@ -9,6 +9,6 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public interface IOpenGraphActionFactory
     {
-        IOpenGraphAction Get(string logEntryType, bool isAPersonalRecord);
+        IOpenGraphAction Get(OpenGraphActionContext context);
     }
 }

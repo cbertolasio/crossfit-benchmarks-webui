@@ -14,38 +14,44 @@ namespace CrossfitBenchmarks.WebUi.Tests.Services
     [TestFixture]
     public class OpenGraphActionFactoryTest
     {
+        private OpenGraphActionContext GetActionContext(string logEntryType, bool isaPersonalRecord)
+        {
+            return new OpenGraphActionContext { LogEntryType = logEntryType, IsAPersonalRecord = isaPersonalRecord };
+        }
+
         [TestCase("z", false, ExpectedException=typeof(InvalidOperationException))]
         [TestCase("a", false, ExpectedException = typeof(InvalidOperationException))]
         [TestCase("x", false, ExpectedException = typeof(InvalidOperationException))]
         public void Get_Throws_InvalidOperationException(string logEntryType, bool isaPersonalRecord)
         {
-            factory.Get(logEntryType, isaPersonalRecord);
+            var context = GetActionContext(logEntryType, isaPersonalRecord);
+            factory.Get(context);
         }
 
         [Test]
         public void FActory_Returns_TheHerosOpenGraphAction()
         {
-            var result = factory.Get("H", false);
+            var result = factory.Get(GetActionContext("H", false));
             result.Should().BeOfType<TheHerosOpenGraphAction>();
         }
 
         [Test]
         public void FActory_Returns_TheGirlsOpenGraphAction()
         {
-            var result = factory.Get("G", false);
+            var result = factory.Get(GetActionContext("G", false));
             result.Should().BeOfType<TheGirlsOpenGraphAction>();
         }
         [Test]
         public void Factory_Returns_BenchmarkOpenGraphAction()
         {
-            var result = factory.Get("B", false);
+            var result = factory.Get(GetActionContext("B", false));
             result.Should().BeOfType<BenchmarkOpenGraphAction>();
         }
 
         [Test]
         public void Factory_Returns_PersonalRecordOpenGraphAction()
         {
-            var result = factory.Get("B", true);
+            var result = factory.Get(GetActionContext("B", true));
             result.Should().BeOfType<PersonalRecordOpenGraphAction>();
         }
 

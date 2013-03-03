@@ -16,7 +16,8 @@ namespace CrossfitBenchmarks.WebUi.Services
         }
         public void PublishAction(LogEntryDto dto, IIdentity identity, string logEntryType, bool isAPersonalRecord)
         {
-            var action = actionFactory.Get(logEntryType, isAPersonalRecord);
+            var context = new OpenGraphActionContext { IsAPersonalRecord = isAPersonalRecord, LogEntryType = logEntryType, Identity = identity, LogEntryData = dto };
+            var action = actionFactory.Get(context);
             action.Publish();
         }
     }

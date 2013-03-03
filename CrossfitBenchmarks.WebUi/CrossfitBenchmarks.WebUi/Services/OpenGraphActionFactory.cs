@@ -9,12 +9,13 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public class OpenGraphActionFactory : IOpenGraphActionFactory
     {
-        public IOpenGraphAction Get(string logEntryType, bool isAPersonalRecord)
+        public IOpenGraphAction Get(OpenGraphActionContext context)
         {
-            if (isAPersonalRecord)
-                return new PersonalRecordOpenGraphAction();
+            
+            if (context.IsAPersonalRecord)
+                return new PersonalRecordOpenGraphAction(context);
 
-            switch (logEntryType)
+            switch (context.LogEntryType)
             {
                 case "G":
                     return new TheGirlsOpenGraphAction();
@@ -24,10 +25,9 @@ namespace CrossfitBenchmarks.WebUi.Services
                     return new BenchmarkOpenGraphAction();
 
                 default:
-                    throw new InvalidOperationException(string.Format("unable to create an Open Graph Action for logEntryType: '{0}'", logEntryType));
+                    throw new InvalidOperationException(string.Format("unable to create an Open Graph Action for logEntryType: '{0}'", context.LogEntryType));
             }
 
-            //throw new InvalidOperationException("code should not execute...");
         }
     }
 }

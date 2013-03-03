@@ -17,6 +17,9 @@ namespace CrossFitTools.Web.Modules
             Bind<ICrossfitBenchmarksServices>().To<CrossfitBenchmarksServices>();
             Bind<ITokenProvider>().To<TokenProvider>().InSingletonScope();
             Bind<IClaimsProvider>().To<ClaimsProvider>();
+
+            Bind<IOpenGraphActionFactory>().To<OpenGraphActionFactory>();
+            Bind<IOpenGraphServices>().To<OpenGraphService>();
         }
     }
 }

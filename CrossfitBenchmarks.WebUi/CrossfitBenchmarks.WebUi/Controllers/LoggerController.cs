@@ -27,7 +27,7 @@ namespace CrossFitTools.Web.Controllers
             
             var result = webServiceApi.CreateLogEntry(dto);
 
-            openGraph.PublishAction(dto, User.Identity);
+            openGraph.PublishAction(dto, User.Identity, dataToSave.LogEntryType, dataToSave.IsAPersonalRecord);
 
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
             return new CustomJsonResult { Data = updatedViewModel };

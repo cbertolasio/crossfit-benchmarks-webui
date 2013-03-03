@@ -9,13 +9,15 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public class OpenGraphService : IOpenGraphServices
     {
-        public OpenGraphService()
+        private readonly IOpenGraphActionFactory actionFactory;
+        public OpenGraphService(IOpenGraphActionFactory actionFactory)
         {
-
+            this.actionFactory = actionFactory;
         }
-        public void PublishAction(LogEntryDto dto, IIdentity identity)
+        public void PublishAction(LogEntryDto dto, IIdentity identity, string logEntryType, bool isAPersonalRecord)
         {
-            
+            var action = actionFactory.Get(logEntryType, isAPersonalRecord);
+            action.Publish();
         }
     }
 }

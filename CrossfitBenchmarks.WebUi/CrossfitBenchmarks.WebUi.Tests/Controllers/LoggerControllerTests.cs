@@ -36,7 +36,8 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         public void AddLogEntry_PublishesTo_OpenGraph(string dateString, string timeString)
         {
             
-            ogService.Expect(it => it.PublishAction(Arg<LogEntryDto>.Is.NotNull, Arg<IIdentity>.Is.NotNull));
+            ogService.Expect(it => it.PublishAction(Arg<LogEntryDto>.Is.NotNull, Arg<IIdentity>.Is.NotNull, 
+                Arg<string>.Is.Null, Arg<bool>.Is.Anything));
 
             controller.AddLogEntry(GetDataToSave(dateString, timeString));
 

@@ -1,22 +1,18 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_FbObjectLayout.cshtml";
 }
 
 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-xmlns:fb="https://www.facebook.com/2008/fbml">
+<h2>Basic WOD</h2>
+<p>Whenever you use Every WOD to log a Basic Workout - that activity can show up in Facebook</p>
+<p>When you log your basic workout, you would normally write about any skills, stength, conditioning, and mobility that you comleted for that day.</p>
 
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# everywod: http://ogp.me/ns/fb/everywod#">
+
+
+@section meta{
     <meta property="fb:app_id" content="460497347351482" />
     <meta property="og:type" content="everywod:basic_workout" />
     <meta property="og:url" content="http://crossfitbenchmarks.azurewebsites.net/facebookobjects/basicworkout" />
     <meta property="og:title" content="Basic Workout" />
-    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />
-    <meta property="everywod:score" content="Sample Score" />
-    </head>
-
-    <body>
-        <h2>Facebook Object Page for Basic Workout</h2>
-    </body>
-    
-</html>
+    <meta property="og:image" content="http://crossfitbenchmarks.azurewebsites.net/content/images/ew-fbObject-x1500.jpg" />
+}

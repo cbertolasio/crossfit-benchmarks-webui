@@ -139,11 +139,11 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             var client = new Facebook.FacebookClient(accessToken);
             var parameters = new Dictionary<string, object>();
             parameters["access_token"] = accessToken;
-            parameters["girl_workout"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/girlworkout";
+            parameters["girls"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/girlworkout";
             parameters["fb:app_id"] = "460497347351482";
             parameters["og:type"] = "everywod:girls";
             parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/girlworkout";
-            parameters["og:title"] = "Basic WOD";
+            parameters["og:title"] = "One of the Girls";
             parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-fbObject-x1500.jpg";
             parameters["score"] = "220";
 
@@ -168,7 +168,7 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             parameters["fb:app_id"] = "460497347351482";
             parameters["og:type"] = "everywod:hero_workout";
             parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/heroworkout";
-            parameters["og:title"] = "Basic WOD";
+            parameters["og:title"] = "Hero WOD";
             parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-fbObject-x1500.jpg";
             parameters["score"] = "220";
 

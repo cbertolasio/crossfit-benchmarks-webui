@@ -18,12 +18,17 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
     [TestFixture]
     public class LoggerControllerTests
     {
-        [Test]
-        public void AddLogEntry_Returns_JsonResut()
+        [TestCase("01/01/2013", "01:30 AM")]
+        [TestCase("01/01/2013", "6:30 PM")]
+        public void AddLogEntry_Returns_JsonResut(string dateString, string timeString)
         {
             var testResult = new WorkoutLogEntryDto();
+            
             webServiceApi.Stub(it => it.CreateLogEntry(Arg<LogEntryDto>.Is.NotNull)).Return(testResult);
             var dataToSave = new AddLogEntryViewModel();
+            dataToSave.DateCreated = DateTimeOffset.Parse(dateString);
+            dataToSave.TimeCreated = timeString;
+
             controller.AddLogEntry(dataToSave)
                 .As<CustomJsonResult>()
                 .Data.As<AddLogEntryViewModel>();

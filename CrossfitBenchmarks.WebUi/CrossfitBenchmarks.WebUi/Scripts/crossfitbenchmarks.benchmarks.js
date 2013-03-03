@@ -1,20 +1,18 @@
 ﻿CFBM.namespace("CFBM.Benchmarks");
 CFBM.Benchmarks = (function () {
     var viewModel = null,
-        tempViewModel = null,
-        $container = null;
+        addNewViewModel = null,
+        $container = null,
+        $modalContainer=$("#addLogEntry-modal")[0],
+        logEntryType = null;
 
     function onReady(jsModel, rootContainer, logEntryType) {
         $container = rootContainer;
         viewModel = ko.mapping.fromJS(jsModel);
-
-        tempViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
-        viewModel.addNewViewModel = ko.observable(tempViewModel);
-        viewModel.addNewViewModel().selectedWorkoutName = ko.observable("");
-        viewModel.addNewViewModel().selectedWorkoutId = ko.observable(0);
-        viewModel.addNewViewModel().userId = ko.observable(0);
-        viewModel.addNewViewModel().logEntryType = ko.observable(logEntryType);
-
+        addNewViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
+        addNewViewModel.logEntryType(logEntryType);
+        this.logEntryType = logEntryType;
+        
         $.each(viewModel.wodList(), function (index, item) {
             item.lastPrDateHumanized = ko.computed(function () {
                 return moment(item.lastPersonalRecordDate()).fromNow();
@@ -29,27 +27,50 @@ CFBM.Benchmarks = (function () {
         viewModel.setHeader = function (data) {
             viewModel.selectedHeader(data.name);
         };
-        ko.editable(viewModel);
+        ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
-        $("#dp3", $container).datepicker();
+        ko.applyBindings(addNewViewModel, $modalContainer);
+
+        $("#dp3", $modalContainer).datepicker();
 
 
         $(".save-button", $(".modal-footer")).click(function () {
+
             $(".addNewLogEntry-form", $(".modal-body")).submit();
             
         });
 
         $(".cancel-button", $(".modal-footer")).click(function () {
-            viewModel.rollback();
+            addNewViewModel.rollback();
+            addNewViewModel.score("");
+            addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+            addNewViewModel.note("");
+            addNewViewModel.isaPersonalRecord(false);
         });
 
         $(".addNew-button", $container).click(function () {
-            viewModel.beginEdit();
-            viewModel.addNewViewModel().selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
-            viewModel.addNewViewModel().selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
-            viewModel.addNewViewModel().userId(3); //note this needs to come out soon...
-            viewModel.addNewViewModel().logEntryType(logEntryType); //not sure why i need this exactly... but i will get it worked out
+            addNewViewModel.beginEdit();
+            addNewViewModel.selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
+            addNewViewModel.selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
+            addNewViewModel.userId(3); //note this needs to come out soon...
+            addNewViewModel.logEntryType(logEntryType); //not sure why i need this exactly... but i will get it worked out
         });
+
+        $(".thumbnail", $("ul#wodItems")).on("hover", function (event) {
+            $(this).toggleClass("hover");
+        });
+
+        $(".timepicker", $modalContainer).timepicker(
+        //    {
+        //    minuteStep: 5,
+        //    secondStep: 5,
+        //    showInputs: true,
+        //    template: 'modal',
+        //    modalBackdrop: true,
+        //    showSeconds: false,
+        //    showMeridian: true
+        //}
+        );
     };
 
 
@@ -65,6 +86,14 @@ CFBM.Benchmarks = (function () {
             updatedItem.lastAttemptDate(data.lastAttemptDate);
             updatedItem.lastPersonalRecordDate(data.lastPersonalRecordDate);
         }
+
+        addNewViewModel.commit();
+        addNewViewModel.score("");
+        addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+        addNewViewModel.note("");
+        addNewViewModel.isaPersonalRecord(false);
+
+        
         $("#addLogEntry-modal").modal("hide");
     };
 

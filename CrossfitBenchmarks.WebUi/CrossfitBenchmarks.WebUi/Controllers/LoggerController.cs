@@ -8,7 +8,7 @@ using CrossfitBenchmarks.WebUi.Models.Logger;
 using CrossfitBenchmarks.WebUi.Services;
 using CrossfitBenchmarks.WebUi.Utility;
 using CrossFitTools.Web.CustomActionResults;
-
+using CrossfitBenchmarks.WebUi.Extensions;
 
 namespace CrossFitTools.Web.Controllers
 {
@@ -20,7 +20,10 @@ namespace CrossFitTools.Web.Controllers
         [NoCache]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
+            dataToSave.DateCreated = DateTimeHelper.Combine(dataToSave.DateCreated, dataToSave.TimeCreated);
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
+            
+            
             var result = webServiceApi.CreateLogEntry(dto);
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
             return new CustomJsonResult { Data = updatedViewModel };

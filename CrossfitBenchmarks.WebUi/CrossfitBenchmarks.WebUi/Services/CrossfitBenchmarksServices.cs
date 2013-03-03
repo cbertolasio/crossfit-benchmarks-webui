@@ -41,6 +41,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             request.RequestFormat = DataFormat.Json;
             request.AddAuthorizationHeader(tokenProvider, scope);
             dto.UserInfo = new UserInfoDto { IdentityProvider = claimsProvider.GetIdentityProvider(), NameIdentifier = claimsProvider.GetNameIdentifier() };
+            
             request.AddBody(dto);
 
             request.JsonSerializer = new JsonSerializer();

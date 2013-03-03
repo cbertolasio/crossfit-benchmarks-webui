@@ -197,6 +197,7 @@
     <Compile Include="Controllers\OAuth2TokenResponse.cs" />
     <Compile Include="Controllers\RestRequestExtension.cs" />
     <Compile Include="Controllers\SamplesConfiguration.cs" />
+    <Compile Include="Extensions\DateTimeHelper.cs" />
     <Compile Include="Models\Logger\TheHerosViewModel.cs" />
     <Compile Include="Models\Logger\TheGirlsViewModel.cs" />
     <Compile Include="CustomActionResults\CustomJsonResult.cs" />
@@ -231,6 +232,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap-timepicker.css" />
+    <Content Include="Content\bootstrap-timepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
@@ -305,6 +308,8 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\crossfitbenchmarks.benchmarks.js" />
@@ -396,10 +401,10 @@
     <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Dashboard\AddNew.cshtml" />
+    <Content Include="Views\Shared\_FbObjectLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

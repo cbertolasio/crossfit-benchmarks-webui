@@ -20,6 +20,7 @@ namespace CrossfitBenchmarks.WebUi
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-timepicker.js",
                         "~/Scripts/bootstrap-datepicker.js",
                         "~/Scripts/knockout-2.2.0.js",
                         "~/Scripts/knockout.mapping-latest.js",
@@ -40,6 +41,7 @@ namespace CrossfitBenchmarks.WebUi
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-responsive.css",
+                        "~/Content/bootstrap-timepicker.css",
                         "~/Content/datepicker.css",
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",

@@ -21,7 +21,7 @@
                     <!-- /ko -->
 
                     <!-- ko if:lastScore() == null -->
-                    <p><span style="display: inline-block"><em class="text-warning">You should create an entry for this benchmark!</em></span></p>
+                    <p><span style="display: inline-block"><strong class="note text-error"><em>You should create an entry for this WOD!</em></strong></span></p>
                     <!-- /ko -->
 
                     </div>
@@ -32,9 +32,9 @@
                 </div>
             </li>
         </ul>
-
-        @Html.Partial("AddLogEntry", new AddLogEntryViewModel())
     </div>
+
+@Html.Partial("AddLogEntry", new AddLogEntryViewModel())
 
 <script type="text/javascript">
     @Html.ToJSVar("theHerosViewModel", Model)

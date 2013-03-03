@@ -197,7 +197,7 @@
     <Compile Include="Controllers\OAuth2TokenResponse.cs" />
     <Compile Include="Controllers\RestRequestExtension.cs" />
     <Compile Include="Controllers\SamplesConfiguration.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DateTimeHelper.cs" />
     <Compile Include="Models\Logger\TheHerosViewModel.cs" />
     <Compile Include="Models\Logger\TheGirlsViewModel.cs" />
     <Compile Include="CustomActionResults\CustomJsonResult.cs" />

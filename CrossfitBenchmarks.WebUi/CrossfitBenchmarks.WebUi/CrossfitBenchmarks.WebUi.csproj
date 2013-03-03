@@ -218,6 +218,8 @@
     <Compile Include="Modules\NinjectModules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrossfitBenchmarksServices.cs" />
+    <Compile Include="Services\IOpenGraphServices.cs" />
+    <Compile Include="Services\OpenGraphService.cs" />
     <Compile Include="Services\JsonSerializer.cs" />
     <Compile Include="Utility\ClaimsProvider.cs" />
     <Compile Include="Utility\HttpClientUtilities.cs" />

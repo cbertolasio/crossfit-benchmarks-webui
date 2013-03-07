@@ -9,12 +9,14 @@ using CrossfitBenchmarks.WebUi.Services;
 using CrossfitBenchmarks.WebUi.Utility;
 using CrossFitTools.Web.CustomActionResults;
 using CrossfitBenchmarks.WebUi.Extensions;
+using System.Security.Claims;
 
 namespace CrossFitTools.Web.Controllers
 {
     [Authorize]
     public class LoggerController : Controller
     {
+        private readonly IOpenGraphServices openGraph;
         private readonly ICrossfitBenchmarksServices webServiceApi;
         [HttpPost]
         [NoCache]
@@ -23,8 +25,10 @@ namespace CrossFitTools.Web.Controllers
             dataToSave.DateCreated = DateTimeHelper.Combine(dataToSave.DateCreated, dataToSave.TimeCreated);
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
             
-            
             var result = webServiceApi.CreateLogEntry(dto);
+
+            openGraph.PublishAction(dto, User.Identity, dataToSave.LogEntryType, dataToSave.IsAPersonalRecord);
+
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
             return new CustomJsonResult { Data = updatedViewModel };
         }
@@ -58,9 +62,11 @@ namespace CrossFitTools.Web.Controllers
             }
         }
 
-        public LoggerController(ICrossfitBenchmarksServices webServiceApi)
+        public LoggerController(ICrossfitBenchmarksServices webServiceApi, IOpenGraphServices openGraph)
         {
+            this.openGraph = openGraph;
             this.webServiceApi = webServiceApi;
+
         }
     }
 }

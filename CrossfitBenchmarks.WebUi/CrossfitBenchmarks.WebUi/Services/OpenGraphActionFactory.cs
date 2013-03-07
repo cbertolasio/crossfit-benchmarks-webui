@@ -18,11 +18,14 @@ namespace CrossfitBenchmarks.WebUi.Services
             switch (context.LogEntryType)
             {
                 case "G":
-                    return new TheGirlsOpenGraphAction();
+                    return new TheGirlsOpenGraphAction(context);
                 case "H":
-                    return new TheHerosOpenGraphAction();
+                    return new TheHerosOpenGraphAction(context);
                 case "B":
-                    return new BenchmarkOpenGraphAction();
+                    return new BenchmarkOpenGraphAction(context);
+                case "BasicWod":
+                    return new BasicWodOpenGraphAction(context);
+
 
                 default:
                     throw new InvalidOperationException(string.Format("unable to create an Open Graph Action for logEntryType: '{0}'", context.LogEntryType));

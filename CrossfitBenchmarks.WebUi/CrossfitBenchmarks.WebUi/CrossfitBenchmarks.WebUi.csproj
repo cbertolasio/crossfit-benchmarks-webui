@@ -217,6 +217,7 @@
     <Compile Include="Models\Logger\WorkoutLogEntryViewModel.cs" />
     <Compile Include="Modules\NinjectModules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BasicWodOpenGraphAction.cs" />
     <Compile Include="Services\BenchmarkOpenGraphAction.cs" />
     <Compile Include="Services\CrossfitBenchmarksServices.cs" />
     <Compile Include="Services\IOpenGraphAction.cs" />

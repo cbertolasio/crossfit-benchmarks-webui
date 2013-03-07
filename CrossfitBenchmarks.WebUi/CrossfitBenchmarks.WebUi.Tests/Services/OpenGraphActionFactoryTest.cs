@@ -11,6 +11,8 @@ using FluentAssertions;
 
 namespace CrossfitBenchmarks.WebUi.Tests.Services
 {
+
+
     [TestFixture]
     public class OpenGraphActionFactoryTest
     {
@@ -48,11 +50,21 @@ namespace CrossfitBenchmarks.WebUi.Tests.Services
             result.Should().BeOfType<BenchmarkOpenGraphAction>();
         }
 
-        [Test]
-        public void Factory_Returns_PersonalRecordOpenGraphAction()
+        [TestCase("B")]
+        [TestCase("G")]
+        [TestCase("H")]
+        [TestCase("BasicWod")]
+        public void Factory_Returns_PersonalRecordOpenGraphAction(string logEntryType)
         {
-            var result = factory.Get(GetActionContext("B", true));
+            var result = factory.Get(GetActionContext(logEntryType, true));
             result.Should().BeOfType<PersonalRecordOpenGraphAction>();
+        }
+
+        [Test]
+        public void Factory_Returns_BasicWodOpengraphAction()
+        {
+            var result = factory.Get(GetActionContext("BasicWod", false));
+            result.Should().BeOfType<BasicWodOpenGraphAction>();
         }
 
         [SetUp]

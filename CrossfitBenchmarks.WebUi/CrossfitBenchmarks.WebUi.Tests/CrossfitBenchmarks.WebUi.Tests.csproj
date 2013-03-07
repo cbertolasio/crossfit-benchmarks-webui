@@ -72,6 +72,7 @@
     <Compile Include="Extensions\DateTimeHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OpenGraphActionFactoryTest.cs" />
+    <Compile Include="Services\OpenGraphServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

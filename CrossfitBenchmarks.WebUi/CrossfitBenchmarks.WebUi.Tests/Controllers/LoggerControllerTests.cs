@@ -26,7 +26,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         private static AddLogEntryViewModel GetDataToSave(string dateString, string timeString)
         {
             var dataToSave = new AddLogEntryViewModel();
-            dataToSave.DateCreated = DateTimeOffset.Parse(dateString);
+            dataToSave.DateOfWod = DateTimeOffset.Parse(dateString);
             dataToSave.TimeCreated = timeString;
             return dataToSave;
         }

@@ -117,10 +117,53 @@ footer
 {
     border-color:#b94a48;
     background-color: #000000;
-    /*color:#121212;*/
 }
 
     .thumbnail.hover .muted
     {
         /*color:#000000;*/
     }
+
+    .thumbnail.hover .button-container, .thumbnail.hover .summary-note{
+        visibility:visible;
+    }
+
+
+div.button-container {
+    visibility:hidden;
+}
+
+small.summary-note {
+    visibility:hidden;
+}
+
+.tooltip-inner {
+ 
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #FFFFFF;
+}
+
+.tooltip.right .tooltip-arrow {
+  border-top-color: #FFFFFF;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-top-color: #FFFFFF;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-top-color: #FFFFFF;
+}
+
+.popover-title, .popover-content {
+    color:#000000;
+}

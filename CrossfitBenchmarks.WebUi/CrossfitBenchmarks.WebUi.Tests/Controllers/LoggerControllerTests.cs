@@ -12,12 +12,39 @@ using Rhino.Mocks;
 using CrossfitBenchmarks.Data.DataTransfer;
 using CrossfitBenchmarks.WebUi.Models.Logger;
 using CrossFitTools.Web.CustomActionResults;
+using System.Security.Principal;
+using CrossfitBenchmarks.WebUi.Tests.UnitTests;
+using System.Web;
+using System.Web.Routing;
 
 namespace CrossfitBenchmarks.WebUi.Tests.Controllers
 {
     [TestFixture]
     public class LoggerControllerTests
     {
+
+        private static AddLogEntryViewModel GetDataToSave(string dateString, string timeString)
+        {
+            var dataToSave = new AddLogEntryViewModel();
+            dataToSave.DateOfWod = DateTimeOffset.Parse(dateString);
+            dataToSave.TimeCreated = timeString;
+            return dataToSave;
+        }
+
+        [TestCase("01/01/2013", "01:30 AM")]
+        [TestCase("01/01/2013", "6:30 PM")]
+        public void AddLogEntry_PublishesTo_OpenGraph(string dateString, string timeString)
+        {
+            
+            ogService.Expect(it => it.PublishAction(Arg<LogEntryDto>.Is.NotNull, Arg<IIdentity>.Is.NotNull, 
+                Arg<string>.Is.Null, Arg<bool>.Is.Anything));
+
+            controller.AddLogEntry(GetDataToSave(dateString, timeString));
+
+            ogService.VerifyAllExpectations();
+
+        }
+
         [TestCase("01/01/2013", "01:30 AM")]
         [TestCase("01/01/2013", "6:30 PM")]
         public void AddLogEntry_Returns_JsonResut(string dateString, string timeString)
@@ -25,11 +52,8 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
             var testResult = new WorkoutLogEntryDto();
             
             webServiceApi.Stub(it => it.CreateLogEntry(Arg<LogEntryDto>.Is.NotNull)).Return(testResult);
-            var dataToSave = new AddLogEntryViewModel();
-            dataToSave.DateCreated = DateTimeOffset.Parse(dateString);
-            dataToSave.TimeCreated = timeString;
 
-            controller.AddLogEntry(dataToSave)
+            controller.AddLogEntry(GetDataToSave(dateString, timeString))
                 .As<CustomJsonResult>()
                 .Data.As<AddLogEntryViewModel>();
         }
@@ -87,10 +111,24 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
             AutomapBootstrap.Initialize();
             RhinoMocksMockingKernel kernel = new RhinoMocksMockingKernel();
             webServiceApi = kernel.Get<ICrossfitBenchmarksServices>();
+
+            ogService = kernel.Get<IOpenGraphServices>();
             controller = kernel.Get<LoggerController>();
+
+            var context = kernel.Get<HttpContextBase>();
+            
+            IPrincipal principal = kernel.Get<IPrincipal>();
+            IIdentity identity = kernel.Get<IIdentity>();
+            principal.Stub(it => it.Identity).Return(identity);
+            context.Stub(it => it.User).Return(principal);
+
+
+            controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
+            
         }
 
         private LoggerController controller;
+        private IOpenGraphServices ogService;
         private ICrossfitBenchmarksServices webServiceApi;
     }
 }

@@ -15,7 +15,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
         [Required]
         public string UserId { get; set; }
-        public DateTimeOffset? DateCreated { get; set; }
+        public DateTimeOffset? DateOfWod { get; set; }
         public bool IsAPersonalRecord { get; set; }
 
         public string Score { get; set; }
@@ -30,7 +30,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
 
         public AddLogEntryViewModel()
         {
-            DateCreated = DateTime.Now;
+            DateOfWod = DateTime.Now;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿CFBM.namespace("CFBM.Benchmarks");
+
 CFBM.Benchmarks = (function () {
     var viewModel = null,
         addNewViewModel = null,
@@ -43,7 +44,7 @@ CFBM.Benchmarks = (function () {
         $(".cancel-button", $(".modal-footer")).click(function () {
             addNewViewModel.rollback();
             addNewViewModel.score("");
-            addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+            addNewViewModel.dateOfWod(moment().format("MM/DD/YYYY"));
             addNewViewModel.note("");
             addNewViewModel.isaPersonalRecord(false);
         });
@@ -89,7 +90,7 @@ CFBM.Benchmarks = (function () {
 
         addNewViewModel.commit();
         addNewViewModel.score("");
-        addNewViewModel.dateCreated(moment().format("MM/DD/YYYY"));
+        addNewViewModel.dateOfWod(moment().format("MM/DD/YYYY"));
         addNewViewModel.note("");
         addNewViewModel.isaPersonalRecord(false);
 

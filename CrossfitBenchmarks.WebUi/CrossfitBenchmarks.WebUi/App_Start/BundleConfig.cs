@@ -30,7 +30,8 @@ namespace CrossfitBenchmarks.WebUi
             bundles.Add(new ScriptBundle("~/bundles/crossfitbenchmarks").Include(
                         "~/Scripts/crossfitbenchmarks.site.js",
                         "~/Scripts/crossfitbenchmarks.calculator.js",
-                        "~/Scripts/crossfitbenchmarks.benchmarks.js"
+                        "~/Scripts/crossfitbenchmarks.benchmarks.js",
+                        "~/Scripts/crossfitbenchmarks.dashboardSummary.js"
                         ));
 
             

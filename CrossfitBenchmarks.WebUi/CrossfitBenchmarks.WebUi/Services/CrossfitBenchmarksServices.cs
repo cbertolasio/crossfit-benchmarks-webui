@@ -14,6 +14,7 @@ namespace CrossfitBenchmarks.WebUi.Services
     public interface ICrossfitBenchmarksServices
     {
         WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto);
+        string GetSummary();
         IEnumerable<WorkoutLogEntryDto> GetTheGirls();
         IEnumerable<WorkoutLogEntryDto> GetTheHeros();
         IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks();
@@ -41,13 +42,26 @@ namespace CrossfitBenchmarks.WebUi.Services
             request.RequestFormat = DataFormat.Json;
             request.AddAuthorizationHeader(tokenProvider, scope);
             dto.UserInfo = new UserInfoDto { IdentityProvider = claimsProvider.GetIdentityProvider(), NameIdentifier = claimsProvider.GetNameIdentifier() };
-            
             request.AddBody(dto);
 
             request.JsonSerializer = new JsonSerializer();
 
             var response = client.Execute<WorkoutLogEntryDto>(request);
             return response.Data;
+        }
+
+        public string GetSummary()
+        {
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseODataUri().ToString());
+            var request = new RestSharp.RestRequest("WorkoutLogs", RestSharp.Method.GET);
+            request.RequestFormat = DataFormat.Json;
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            request.AddParameter("$filter", string.Format("UserNameIdentifier eq '{0}'", claimsProvider.GetNameIdentifier()));
+            request.AddParameter("$top", "5");
+            request.AddParameter("$orderby", "DateOfWod desc,WorkoutLogId desc");
+            request.AddParameter("$inlinecount", "allpages");
+            request.JsonSerializer = new JsonSerializer();
+            return client.Execute(request).Content;
         }
 
         public IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks()

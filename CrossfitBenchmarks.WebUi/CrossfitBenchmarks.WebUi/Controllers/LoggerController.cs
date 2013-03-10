@@ -22,7 +22,7 @@ namespace CrossFitTools.Web.Controllers
         [NoCache]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
-            dataToSave.DateCreated = DateTimeHelper.Combine(dataToSave.DateCreated, dataToSave.TimeCreated);
+            dataToSave.DateOfWod = DateTimeHelper.Combine(dataToSave.DateOfWod, dataToSave.TimeCreated);
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
             
             var result = webServiceApi.CreateLogEntry(dto);

@@ -26,6 +26,11 @@ namespace CrossfitBenchmarks.WebUi.Utility
             return new Uri(GetRootUri(), "api/");
         }
 
+        public static Uri GetBaseODataUri()
+        {
+            return new Uri(GetRootUri(), "odata/");
+        }
+
         public static Uri GetServiceUri(string service)
         {
             return new Uri(GetBaseUri(), service);

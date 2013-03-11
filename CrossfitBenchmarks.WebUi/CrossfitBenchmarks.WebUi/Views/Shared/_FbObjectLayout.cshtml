@@ -3,12 +3,14 @@
 xmlns:fb="https://www.facebook.com/2008/fbml">
     <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# everywod: http://ogp.me/ns/fb/everywod#">
         <meta charset="utf-8" />
+        <meta property="og:image" content="@Url.AbsoluteContent("~/content/images/ew-fbObject-x1500.jpg")" />
+        <meta property="fb:app_id" content="460497347351482" />
         @RenderSection("meta", required: false)
 
-        <title>@ViewBag.Title - My Crossfit Benchmarks</title>
+        <title>@ViewBag.Title - Every WOD</title>
         <link href="~/favicon.ico?v=2" rel="shortcut icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
         @Styles.Render("~/Content/themes/base/css")
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using CrossfitBenchmarks.WebUi.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Controllers
 {
@@ -26,6 +27,7 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             return View();
         }
 
+        [NoCache]
         public ActionResult Index()
         {
             var result = service.GetSummary();

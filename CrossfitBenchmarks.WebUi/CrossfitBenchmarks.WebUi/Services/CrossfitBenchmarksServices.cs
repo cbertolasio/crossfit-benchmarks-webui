@@ -57,6 +57,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             request.RequestFormat = DataFormat.Json;
             request.AddAuthorizationHeader(tokenProvider, scope);
             request.AddParameter("$filter", string.Format("UserNameIdentifier eq '{0}'", claimsProvider.GetNameIdentifier()));
+            request.AddParameter("$top", "5");
             request.AddParameter("$orderby", "DateOfWod desc,WorkoutLogId desc");
             request.AddParameter("$inlinecount", "allpages");
             request.JsonSerializer = new JsonSerializer();

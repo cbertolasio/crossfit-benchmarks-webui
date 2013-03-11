@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My Crossfit Benchmarks</title>
+        <title>@ViewBag.Title - Every WOD</title>
         <link href="~/favicon.ico?v=2" rel="shortcut icon" />
+        <link rel="image_src" href="@Url.AbsoluteContent("~/content/images/ew-fbObject-x1500.jpg")" />
+        <meta property="og:image" content="@Url.AbsoluteContent("~/content/images/ew-fbObject-x1500.jpg")" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         @Styles.Render("~/Content/themes/base/css")

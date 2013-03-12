@@ -5,6 +5,7 @@ using System.Text;
 using CrossfitBenchmarks.Data.DataTransfer;
 using System.Security.Principal;
 using System.Security.Claims;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -21,10 +22,11 @@ namespace CrossfitBenchmarks.WebUi.Services
             var accessToken = GetAccessToken();
             var client = GetClient();
             var parameters = GetBaseParameters();
-            
-            parameters["personal_record"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/personalrecord";
+
+            var uri = String.Format("{0}{1}", Constants.RootDomain, "facebookobjects/personalrecord");
+            parameters["personal_record"] = uri;
             parameters["og:type"] = "everywod:personal_record";
-            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/personalrecord";
+            parameters["og:url"] = uri;
             parameters["og:title"] = "Personal Record";
             parameters["score"] = "2:30";
 

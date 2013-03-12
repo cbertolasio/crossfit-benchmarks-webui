@@ -1,11 +1,11 @@
-﻿@model TheHerosViewModel
+﻿@model TheHeroesViewModel
 
 @{
-    ViewBag.Title = "The Heros";
+    ViewBag.Title = "The Heroes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div id="theHeros-content">
+    <div id="theHeroes-content">
 
         <h2>Review Your Log Entries for The Heroes</h2>
         
@@ -27,7 +27,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div style="min-height:40px;">
-                        <a id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary addNew-button" href="#addLogEntry-modal" data-toggle="modal" data-bind="click:$parent.setHeader"><i class="icon-plus-sign icon-white"></i> Add New</a>
+                        <a id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary addNew-button" data-bind="click:$parent.setHeader"><i class="icon-plus-sign icon-white"></i> Add New</a>
                     </div>
                 </div>
             </li>
@@ -37,5 +37,5 @@
 @Html.Partial("AddLogEntry", new AddLogEntryViewModel())
 
 <script type="text/javascript">
-    @Html.ToJSVar("theHerosViewModel", Model)
+    @Html.ToJSVar("theHeroesViewModel", Model)
 </script>

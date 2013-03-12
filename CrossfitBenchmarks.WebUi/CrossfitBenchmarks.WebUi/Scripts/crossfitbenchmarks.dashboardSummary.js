@@ -9,9 +9,8 @@ CFBM.Dashboard = (function () {
             $(this).toggleClass("hover");
         });
 
-        $(".tt").tooltip();
-
-        $(".po").popover();
+        $("[rel='tooltip']").tooltip();
+        $("[rel='popover']").popover();
     };
 
     function onReady(model, rootContainer) {

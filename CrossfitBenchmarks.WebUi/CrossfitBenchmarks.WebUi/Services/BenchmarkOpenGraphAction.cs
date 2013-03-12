@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CrossfitBenchmarks.Data.DataTransfer;
 using System.Security.Principal;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -21,11 +22,11 @@ namespace CrossfitBenchmarks.WebUi.Services
             var client = GetClient();
             var parameters = GetBaseParameters();
 
-            parameters["benchmark"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/benchmark";
+            var uri = String.Format("{0}{1}", Constants.RootDomain, "facebookobjects/benchmark");
+            parameters["benchmark"] = uri;
             parameters["og:type"] = "everywod:benchmark";
-            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/benchmark";
+            parameters["og:url"] = uri;
             parameters["og:title"] = "Benchmark";
-            parameters["og:image"] = "http://crossfitbenchmarks.azurewebsites.net/content/images/ew-fbObject-x1500.jpg";
             parameters["score"] = "220#";
 
             //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 

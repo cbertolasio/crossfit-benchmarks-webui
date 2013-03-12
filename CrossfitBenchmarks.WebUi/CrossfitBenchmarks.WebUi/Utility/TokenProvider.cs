@@ -73,4 +73,3 @@ namespace CrossfitBenchmarks.WebUi.Utility
         #endregion
     }
 }
-

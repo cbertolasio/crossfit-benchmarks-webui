@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CrossfitBenchmarks.Data.DataTransfer;
 using System.Security.Principal;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -15,9 +16,10 @@ namespace CrossfitBenchmarks.WebUi.Services
             var client = GetClient();
             var parameters = GetBaseParameters();
 
-            parameters["basic_workout"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/basicworkout";
+            var uri = String.Format("{0}{1}", Constants.RootDomain, "facebookobjects/basicworkout");
+            parameters["basic_workout"] = uri;
             parameters["og:type"] = "everywod:basic_workout";
-            parameters["og:url"] = "http://crossfitbenchmarks.azurewebsites.net/facebookobjects/basicworkout";
+            parameters["og:url"] = uri;
             parameters["og:title"] = "Basic WOD";
             parameters["score"] = "220";
 

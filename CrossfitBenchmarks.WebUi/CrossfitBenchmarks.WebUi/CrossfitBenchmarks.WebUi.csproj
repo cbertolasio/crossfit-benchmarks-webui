@@ -253,6 +253,7 @@
     <Compile Include="Services\TheGirlsOpenGraphAction.cs" />
     <Compile Include="Services\TheHerosOpenGraphAction.cs" />
     <Compile Include="Utility\ClaimsProvider.cs" />
+    <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\HttpClientUtilities.cs" />
     <Compile Include="Exceptions\HttpStatusException.cs" />
     <Compile Include="Utility\HttpClientDataService.cs" />

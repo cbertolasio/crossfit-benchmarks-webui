@@ -86,12 +86,12 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
                 .ViewName.Should().Be("TheGirls");
         }
 
-        [TestCase("theheros")]
+        [TestCase("theheroes")]
         public void Index_Returns_ExpectedView_ForTheHeros(string arg)
         {
             controller.Index(arg)
                 .As<ViewResult>()
-                .ViewName.Should().Be("TheHeros");
+                .ViewName.Should().Be("TheHeroes");
         }
 
         [TestCase("")]

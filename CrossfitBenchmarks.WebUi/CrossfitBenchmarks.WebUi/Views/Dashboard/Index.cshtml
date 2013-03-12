@@ -6,7 +6,7 @@
 <h2 data-toggle="tooltip" data-title="Your Summary">Your Summary</h2>
     <div class="row">
         <div id="summary-content" class="span8">
-            <h4 >History <small><i class="po icon-question-sign icon-white" data-toggle="popover" data-trigger="click" data-title="History" data-content="The history section shows your five most recent log entires..."></i></small></h4>
+            <h4 >History <a rel="popover" href="#" data-toggle="popover" data-trigger="click" data-placement="bottom" data-title="History" data-content="The history section shows your five most recent log entries..."><small><i class="icon-question-sign icon-white"></i></small></a></h4>
             <!-- ko if:value().length == 0 -->
             <p class="lead text-warning">You do not have any log entries to display... start logging...</p>
             <!-- /ko -->
@@ -26,8 +26,8 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="button-container pull-right">
-                        <a class="btn btn-inverse summary-delete tt" href="#" data-toggle="tooltip" data-title="Delete this entry..."><i class="icon-trash icon-white"></i></a>
-                        <a class="btn btn-inverse summary-info tt" href="#" data-toggle="tooltip" data-title="View all related log entries..."><i class="icon-info-sign icon-white"></i></a>                           
+                        <a class="btn btn-inverse summary-delete" rel="tooltip" href="#" data-toggle="tooltip" data-title="Delete this entry..."><i class="icon-trash icon-white"></i></a>
+                        <a class="btn btn-inverse summary-info" rel="tooltip" href="#" data-toggle="tooltip" data-title="View all related log entries..."><i class="icon-info-sign icon-white"></i></a>                           
                     </div>
                     <div class="clearfix"></div>
                 </div>

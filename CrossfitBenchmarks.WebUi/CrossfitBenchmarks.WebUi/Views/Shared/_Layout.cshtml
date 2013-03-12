@@ -79,13 +79,27 @@
         @Scripts.Render("~/bundles/crossfitbenchmarks")
         @RenderSection("scripts", required: false)
 
-        <script type="text/javascript">
-            var uvOptions = {};
-            (function () {
-                var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-                uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/altfbbFfc4h2gujW6dIJw.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-            })();
-        </script>
+<!-- UserVoice JavaScript SDK (only needed once on a page) -->
+<script>(function () {
+var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+uv.src = '//widget.uservoice.com/D252wS8FPY766Rjby8Gkhw.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s)
+})()</script>
+
+<!-- A tab to launch the Classic Widget -->
+<script>
+    UserVoice = window.UserVoice || [];
+    UserVoice.push(['showTab', 'classic_widget', {
+        mode: 'full',
+        primary_color: '#000000',
+        link_color: '#b94a48',
+        default_mode: 'feedback',
+        forum_id: 197767,
+        tab_label: 'Feedback & Support',
+        tab_color: '#b94a48',
+        tab_position: 'middle-right',
+        tab_inverted: false
+    }]);
+</script>
     </body>
 </html>

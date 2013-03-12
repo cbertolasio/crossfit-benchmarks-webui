@@ -7,6 +7,10 @@ CFBM.Benchmarks = (function () {
         $modalContainer=$("#addLogEntry-modal")[0],
         logEntryType = null;
 
+    function toggleAddNew() {
+        $($container).toggle(500);
+        $($modalContainer).toggle(500);
+    };
     function onReady(jsModel, rootContainer, logEntryType) {
         $container = rootContainer;
         viewModel = ko.mapping.fromJS(jsModel);
@@ -27,6 +31,10 @@ CFBM.Benchmarks = (function () {
         viewModel.selectedHeader = ko.observable("");
         viewModel.setHeader = function (data) {
             viewModel.selectedHeader(data.name);
+            toggleAddNew();
+        };
+        addNewViewModel.cancelAddNew = function () {
+            toggleAddNew();
         };
         ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
@@ -35,13 +43,13 @@ CFBM.Benchmarks = (function () {
         $("#dp3", $modalContainer).datepicker();
 
 
-        $(".save-button", $(".modal-footer")).click(function () {
+        //$(".save-button", $(".form-actions")).click(function () {
 
-            $(".addNewLogEntry-form", $(".modal-body")).submit();
+        //    $(".addNewLogEntry-form", $("#addLogEntry-modal")).submit();
             
-        });
+        //});
 
-        $(".cancel-button", $(".modal-footer")).click(function () {
+        $(".cancel-button", $(".form-actions")).click(function () {
             addNewViewModel.rollback();
             addNewViewModel.score("");
             addNewViewModel.dateOfWod(moment().format("MM/DD/YYYY"));
@@ -72,6 +80,19 @@ CFBM.Benchmarks = (function () {
         //    showMeridian: true
         //}
         );
+
+        $("[rel='popover']").popover({
+                html: true,
+                content: function () {
+                    return $($(this).attr("data-id")).html();
+                }
+        });
+        $("[rel='tooltip']").tooltip({
+            html: true,
+            title: function () {
+                return $($(this).attr("data-id")).html();
+            }
+        });
     };
 
 
@@ -95,7 +116,8 @@ CFBM.Benchmarks = (function () {
         addNewViewModel.isaPersonalRecord(false);
 
         
-        $("#addLogEntry-modal").modal("hide");
+        //$("#addLogEntry-modal").modal("hide");
+        toggleAddNew();
     };
 
     return {
@@ -117,8 +139,8 @@ $(document).ready(function () {
 
     }
 
-    if ($("#theHeros-content").length) {
-        //theHerosModule.ready();
-        module.ready(theHerosViewModel, $("#theHeros-content"), "H");
+    if ($("#theHeroes-content").length) {
+        //theHeroesModule.ready();
+        module.ready(theHeroesViewModel, $("#theHeroes-content"), "H");
     }
 });

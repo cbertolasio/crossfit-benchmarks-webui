@@ -34,7 +34,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Services
         public void FActory_Returns_TheHerosOpenGraphAction()
         {
             var result = factory.Get(GetActionContext("H", false));
-            result.Should().BeOfType<TheHerosOpenGraphAction>();
+            result.Should().BeOfType<TheHeroesOpenGraphAction>();
         }
 
         [Test]

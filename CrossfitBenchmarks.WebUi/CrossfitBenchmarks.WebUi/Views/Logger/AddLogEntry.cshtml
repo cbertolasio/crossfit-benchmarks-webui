@@ -1,28 +1,23 @@
 ﻿@model AddLogEntryViewModel
 
-<div id="addLogEntry-modal" class="modal hide fade">
-    <div class="modal-header">
-        <button type="button" class="close icon-white" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3><span class="text-info" data-bind="text:selectedWorkoutName()"></span> - Add New</h3>
-    </div>
 
-    <div class="modal-body">
+<div id="addLogEntry-modal" class="row" style="display:none;">
+    <h3 class="span6"><span class="text-info" data-bind="text:selectedWorkoutName()"></span> - Add New</h3>
+    
+    <div class="thumbnail span6">
 
         @using (Ajax.BeginForm("AddLogEntry", "Logger", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "CFBM.Benchmarks.onAddLogEntrySuccess" }, new { @class = "form-horizontal addNewLogEntry-form" })) {
         
-        @*<div class="control-group">
-            <label class="control-label key-field">Selected Workout</label>
-            <div class="controls">
-                <h3 class="text-info" id="selectedWorkoutName" data-bind="text:selectedWorkoutName()"></h3>
-            </div>
-        </div>*@
-            
         <div class="control-group">
             <label class="control-label">Score</label>
             <div class="controls">
+                <div class="input-append">
                 <input name="score" id="score" type="text" data-bind="value:score"/>
+                <button class="btn" rel="popover" data-id="#scoring-help" data-title="How Should I Enter My Score?" data-placement="bottom" data-trigger="hover"><i class="icon-question-sign"></i></button>
+                </div>
             </div>
         </div>
+                
 
         <div class="control-group">
             <label class="control-label">WOD Date</label>
@@ -68,18 +63,40 @@
             </div>
         </div>
         
+            
+    
+        <div class="form-actions">
+            <button class="btn cancel-button" data-bind="click:cancelAddNew"><i class="icon-remove-sign"></i>  Cancel</button>
+            <button class="btn btn-primary save-button"><i class="icon-ok-sign icon-white"></i>  Save</button>
+        </div>        
         
         }
     </div>
 
-    <div class="modal-footer">
-        <button class="btn cancel-button" data-dismiss="modal"><i class="icon-remove-sign"></i>  Cancel</button>
-        <button class="btn btn-primary save-button"><i class="icon-ok-sign icon-white"></i>  Save</button>
-
-    </div>
-
+    
 </div>
 
+<div id="scoring-help" style="display:none;">
+    <p>Ultimately - how you enter and track your score is up to you. <b>However</b> we
+        have provided some samples below...</p>
+    <dl> <dt>AMRAP</dt>
+
+        <dd>12 + 4 <em>(rounds + reps)</em>
+        </dd> <dt>For Time</dt>
+
+        <dd>01:15:33<em>(hours : minutes : seconds)</em>
+        </dd> <dt>Max Effort Pull-Ups</dt>
+
+        <dd>42 <em>(the number that you did)</em>
+        </dd> <dt>1 Rep Max Snatch</dt>
+
+        <dd>225# <em>(the number that you did)</em>
+        </dd>
+    </dl>
+    <p>Moral of the story - its up to you how you track your scores. Use your
+        judgement - we trust you - its your log - be consistent...</p>
+        <p>If there is still any doubt - as a coach, friend, or loved one...</p>
+</div>
 
 <script type="text/javascript">
     @Html.ToJSVar("workoutLogEntryViewModel", Model)

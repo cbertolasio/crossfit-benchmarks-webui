@@ -16,7 +16,7 @@ namespace CrossfitBenchmarks.WebUi.Services
         WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto);
         string GetSummary();
         IEnumerable<WorkoutLogEntryDto> GetTheGirls();
-        IEnumerable<WorkoutLogEntryDto> GetTheHeros();
+        IEnumerable<WorkoutLogEntryDto> GetTheHeroes();
         IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks();
     }
 
@@ -76,9 +76,9 @@ namespace CrossfitBenchmarks.WebUi.Services
             return GetWorkoutLogEntries(baseUri).Data;
         }
 
-        public IEnumerable<WorkoutLogEntryDto> GetTheHeros()
+        public IEnumerable<WorkoutLogEntryDto> GetTheHeroes()
         {
-            var baseUri = "TheHeros";
+            var baseUri = "TheHeroes";
             return GetWorkoutLogEntries(baseUri).Data;
         }
 

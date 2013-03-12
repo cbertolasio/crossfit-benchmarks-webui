@@ -20,7 +20,7 @@ namespace CrossfitBenchmarks.WebUi.Services
                 case "G":
                     return new TheGirlsOpenGraphAction(context);
                 case "H":
-                    return new TheHerosOpenGraphAction(context);
+                    return new TheHeroesOpenGraphAction(context);
                 case "B":
                     return new BenchmarkOpenGraphAction(context);
                 case "BasicWod":

@@ -5,9 +5,9 @@ using System.Linq;
 namespace CrossfitBenchmarks.WebUi.Models.Logger
 {
     
-    public class TheHerosViewModel
+    public class TheHeroesViewModel
     {
-        public TheHerosViewModel()
+        public TheHeroesViewModel()
         {
             WodList = new List<WodItemViewModel>();
         }

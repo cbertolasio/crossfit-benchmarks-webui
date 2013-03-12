@@ -166,4 +166,30 @@ small.summary-note {
 
 .popover-title, .popover-content {
     color:#000000;
+    font-size:14px;
+    font-weight:normal;
+}
+
+    a.facebook, a.twitter {
+        display: block;
+        /*float: left;*/
+        height: 24px;
+        /*padding-left: .5em;*/
+        text-indent: -9999px;
+        width: 24px;
+    }
+
+    a.facebook {
+        background: url("images/facebook.png") no-repeat;
+    }
+
+.popover-container
+{
+    display:none;
+    font-size:14px;
+}
+
+.form-actions
+{
+    background-color: transparent;
 }

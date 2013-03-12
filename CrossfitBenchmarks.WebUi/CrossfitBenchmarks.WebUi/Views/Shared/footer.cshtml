@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
     <article class="span12">
-    <p><small>This website is <b class="text-error">IN NO WAY</b> associated or affiliated with CrossFit, Inc.  This website was created by people that happen to members of a CrossFit affiliate and 
+    <p><small>This website is <b class="text-error">IN NO WAY</b> associated or affiliated with CrossFit, Inc.  This website was created by people that happen to be members of a CrossFit affiliate and 
     regularly participate in functional fitness workouts - this tool is for us to use.
     <b>The term - CrossFit is a registered trademark of CrossFit, Inc.  : please see <a href="http://www.crossfit.com/">their website</a> for more information</b>
     </small></p>
@@ -15,6 +15,12 @@
             <ul class="nav">
                 @Html.MenuLink("Privacy","Privacy", "Home")
                 @Html.MenuLink("Terms & Conditions","Terms", "Home")
+                
+            </ul>
+
+            <ul class="inline social pull-right">
+                <li><a href="http://www.facebook.com/pages/Everywod-Community/434209283319821" title="Every WOD Community Page on Facebook" class="facebook">Every WOD Community on Facebook</a></li>
+                <li><span class="label label-warning">Version @Html.Version()</span></li>
             </ul>
         </div>
     </div>

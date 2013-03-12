@@ -7,10 +7,10 @@ using System.Security.Principal;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
-    public class TheHerosOpenGraphAction : OpenGraphActionBase, IOpenGraphAction
+    public class TheHeroesOpenGraphAction : OpenGraphActionBase, IOpenGraphAction
     {
 
-        public TheHerosOpenGraphAction(OpenGraphActionContext context):base(context)
+        public TheHeroesOpenGraphAction(OpenGraphActionContext context):base(context)
         {
 
         }

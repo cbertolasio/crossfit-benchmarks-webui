@@ -24,10 +24,18 @@ namespace CrossFitTools.Web.Controllers
         {
             dataToSave.DateOfWod = DateTimeHelper.Combine(dataToSave.DateOfWod, dataToSave.TimeCreated);
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
-            
             var result = webServiceApi.CreateLogEntry(dto);
 
-            openGraph.PublishAction(dto, User.Identity, dataToSave.LogEntryType, dataToSave.IsAPersonalRecord);
+
+            try
+            {
+                openGraph.PublishAction(dto, User.Identity, dataToSave.LogEntryType, dataToSave.IsAPersonalRecord);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
 
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
             return new CustomJsonResult { Data = updatedViewModel };
@@ -51,11 +59,11 @@ namespace CrossFitTools.Web.Controllers
                     var theGirlsViewModel = new TheGirlsViewModel { WodList = listItems.ToList() };
                     return View("TheGirls", theGirlsViewModel);
 
-                case "theheros":
-                    result = webServiceApi.GetTheHeros();
+                case "theheroes":
+                    result = webServiceApi.GetTheHeroes();
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
-                    var theHerosViewModel = new TheHerosViewModel { WodList = listItems.ToList() };
-                    return View("TheHeros", theHerosViewModel);
+                    var theHeroesViewModel = new TheHeroesViewModel { WodList = listItems.ToList() };
+                    return View("TheHeroes", theHeroesViewModel);
                     break;
                 default:
                     return new EmptyResult();

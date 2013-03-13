@@ -21,3 +21,10 @@ CFBM.namespace = function (ns_string) {
     }
     return parent;
 };
+
+CFBM.clientTimeZone = function () {
+    var offsetInMinutes = moment().zone();
+
+    console.log(offsetInMinutes);
+    return offsetInMinutes;
+};

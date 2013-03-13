@@ -22,8 +22,9 @@ namespace CrossFitTools.Web.Controllers
         [NoCache]
         public ActionResult AddLogEntry(AddLogEntryViewModel dataToSave)
         {
-            dataToSave.DateOfWod = DateTimeHelper.Combine(dataToSave.DateOfWod, dataToSave.TimeCreated);
+            dataToSave.DateOfWod = DateTimeHelper.Combine(dataToSave.DateOfWod, dataToSave.TimeCreated, dataToSave.ClientTimeZone);
             var dto = Mapper.Map<LogEntryDto>(dataToSave);
+            dto.DateOfWodAsString = dto.DateOfWod.ToString();
             var result = webServiceApi.CreateLogEntry(dto);
 
 
@@ -64,7 +65,7 @@ namespace CrossFitTools.Web.Controllers
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
                     var theHeroesViewModel = new TheHeroesViewModel { WodList = listItems.ToList() };
                     return View("TheHeroes", theHeroesViewModel);
-                    break;
+                    
                 default:
                     return new EmptyResult();
             }

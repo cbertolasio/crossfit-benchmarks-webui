@@ -27,6 +27,7 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
         public string SelectedWorkoutId { get; set; }
         public string SelectedHeader { get; set; }
         public string TimeCreated { get; set; }
+        public int ClientTimeZone { get; set; }
 
         public AddLogEntryViewModel()
         {

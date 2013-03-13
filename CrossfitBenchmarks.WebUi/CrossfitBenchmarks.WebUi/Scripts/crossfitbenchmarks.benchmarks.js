@@ -36,19 +36,17 @@ CFBM.Benchmarks = (function () {
         addNewViewModel.cancelAddNew = function () {
             toggleAddNew();
         };
+        addNewViewModel.clientTimeZone = ko.computed(function () {
+            var clientTimeZone = CFBM.clientTimeZone();
+            return clientTimeZone;
+        });
+
         ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
         ko.applyBindings(addNewViewModel, $modalContainer);
 
         $("#dp3", $modalContainer).datepicker();
-
-
-        //$(".save-button", $(".form-actions")).click(function () {
-
-        //    $(".addNewLogEntry-form", $("#addLogEntry-modal")).submit();
-            
-        //});
-
+        
         $(".cancel-button", $(".form-actions")).click(function () {
             addNewViewModel.rollback();
             addNewViewModel.score("");

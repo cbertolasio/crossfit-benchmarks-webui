@@ -39,6 +39,7 @@ namespace CrossFitTools.Web.Controllers
             
 
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
+            
             return new CustomJsonResult { Data = updatedViewModel };
         }
 

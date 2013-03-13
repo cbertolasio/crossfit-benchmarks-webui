@@ -17,7 +17,8 @@ CFBM.Benchmarks = (function () {
         addNewViewModel = ko.mapping.fromJS(workoutLogEntryViewModel);
         addNewViewModel.logEntryType(logEntryType);
         this.logEntryType = logEntryType;
-        
+
+        var now = moment();
         $.each(viewModel.wodList(), function (index, item) {
             item.lastPrDateHumanized = ko.computed(function () {
                 return moment(item.lastPersonalRecordDate()).fromNow();
@@ -26,6 +27,10 @@ CFBM.Benchmarks = (function () {
             item.lastAttemptDateHumanized = ko.computed(function () {
                 return moment(item.lastAttemptDate()).fromNow();
             });
+
+            item.isInPast = function(comparator) {
+                  return moment(comparator).isBefore(now);
+            };
         });
 
         viewModel.selectedHeader = ko.observable("");
@@ -67,17 +72,7 @@ CFBM.Benchmarks = (function () {
             $(this).toggleClass("hover");
         });
 
-        $(".timepicker", $modalContainer).timepicker(
-        //    {
-        //    minuteStep: 5,
-        //    secondStep: 5,
-        //    showInputs: true,
-        //    template: 'modal',
-        //    modalBackdrop: true,
-        //    showSeconds: false,
-        //    showMeridian: true
-        //}
-        );
+        $(".timepicker", $modalContainer).timepicker();
 
         $("[rel='popover']").popover({
                 html: true,

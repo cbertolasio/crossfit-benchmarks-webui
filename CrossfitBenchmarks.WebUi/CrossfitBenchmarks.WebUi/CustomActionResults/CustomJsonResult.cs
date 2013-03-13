@@ -59,7 +59,7 @@ namespace CrossFitTools.Web.CustomActionResults
                 JsonSerializer jsonSerializer = new JsonSerializer { ContractResolver = new CamelCasePropertyNamesContractResolver(), Formatting = formatting };
                 jsonSerializer.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                 jsonSerializer.DateParseHandling = DateParseHandling.DateTimeOffset;
-                jsonSerializer.DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind;
+                jsonSerializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
                 
                 using (StringWriter stringWriter = new StringWriter(text, CultureInfo.InvariantCulture))
                 {

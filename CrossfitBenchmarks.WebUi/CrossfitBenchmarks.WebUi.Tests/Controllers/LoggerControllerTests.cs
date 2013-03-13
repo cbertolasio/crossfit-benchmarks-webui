@@ -36,6 +36,9 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         public void AddLogEntry_PublishesTo_OpenGraph(string dateString, string timeString)
         {
             
+            var item = new WorkoutLogEntryDto { LastEntry = new LogEntryDto { DateOfWod = DateTimeOffset.Now }, LastPersonalRecord = new LogEntryDto { DateOfWod = DateTimeOffset.Now } };
+            webServiceApi.Stub(it => it.CreateLogEntry(Arg<LogEntryDto>.Is.NotNull)).Return(item);
+            
             ogService.Expect(it => it.PublishAction(Arg<LogEntryDto>.Is.NotNull, Arg<IIdentity>.Is.NotNull, 
                 Arg<string>.Is.Null, Arg<bool>.Is.Anything));
 
@@ -61,7 +64,10 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         [TestCase("benchmark")]
         public void Index_Uses_WebApi(string val)
         {
-            IEnumerable<WorkoutLogEntryDto> testData = new List<WorkoutLogEntryDto>();
+            List<WorkoutLogEntryDto> testData = new List<WorkoutLogEntryDto>();
+            var item = new WorkoutLogEntryDto { LastEntry = new LogEntryDto { DateOfWod = DateTimeOffset.Now }, LastPersonalRecord = new LogEntryDto { DateOfWod = DateTimeOffset.Now } };
+            testData.Add(item);
+
             webServiceApi.Expect(it => it.GetTheBenchmarks()).Return(testData);
 
             controller.Index(val);

@@ -39,7 +39,9 @@ namespace CrossFitTools.Web.Controllers
             
 
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
-            
+            updatedViewModel.LastAttemptDateAsString = result.LastEntry.DateOfWod.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz");
+            updatedViewModel.LastPersonalRecordDateAsString = result.LastPersonalRecord.DateOfWod.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz");
+
             return new CustomJsonResult { Data = updatedViewModel };
         }
 

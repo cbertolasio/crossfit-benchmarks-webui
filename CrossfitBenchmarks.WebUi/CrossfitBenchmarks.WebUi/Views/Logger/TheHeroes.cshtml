@@ -12,23 +12,7 @@
         <ul id="wodItems" data-bind="foreach: wodList()" class="thumbnails">
             <li class="span4">
                 <div class="thumbnail" style="min-height:140px;" data-bind="attr:{id:id}">
-                    <div style="min-height:100px;">
-                        <h4 data-bind="text:name" style="display: inline-block"></h4>
-
-                    <!-- ko if:lastScore() != null -->
-                    <p><span style="display: inline-block">Last: <span data-bind="text:lastScore"></span><small class="muted"> about <span data-bind="text:lastAttemptDateHumanized"></span></small></span></p>
-                    <p><span style="display: inline-block">PR: <span data-bind="text:personalRecordScore"></span><small class="muted"> about <span data-bind="text:lastPrDateHumanized()"></span></small></span></p>
-                    <!-- /ko -->
-
-                    <!-- ko if:lastScore() == null -->
-                    <p><span style="display: inline-block"><strong class="note text-error"><em>You should create an entry for this WOD!</em></strong></span></p>
-                    <!-- /ko -->
-
-                    </div>
-                    <div class="clearfix"></div>
-                    <div style="min-height:40px;">
-                        <a id="buttons" style="display: inline-block;position:relative;top:10px" class="btn btn-primary addNew-button" data-bind="click:$parent.setHeader"><i class="icon-plus-sign icon-white"></i> Add New</a>
-                    </div>
+                    @Html.Partial("WodItem")
                 </div>
             </li>
         </ul>

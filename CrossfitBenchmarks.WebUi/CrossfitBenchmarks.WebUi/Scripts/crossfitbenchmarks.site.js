@@ -28,3 +28,48 @@ CFBM.clientTimeZone = function () {
     console.log(offsetInMinutes);
     return offsetInMinutes;
 };
+
+CFBM.registerToolTips = function () {
+};
+
+CFBM.Site = (function () {
+
+    function applyHoverStyle() {
+        $(".thumbnail", $("ul#wodItems")).on("hover", function (event) {
+            $(this).toggleClass("hover");
+        });
+    };
+
+    function registerPopvers() {
+        $("[rel='popover']").popover({
+            html: true,
+            content: function () {
+                return $($(this).attr("data-id")).html();
+            }
+        });
+    }
+
+    function registerToolTips() {
+        $("[rel='tooltip']").tooltip({
+            html: true,
+            title: function () {
+                return $($(this).attr("data-id")).html();
+            }
+        });
+    }
+
+    function init() {
+        var $modalContainer = $("#addLogEntry-modal");
+
+        applyHoverStyle();
+        registerToolTips();
+        registerPopvers();
+
+        $("#dp3", $modalContainer).datepicker();
+        $(".timepicker", $modalContainer).timepicker();
+    }
+
+    return {
+        init: init
+    };
+})();

@@ -4,7 +4,10 @@
 }
 
 <h2 data-toggle="tooltip" data-title="Your Summary">Your Summary</h2>
-    <div class="row">
+    
+        @Html.Partial("ButtonToolbar")
+    
+    <div class="row summary-container">
         <div id="summary-content" class="span8">
             <h4 >History <a rel="popover" href="#" data-toggle="popover" data-trigger="click" data-placement="bottom" data-title="History" data-content="The history section shows your five most recent log entries..."><small><i class="icon-question-sign icon-white"></i></small></a></h4>
             <!-- ko if:value().length == 0 -->
@@ -13,33 +16,37 @@
 
             <!-- ko: if:value().length > 0 -->
             <ul id="wodItems" data-bind="foreach: value()" class="thumbnails">
-            <li class="span8">
-                <div class="thumbnail" style="min-height:40px;" data-bind="attr:{id:WorkoutLogId}">
-                    <div class="pull-left">
-                        <p>
-                            <span data-bind="visible:IsAPersonalRecord" class="label label-important">New PR!</span>
-                            <span data-bind="text:WorkoutName" class="label label-info"></span>
-                            <small class="muted"><span data-bind="if: moment($data.DateOfWod()).isBefore(moment())">&nbsp;was logged about&nbsp;</span> 
-                                <span data-bind="if: !(moment($data.DateOfWod()).isBefore(moment()))">&nbsp;will be logged&nbsp;</span>
-                                <span data-bind="text:moment($data.DateOfWod()).fromNow()"></span>and you scored&nbsp;<span class="score badge badge-info" data-bind="text:Score"></span></small></p>
-                        <small class="summary-note">Notes: <span data-bind="text:Notes"></span></small>
+                <li class="span8">
+                    <div class="thumbnail" style="min-height:40px;" data-bind="attr:{id:WorkoutLogId}">
+                        <div class="pull-left">
+                            <p>
+                                <span data-bind="visible:IsAPersonalRecord" class="label label-important">New PR!</span>
+                                <span data-bind="text:WorkoutName" class="label label-info"></span>
+                                <small class="muted"><span data-bind="if: moment($data.DateOfWod()).isBefore(moment())">&nbsp;was logged about&nbsp;</span> 
+                                    <span data-bind="if: !(moment($data.DateOfWod()).isBefore(moment()))">&nbsp;will be logged&nbsp;</span>
+                                    <span data-bind="text:moment($data.DateOfWod()).fromNow()"></span>and you scored&nbsp;<span class="score badge badge-info" data-bind="text:Score"></span></small></p>
+                            <small class="summary-note">Notes: <span data-bind="text:Notes"></span></small>
                        
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="button-container pull-right">
+                            <a class="btn btn-inverse summary-delete" rel="tooltip" href="#" data-toggle="tooltip" data-title="Delete this entry..."><i class="icon-trash icon-white"></i></a>
+                            <a class="btn btn-inverse summary-info" rel="tooltip" href="#" data-toggle="tooltip" data-title="View all related log entries..."><i class="icon-info-sign icon-white"></i></a>                           
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="button-container pull-right">
-                        <a class="btn btn-inverse summary-delete" rel="tooltip" href="#" data-toggle="tooltip" data-title="Delete this entry..."><i class="icon-trash icon-white"></i></a>
-                        <a class="btn btn-inverse summary-info" rel="tooltip" href="#" data-toggle="tooltip" data-title="View all related log entries..."><i class="icon-info-sign icon-white"></i></a>                           
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
 
             <!-- /ko -->
         </div>
         <div class="span4"> <h4>Your Profile</h4><h4>Your Settings</h4>
         </div>
     </div>
+    <div style="display:none;" class="row addNew-container">
+        @Html.Partial("AddNew", new AddLogEntryViewModel())
+    </div>
+
 
 
 @*<pre>@Html.ToJson((object)ViewBag.summaryData)</pre>*@

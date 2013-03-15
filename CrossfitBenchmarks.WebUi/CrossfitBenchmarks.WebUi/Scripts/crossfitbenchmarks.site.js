@@ -58,6 +58,19 @@ CFBM.Site = (function () {
         });
     }
 
+    function post(url, data, successCallback, errorCallback, completeCallback) {
+        //var json = $.parseJSON(data);
+        $.ajax({
+            url: url,
+            data: data,
+            //contentType: "application/json",
+            error: errorCallback,
+            success: successCallback,
+            complete: completeCallback,
+            type: "POST"
+        });
+    };
+
     function init() {
         var $modalContainer = $("#addLogEntry-modal");
 
@@ -66,10 +79,14 @@ CFBM.Site = (function () {
         registerPopvers();
 
         $("#dp3", $modalContainer).datepicker();
-        $(".timepicker", $modalContainer).timepicker();
+        $(".timepicker", $modalContainer).timepicker(
+            {
+                minuteStep: 1
+            });
     }
 
     return {
-        init: init
+        init: init,
+        post: post
     };
 })();

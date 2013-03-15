@@ -1,4 +1,6 @@
-﻿CFBM.namespace("CFBM.Dashboard");
+﻿/// <reference path="crossfitbenchmarks.site.js" />
+
+CFBM.namespace("CFBM.Dashboard");
 CFBM.Dashboard = (function () {
     var viewModel = null,
     $container = null,
@@ -19,12 +21,40 @@ CFBM.Dashboard = (function () {
         self.cancelAddNew = function () {
             toggleView();
         };
+
+
+        self.save = function () {
+            saveBasicLogEntry();
+        }
+
+        self.clientTimeZone = ko.computed(function () {
+            var clientTimeZone = CFBM.clientTimeZone();
+            return clientTimeZone;
+        });
     }
 
     function SummaryViewModel() {
         var self = this;
         ko.mapping.fromJS(summaryData, {}, this);
     }
+
+    function onSaveSuccessful(data) {
+
+    };
+
+    function saveBasicLogEntry() {
+        var data = $("#addNewLogEntry-form").serialize();
+        
+        CFBM.Site.post("/Logger/AddLogEntry", 
+            data, 
+            function(data){}, 
+            function(jqXHR, statusText){
+                console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+            }, 
+            function(jqXHR, statusText){
+                console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+            });
+    };
 
     function toggleView() {
         $(".addNew-container").toggle();

@@ -39,7 +39,15 @@ CFBM.Dashboard = (function () {
     }
 
     function onSaveSuccessful(data) {
+        console.log("save successful...", data);
+        $.get("/Dashboard/History", null, function (data) {
+            console.log(data);
+            var history = data;
+            ko.mapping.fromJS($.parseJSON(history), viewModel);
+        }, "json");
 
+        
+        toggleView();
     };
 
     function saveBasicLogEntry() {
@@ -47,7 +55,7 @@ CFBM.Dashboard = (function () {
         
         CFBM.Site.post("/Logger/AddLogEntry", 
             data, 
-            function(data){}, 
+            onSaveSuccessful, 
             function(jqXHR, statusText){
                 console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
             }, 

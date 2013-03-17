@@ -10,6 +10,7 @@ using CrossfitBenchmarks.WebUi.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using CrossfitBenchmarks.WebUi.Utility;
+using CrossFitTools.Web.CustomActionResults;
 
 namespace CrossfitBenchmarks.WebUi.Controllers
 {
@@ -44,6 +45,12 @@ namespace CrossfitBenchmarks.WebUi.Controllers
             ViewBag.summaryData = Newtonsoft.Json.JsonConvert.DeserializeObject(result, settings);
 
             return View();
+        }
+
+        [NoCache]
+        public ActionResult History()
+        {
+            return new CustomJsonResult { Data = service.GetSummary(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
 

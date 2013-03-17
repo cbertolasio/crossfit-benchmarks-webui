@@ -193,3 +193,8 @@ small.summary-note {
 {
     background-color: transparent;
 }
+
+.warning-link, a:hover.warning-link, a:visited.warning-link, a:link.warning-link
+{
+    color:#ffffff;
+}

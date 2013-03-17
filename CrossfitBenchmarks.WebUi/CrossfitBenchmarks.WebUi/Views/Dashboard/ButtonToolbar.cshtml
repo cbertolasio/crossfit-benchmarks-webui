@@ -1,0 +1,14 @@
+﻿<div id="dashboard-toolbar" class="btn-toolbar">
+    <div class="btn-group">
+        <a class="btn" href="#" data-bind="click:addNewBasicWod">Basic WOD</a>
+    </div>
+    <div class="btn-group">
+        @*<a class="btn" >Benchmarks</a>
+        <a class="btn">Girls</a>
+        <a class="btn">Heroes</a>*@
+
+        @Html.ActionLink("Benchmarks","Index", "Logger", new { @val = "benchmark"}, new { @class="btn" })
+        @Html.ActionLink("Girls","Index", "Logger", new { @val = "thegirls"}, new { @class="btn" })
+        @Html.ActionLink("Heroes","Index", "Logger", new { @val = "theheroes"}, new { @class="btn" })
+    </div>
+</div>

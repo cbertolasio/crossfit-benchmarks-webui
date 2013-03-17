@@ -49,8 +49,6 @@ CFBM.Benchmarks = (function () {
         ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
         ko.applyBindings(addNewViewModel, $modalContainer);
-
-        $("#dp3", $modalContainer).datepicker();
         
         $(".cancel-button", $(".form-actions")).click(function () {
             addNewViewModel.rollback();
@@ -68,24 +66,7 @@ CFBM.Benchmarks = (function () {
             addNewViewModel.logEntryType(logEntryType); //not sure why i need this exactly... but i will get it worked out
         });
 
-        $(".thumbnail", $("ul#wodItems")).on("hover", function (event) {
-            $(this).toggleClass("hover");
-        });
-
-        $(".timepicker", $modalContainer).timepicker();
-
-        $("[rel='popover']").popover({
-                html: true,
-                content: function () {
-                    return $($(this).attr("data-id")).html();
-                }
-        });
-        $("[rel='tooltip']").tooltip({
-            html: true,
-            title: function () {
-                return $($(this).attr("data-id")).html();
-            }
-        });
+        CFBM.Site.init();
     };
 
 

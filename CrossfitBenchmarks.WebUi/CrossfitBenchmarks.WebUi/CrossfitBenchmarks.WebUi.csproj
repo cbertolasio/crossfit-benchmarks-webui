@@ -440,6 +440,8 @@
     <Content Include="Views\Dashboard\AddNew.cshtml" />
     <Content Include="Views\Shared\_FbObjectLayout.cshtml" />
     <Content Include="Views\Logger\WodItem.cshtml" />
+    <Content Include="Views\Logger\WodItems.cshtml" />
+    <Content Include="Views\Dashboard\ButtonToolbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

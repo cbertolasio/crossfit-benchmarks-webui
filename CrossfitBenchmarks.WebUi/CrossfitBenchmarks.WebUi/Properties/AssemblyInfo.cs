@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 
 
 
-[assembly: AssemblyTitle("CrossFitTools.Web")]
+[assembly: AssemblyTitle("EveryWod.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CrossFitTools.Web")]
+[assembly: AssemblyProduct("EveryWod.Web")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 
 
 
-[assembly: AssemblyVersion("0.1.8.0")]
-[assembly: AssemblyFileVersion("0.1.8.0")]
+[assembly: AssemblyVersion("0.1.11.0")]
+[assembly: AssemblyFileVersion("0.1.11.0")]

@@ -23,10 +23,8 @@ namespace CrossfitBenchmarks.WebUi.Services
                     return new TheHeroesOpenGraphAction(context);
                 case "B":
                     return new BenchmarkOpenGraphAction(context);
-                case "BasicWod":
+                case "A":
                     return new BasicWodOpenGraphAction(context);
-
-
                 default:
                     throw new InvalidOperationException(string.Format("unable to create an Open Graph Action for logEntryType: '{0}'", context.LogEntryType));
             }

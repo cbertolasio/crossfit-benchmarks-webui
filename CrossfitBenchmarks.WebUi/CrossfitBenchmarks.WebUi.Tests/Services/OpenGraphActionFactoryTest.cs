@@ -53,7 +53,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Services
         [TestCase("B")]
         [TestCase("G")]
         [TestCase("H")]
-        [TestCase("BasicWod")]
+        [TestCase("A")]
         public void Factory_Returns_PersonalRecordOpenGraphAction(string logEntryType)
         {
             var result = factory.Get(GetActionContext(logEntryType, true));
@@ -63,7 +63,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Services
         [Test]
         public void Factory_Returns_BasicWodOpengraphAction()
         {
-            var result = factory.Get(GetActionContext("BasicWod", false));
+            var result = factory.Get(GetActionContext("A", false));
             result.Should().BeOfType<BasicWodOpenGraphAction>();
         }
 

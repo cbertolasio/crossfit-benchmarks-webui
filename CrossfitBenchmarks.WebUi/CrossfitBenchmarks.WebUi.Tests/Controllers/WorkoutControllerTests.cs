@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,34 +10,28 @@ using Ninject;
 using System.Web.Mvc;
 using FluentAssertions;
 using CrossfitBenchmarks.WebUi.Controllers;
+
 namespace CrossfitBenchmarks.WebUi.Tests.Controllers
 {
-
     [TestFixture]
-    public class HomeControllerTests
+    public class WorkoutControllerTests
     {
         [Test]
-        public void Terms_Returns_Expected_View()
+        public void History_Returns_ExpectedView()
         {
-            var result = controller.Terms();
-
-            ((ViewResult)result).ViewName.Should().Be("Terms");
-        }
-
-        [Test]
-        public void Privacy_Returns_Expected_View()
-        {
-            var result = controller.Privacy();
-            ((ViewResult)result).ViewName.Should().Be("Privacy");
+            var result = controller.History();
+                ((ViewResult)result).ViewName.Should().Be("History");
         }
 
         [SetUp]
         public void Setup()
         {
             RhinoMocksMockingKernel kernel = new RhinoMocksMockingKernel();
-            controller = kernel.Get<HomeController>();
+            controller = kernel.Get<WorkoutController>();
         }
 
-        private HomeController controller;
+
+        private WorkoutController controller;
     }
 }
+

@@ -36,6 +36,10 @@ CFBM.Dashboard = (function () {
     function SummaryViewModel() {
         var self = this;
         ko.mapping.fromJS(summaryData, {}, this);
+
+        self.getHrefToWorkoutHistory = function(data) {
+            return "/Workout/History?id=" + data.WorkoutLogId();
+        };
     }
 
     function onSaveSuccessful(data) {

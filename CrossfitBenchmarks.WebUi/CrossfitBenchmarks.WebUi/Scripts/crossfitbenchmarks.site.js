@@ -35,7 +35,7 @@ CFBM.registerToolTips = function () {
 CFBM.Site = (function () {
 
     function applyHoverStyle() {
-        $(".thumbnail", $("ul#wodItems")).on("hover", function (event) {
+        $(".wodItems-container").on("hover", ".thumbnail", function (event) {
             $(this).toggleClass("hover");
         });
     };

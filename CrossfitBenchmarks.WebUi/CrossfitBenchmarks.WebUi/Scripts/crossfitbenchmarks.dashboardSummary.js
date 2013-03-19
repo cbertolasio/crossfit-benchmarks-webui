@@ -8,8 +8,14 @@ CFBM.WorkoutHistory = (function () {
         var self = this;
         ko.mapping.fromJS(workoutHistoryViewModel, {}, this);
 
-        self.workoutName = ko.computed(function(){
-            return self.value()[0].WorkoutName();
+        self.workoutName = ko.computed(function () {
+            if (self.value().length > 0)
+            {
+                return self.value()[0].WorkoutName();
+            }
+            
+            return "";
+
         }, this);
     }
 

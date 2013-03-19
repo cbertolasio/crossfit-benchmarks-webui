@@ -3,8 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }    
     <div class="row workoutHistory-container">
-        <h2 class="span8 tt"><span>Workout History for </span><span class="text-info" data-bind="text:$root.workoutName"></span></h2>
-        <p><small class="span8">This view shows up to the last 25 log entries for: <span class="label label-warning" data-bind="text:$root.workoutName"></span></small></p>
+        <h2 class="span8 tt"><span>Workout History<span></span><span style="display:none;" class="text-info" data-bind="if:value().length > 0,text:' for ' + $root.workoutName"></span></span></h2>
+        <p style="display:none;" data-bind="if:value().length > 0"><small class="span8">This view shows up to the last 25 log entries for: <span class="label label-warning" data-bind="text:$root.workoutName"></span></small></p>
         <div id="workoutHistory-content" class="span8" style="margin-top:1em;">
             <!-- ko if:value().length == 0 -->
             <p style="display:none" data-bind="visible:value().length == 0" class="lead text-warning">You do not have any log entries to display... start logging...</p>

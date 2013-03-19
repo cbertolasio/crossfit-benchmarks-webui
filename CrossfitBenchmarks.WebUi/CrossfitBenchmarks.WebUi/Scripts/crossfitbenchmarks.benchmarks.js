@@ -38,6 +38,10 @@ CFBM.Benchmarks = (function () {
             viewModel.selectedHeader(data.name);
             toggleAddNew();
         };
+        viewModel.historyUri = function (data) {
+            return "/Workout/History?id=" + data.workoutId();
+        };
+
         addNewViewModel.cancelAddNew = function () {
             toggleAddNew();
         };
@@ -45,6 +49,7 @@ CFBM.Benchmarks = (function () {
             var clientTimeZone = CFBM.clientTimeZone();
             return clientTimeZone;
         });
+        
 
         ko.editable(addNewViewModel);
         ko.applyBindings(viewModel, $container[0]);
@@ -60,7 +65,7 @@ CFBM.Benchmarks = (function () {
 
         $(".addNew-button", $container).click(function () {
             addNewViewModel.beginEdit();
-            addNewViewModel.selectedWorkoutName($(this).closest("div.thumbnail").find("h4").html());
+            addNewViewModel.selectedWorkoutName($(this).closest("div.thumbnail").find(".workout-name").text());
             addNewViewModel.selectedWorkoutId($(this).closest("div.thumbnail").attr("id"));
             addNewViewModel.userId(3); //note this needs to come out soon...
             addNewViewModel.logEntryType(logEntryType); //not sure why i need this exactly... but i will get it worked out

@@ -14,6 +14,7 @@ using CrossFitTools.Web.CustomActionResults;
 
 namespace CrossfitBenchmarks.WebUi.Controllers
 {
+
     [Authorize]
     public class DashboardController : Controller
     {

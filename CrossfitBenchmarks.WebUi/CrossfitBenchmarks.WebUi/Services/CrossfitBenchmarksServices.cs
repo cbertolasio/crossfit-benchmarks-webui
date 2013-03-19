@@ -17,6 +17,7 @@ namespace CrossfitBenchmarks.WebUi.Services
         string GetSummary();
         IEnumerable<WorkoutLogEntryDto> GetTheGirls();
         IEnumerable<WorkoutLogEntryDto> GetTheHeroes();
+        string GetWorkoutHistory(int id);
         IEnumerable<WorkoutLogEntryDto> GetTheBenchmarks();
     }
 
@@ -80,6 +81,20 @@ namespace CrossfitBenchmarks.WebUi.Services
         {
             var baseUri = "TheHeroes";
             return GetWorkoutLogEntries(baseUri).Data;
+        }
+
+        public string GetWorkoutHistory(int id)
+        {
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseODataUri().ToString());
+            var request = new RestSharp.RestRequest("WorkoutLogs", RestSharp.Method.GET);
+            request.RequestFormat = DataFormat.Json;
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            request.AddParameter("$filter", string.Format("UserNameIdentifier eq '{0}' and WorkoutId eq {1}", claimsProvider.GetNameIdentifier(), id));
+            request.AddParameter("$top", "25");
+            request.AddParameter("$orderby", "DateOfWod desc,WorkoutLogId desc");
+            request.AddParameter("$inlinecount", "allpages");
+            request.JsonSerializer = new JsonSerializer();
+            return client.Execute(request).Content;
         }
 
         private IRestResponse<List<WorkoutLogEntryDto>> GetWorkoutLogEntries(string baseUri)

@@ -15,5 +15,6 @@ namespace CrossfitBenchmarks.WebUi.Models.Logger
         public string PersonalRecordScore { get; set; }
         public DateTimeOffset LastAttemptDate { get; set; }
         public DateTimeOffset LastPersonalRecordDate { get; set; }
+        public int WorkoutId { get; set; }
     }
 }

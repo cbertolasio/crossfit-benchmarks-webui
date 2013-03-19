@@ -9,13 +9,13 @@ using Ninject.MockingKernel.RhinoMock;
 using Ninject;
 using System.Web.Mvc;
 using FluentAssertions;
+using CrossfitBenchmarks.WebUi.Controllers;
 namespace CrossfitBenchmarks.WebUi.Tests.Controllers
 {
 
     [TestFixture]
     public class HomeControllerTests
     {
-
         [Test]
         public void Terms_Returns_Expected_View()
         {
@@ -23,6 +23,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
 
             ((ViewResult)result).ViewName.Should().Be("Terms");
         }
+
         [Test]
         public void Privacy_Returns_Expected_View()
         {
@@ -36,7 +37,7 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
             RhinoMocksMockingKernel kernel = new RhinoMocksMockingKernel();
             controller = kernel.Get<HomeController>();
         }
-        private HomeController controller;
 
+        private HomeController controller;
     }
 }

@@ -1,5 +1,31 @@
 ﻿/// <reference path="crossfitbenchmarks.site.js" />
 
+CFBM.namespace("CFBM.WorkoutHistory");
+CFBM.WorkoutHistory = (function () {
+    var $container;
+
+    function WorkoutHistoryViewModel(){
+        var self = this;
+        ko.mapping.fromJS(workoutHistoryViewModel, {}, this);
+
+        self.workoutName = ko.computed(function(){
+            return self.value()[0].WorkoutName();
+        }, this);
+    }
+
+    function ready(rootContainer){
+        $container = rootContainer;
+
+        ko.applyBindings(new WorkoutHistoryViewModel(), $container[0]);
+
+        CFBM.Site.init();
+    };
+
+    return {
+        ready:ready
+    }
+})();
+
 CFBM.namespace("CFBM.Dashboard");
 CFBM.Dashboard = (function () {
     var viewModel = null,
@@ -38,7 +64,7 @@ CFBM.Dashboard = (function () {
         ko.mapping.fromJS(summaryData, {}, this);
 
         self.getHrefToWorkoutHistory = function(data) {
-            return "/Workout/History?id=" + data.WorkoutLogId();
+            return "/Workout/History?id=" + data.WorkoutId();
         };
     }
 
@@ -94,9 +120,14 @@ CFBM.Dashboard = (function () {
 }());
 
 $(document).ready(function () {
-    var module = CFBM.Dashboard;
+    var dashboardModule = CFBM.Dashboard,
+        workoutHistoryModule = CFBM.WorkoutHistory;
 
     if ($("#summary-content").length) {
-        module.ready($("#summary-content"));
+        dashboardModule.ready($("#summary-content"));
+    }
+
+    if ($(".workoutHistory-container").length) {
+        workoutHistoryModule.ready($(".workoutHistory-container"));
     }
 });

@@ -10,6 +10,8 @@ using Ninject;
 using System.Web.Mvc;
 using FluentAssertions;
 using CrossfitBenchmarks.WebUi.Controllers;
+using CrossfitBenchmarks.WebUi.Services;
+using Rhino.Mocks;
 
 namespace CrossfitBenchmarks.WebUi.Tests.Controllers
 {
@@ -19,8 +21,21 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         [Test]
         public void History_Returns_ExpectedView()
         {
-            var result = controller.History();
+            webServicesApi.Stub(it => it.GetWorkoutHistory(Arg<int>.Is.GreaterThan(0))).Return(Properties.Resources.TestJson);
+
+            var result = controller.History(123);
                 ((ViewResult)result).ViewName.Should().Be("History");
+        }
+
+        [Test]
+        public void History_GetsWorkoutHistory_FromService()
+        {
+            var jsonData = Properties.Resources.TestJson;
+            var logEntryId = 254;
+            webServicesApi.Expect(it => it.GetWorkoutHistory(logEntryId)).Return(jsonData);
+
+            controller.History(logEntryId);
+
         }
 
         [SetUp]
@@ -28,9 +43,11 @@ namespace CrossfitBenchmarks.WebUi.Tests.Controllers
         {
             RhinoMocksMockingKernel kernel = new RhinoMocksMockingKernel();
             controller = kernel.Get<WorkoutController>();
+            webServicesApi = kernel.Get<ICrossfitBenchmarksServices>();
         }
 
 
+        private ICrossfitBenchmarksServices webServicesApi;
         private WorkoutController controller;
     }
 }

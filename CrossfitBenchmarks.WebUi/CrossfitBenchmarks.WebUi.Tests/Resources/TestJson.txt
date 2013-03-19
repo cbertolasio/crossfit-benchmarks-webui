@@ -1,0 +1,15 @@
+{
+  "odata.metadata":"http://localhost:33203/odata/$metadata#WorkoutLogs","odata.count":"20","value":[
+    {
+      "DateCreated":"2013-03-18T11:48:49.509-06:00","DateOfWod":"2013-03-18T11:48:00-06:00","IsAPersonalRecord":false,"Score":"test","UserId":3,"UserNameIdentifier":"100000144938400","WorkoutId":3,"WorkoutLogId":"252","WorkoutName":"Deadlift","Notes":"test","WorkoutType":"Benchmark","WorkoutTypeId":"B"
+    },{
+      "DateCreated":"2013-03-12T12:36:03.3904-06:00","DateOfWod":"2013-03-12T12:30:00-06:00","IsAPersonalRecord":true,"Score":"test","UserId":3,"UserNameIdentifier":"100000144938400","WorkoutId":3,"WorkoutLogId":"211","WorkoutName":"Deadlift","Notes":"test","WorkoutType":"Benchmark","WorkoutTypeId":"B"
+    },{
+      "DateCreated":"2013-03-12T01:04:18.7654-06:00","DateOfWod":"2013-03-12T01:00:00-06:00","IsAPersonalRecord":false,"Score":"415","UserId":3,"UserNameIdentifier":"100000144938400","WorkoutId":3,"WorkoutLogId":"210","WorkoutName":"Deadlift","Notes":"test","WorkoutType":"Benchmark","WorkoutTypeId":"B"
+    },{
+      "DateCreated":"2013-03-12T01:03:14.3614-06:00","DateOfWod":"2013-03-12T01:00:00-06:00","IsAPersonalRecord":false,"Score":"415","UserId":3,"UserNameIdentifier":"100000144938400","WorkoutId":3,"WorkoutLogId":"209","WorkoutName":"Deadlift","Notes":"test","WorkoutType":"Benchmark","WorkoutTypeId":"B"
+    },{
+      "DateCreated":null,"DateOfWod":"2013-03-11T17:15:00-06:00","IsAPersonalRecord":false,"Score":null,"UserId":3,"UserNameIdentifier":"100000144938400","WorkoutId":3,"WorkoutLogId":"149","WorkoutName":"Deadlift","Notes":null,"WorkoutType":"Benchmark","WorkoutTypeId":"B"
+    }
+  ],"odata.nextLink":"http://localhost:33203/odata/WorkoutLogs?$filter=UserNameIdentifier%20eq%20%27100000144938400%27%20and%20WorkoutId%20eq%203&$top=20&$orderby=DateOfWod%20desc%2CWorkoutLogId%20desc&$inlinecount=allpages&$skip=5"
+}

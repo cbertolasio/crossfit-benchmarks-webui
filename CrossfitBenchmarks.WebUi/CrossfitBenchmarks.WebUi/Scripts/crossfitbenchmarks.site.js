@@ -41,7 +41,7 @@ CFBM.Site = (function () {
     };
 
     function registerPopvers() {
-        $("[rel='popover']").popover({
+        $("[rel='popover'], .po").popover({
             html: true,
             content: function () {
                 return $($(this).attr("data-id")).html();
@@ -50,7 +50,7 @@ CFBM.Site = (function () {
     }
 
     function registerToolTips() {
-        $("[rel='tooltip']").tooltip({
+        $("[rel='tooltip'], .tt").tooltip({
             html: true,
             title: function () {
                 return $($(this).attr("data-id")).html();

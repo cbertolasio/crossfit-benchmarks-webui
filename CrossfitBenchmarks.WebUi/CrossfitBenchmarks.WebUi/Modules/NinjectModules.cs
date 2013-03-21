@@ -20,6 +20,8 @@ namespace CrossFitTools.Web.Modules
 
             Bind<IOpenGraphActionFactory>().To<OpenGraphActionFactory>();
             Bind<IOpenGraphServices>().To<OpenGraphService>();
+
+            Bind<ILogger>().To<UnifiedLogger>();
         }
     }
 }

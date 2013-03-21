@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
@@ -14,9 +15,10 @@ namespace CrossfitBenchmarks.WebUi.Services
         public string LogEntryType { get; set; }
         public bool IsAPersonalRecord { get; set; }
 
+        public ILogger Logger { get; set; }
+
         public OpenGraphActionContext()
         {
-            
         }
     }
 }

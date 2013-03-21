@@ -36,6 +36,9 @@ namespace CrossfitBenchmarks.WebUi.Services
             {
                 result = "null value was returned...";
             }
+            else {
+                LogSuccess("PersonalRecord", "A user posted a personal record");
+            }
 
             return result.ToString();
         }

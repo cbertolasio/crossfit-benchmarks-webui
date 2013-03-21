@@ -5,12 +5,12 @@ using System.Text;
 using CrossfitBenchmarks.Data.DataTransfer;
 using System.Security.Principal;
 using System.Security.Claims;
+using CrossfitBenchmarks.WebUi.Utility;
 
 namespace CrossfitBenchmarks.WebUi.Services
 {
     public class OpenGraphActionBase
     {
-
         private readonly OpenGraphActionContext context;
         public OpenGraphActionBase(OpenGraphActionContext context)
         {
@@ -36,5 +36,11 @@ namespace CrossfitBenchmarks.WebUi.Services
         {
             return new Facebook.FacebookClient(GetAccessToken());
         }
+        protected void LogSuccess(string actionName, string message)
+        {
+            var msg = new LogMessage { AppContext = "Facebook Actions", Category = actionName, Message = message };
+            this.context.Logger.Log(msg);
+        }
+    
     }
 }

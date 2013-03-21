@@ -16,6 +16,7 @@ namespace CrossFitTools.Web.Controllers
     [Authorize]
     public class LoggerController : Controller
     {
+        private readonly ILogger logger;
         private readonly IOpenGraphServices openGraph;
         private readonly ICrossfitBenchmarksServices webServiceApi;
         [HttpPost]
@@ -34,9 +35,9 @@ namespace CrossFitTools.Web.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                var msg = new LogMessage { Message = "Failed to publish an action to facebook...", Category = "Error", AppContext = "FacebookAction", Error = ex.ToString() };
+                logger.Log(msg);
             }
-            
 
             var updatedViewModel = Mapper.Map<WorkoutLogEntryDto, WodItemViewModel>(result);
             updatedViewModel.LastAttemptDateAsString = result.LastEntry.DateOfWod.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'sszzz");
@@ -68,17 +69,16 @@ namespace CrossFitTools.Web.Controllers
                     listItems = Mapper.Map<IEnumerable<WorkoutLogEntryDto>, IEnumerable<WodItemViewModel>>(result);
                     var theHeroesViewModel = new TheHeroesViewModel { WodList = listItems.ToList() };
                     return View("TheHeroes", theHeroesViewModel);
-                    
                 default:
                     return new EmptyResult();
             }
         }
 
-        public LoggerController(ICrossfitBenchmarksServices webServiceApi, IOpenGraphServices openGraph)
+        public LoggerController(ICrossfitBenchmarksServices webServiceApi, IOpenGraphServices openGraph, ILogger logger)
         {
+            this.logger = logger;
             this.openGraph = openGraph;
             this.webServiceApi = webServiceApi;
-
         }
     }
 }

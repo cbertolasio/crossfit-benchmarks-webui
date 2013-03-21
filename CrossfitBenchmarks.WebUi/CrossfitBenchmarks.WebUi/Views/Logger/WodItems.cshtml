@@ -2,7 +2,7 @@
         <!-- ko if: wodList().length > 0 -->
         <ul id="wodItems" data-bind="foreach: wodList()" class="thumbnails">
             <li class="span4">
-                <div class="thumbnail" style="min-height:140px;" data-bind="attr:{id:id}">
+                <div class="thumbnail" style="min-height:100px;" data-bind="attr:{id:id}">
                     @Html.Partial("WodItem")
                 </div>
             </li>

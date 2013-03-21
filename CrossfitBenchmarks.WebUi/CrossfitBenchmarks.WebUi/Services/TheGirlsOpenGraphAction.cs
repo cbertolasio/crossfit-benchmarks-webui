@@ -35,7 +35,9 @@ namespace CrossfitBenchmarks.WebUi.Services
             {
                 result = "null value was returned...";
             }
-
+            else {
+                LogSuccess("TheGirls", "A user posted one of the girls");
+            }
             return result.ToString();
         }
 

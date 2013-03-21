@@ -29,7 +29,12 @@ namespace CrossfitBenchmarks.WebUi.Services
             {
                 result = "null value was returned...";
             }
+            else
+            {
+                LogSuccess("BasicWOD", "A user posted a basic wod");
+            }
 
+            
             return result.ToString();
         }
         public BasicWodOpenGraphAction(OpenGraphActionContext context)

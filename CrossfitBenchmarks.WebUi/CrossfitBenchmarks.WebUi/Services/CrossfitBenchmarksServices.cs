@@ -13,6 +13,8 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public interface ICrossfitBenchmarksServices
     {
+        bool DeleteAllLogEntries(int workoutId);
+
         bool DeleteLogEntry(int workoutLogEntryId);
         WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto);
         string GetSummary();
@@ -52,21 +54,41 @@ namespace CrossfitBenchmarks.WebUi.Services
             return response.Data;
         }
 
-        public bool DeleteLogEntry(int workoutLogEntryId)
+        private static bool GetBooleanResponse(RestClient client, RestRequest request)
         {
-            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
-            var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.DELETE);
-            request.AddAuthorizationHeader(tokenProvider, scope);
-            request.AddParameter("id", workoutLogEntryId);
-            request.AddParameter("ip", claimsProvider.GetIdentityProvider());
-            request.AddParameter("nid", claimsProvider.GetNameIdentifier());
-
             var response = client.Execute(request);
             if (response.ErrorException != null)
             {
                 throw response.ErrorException;
             }
             return Boolean.Parse(response.Content);
+        }
+
+        private void AddParametersForDelete(int workoutLogEntryId, RestRequest request)
+        {
+            request.AddParameter("id", workoutLogEntryId);
+            request.AddParameter("ip", claimsProvider.GetIdentityProvider());
+            request.AddParameter("nid", claimsProvider.GetNameIdentifier());
+        }
+
+        public bool DeleteLogEntry(int workoutLogEntryId)
+        {
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
+            var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.DELETE);
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            AddParametersForDelete(workoutLogEntryId, request);
+
+            return GetBooleanResponse(client, request);
+        }
+
+        public bool DeleteAllLogEntries(int workoutId)
+        {
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
+            var request = new RestSharp.RestRequest("WorkoutLogEntries", RestSharp.Method.DELETE);
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            AddParametersForDelete(workoutId, request);
+
+            return GetBooleanResponse(client, request);
         }
 
         public string GetSummary()

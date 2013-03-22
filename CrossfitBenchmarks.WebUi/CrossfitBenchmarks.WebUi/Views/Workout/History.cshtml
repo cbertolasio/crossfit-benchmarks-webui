@@ -18,13 +18,12 @@
                             <div class="pull-left">
                                 <p>
                                     <span data-bind="visible:IsAPersonalRecord" class="label label-important">New PR!</span>
-                                    <small class="muted">An entry<span data-bind="if: moment($data.DateOfWod()).isBefore(moment())">&nbsp;was logged about&nbsp;</span><span data-bind="if: !(moment($data.DateOfWod()).isBefore(moment()))">&nbsp;will be logged&nbsp;</span><span data-bind="text:moment($data.DateOfWod()).fromNow()"></span>&nbsp;and you scored&nbsp;<span class="score badge badge-info" data-bind="text:Score"></span></small></p>
+                                    <small class="muted">An entry<span data-bind="if: moment($data.DateOfWod()).isBefore(moment())">&nbsp;was logged about&nbsp;</span><span data-bind="if: !(moment($data.DateOfWod()).isBefore(moment()))">&nbsp;will be logged&nbsp;</span><span data-bind="text:moment($data.DateOfWod()).fromNow()"></span>&nbsp;and you scored&nbsp;<span class="score badge badge-success" data-bind="text:Score"></span></small></p>
                                 <small class="summary-note">Notes: <span data-bind="text:Notes"></span></small>
-                       
                             </div>
                             <div class="clearfix"></div>
                             <div class="button-container pull-right">
-                                <a class="btn btn-inverse summary-delete" rel="tooltip" href="#" data-toggle="tooltip" data-title="Delete this log entry..."><i class="icon-trash icon-white"></i></a>
+                                <a class="btn btn-inverse summary-delete" rel="tooltip" href="#" data-toggle="tooltip" data-title="Delete this log entry..." data-bind="click:$parent.deleteItem"><i class="icon-trash icon-white"></i></a>
                             </div>
                             <div class="clearfix"></div>
                         </div>

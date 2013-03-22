@@ -41,6 +41,31 @@ CFBM.Benchmarks = (function () {
         viewModel.historyUri = function (data) {
             return "/Workout/History?id=" + data.workoutId();
         };
+        viewModel.deleteAll = function (data, event) {
+            var workoutId = data.workoutId();
+
+            CFBM.Site.post("/Logger/DeleteAll",
+                { id: workoutId },
+                function (data, textStatus) {
+                    console.log("/Logger/DeleteAll - Success:" + data.result);
+                    if (data.result) {
+                        var updatedItem = ko.utils.arrayFirst(viewModel.wodList(), function (item) {
+                            return item.workoutId() === workoutId;
+                        });
+
+                        if (updatedItem)
+                        {
+                            updatedItem.lastScore(null);
+                        }
+                    }
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                });
+        };
 
         addNewViewModel.cancelAddNew = function () {
             toggleAddNew();

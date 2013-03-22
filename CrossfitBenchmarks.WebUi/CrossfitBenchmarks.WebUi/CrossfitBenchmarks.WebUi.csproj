@@ -322,6 +322,7 @@
     <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\crossfitbenchmarks.workoutHistory.js" />
     <Content Include="Scripts\crossfitbenchmarks.dashboardSummary.js" />
     <Content Include="Scripts\crossfitbenchmarks.benchmarks.js" />
     <Content Include="Scripts\crossfitbenchmarks.calculator.js" />

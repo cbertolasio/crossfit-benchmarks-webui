@@ -22,6 +22,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             parameters["og:url"] = uri;
             parameters["og:title"] = "Basic WOD";
             parameters["score"] = "220";
+            parameters["workout_name"] = "SampleWorkoutName";
 
             //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);

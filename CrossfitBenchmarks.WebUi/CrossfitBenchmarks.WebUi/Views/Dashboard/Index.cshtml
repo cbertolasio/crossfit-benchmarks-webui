@@ -27,7 +27,7 @@
                                             <ul class="dropdown-menu" role="menu" aria-labelledbydLabel>
                                                 <li><a data-bind="attr:{href:$root.getHrefToWorkoutHistory($data)}"><i class="icon-th-list"></i> Workout History</a></li>
                                                 <li class="divider"></li>
-                                                <li><a><i class="icon-trash"></i> Delete this log entry</a></li>
+                                                <li><a data-bind="click:$root.deleteItem" href="#"><i class="icon-trash"></i> Delete this log entry</a></li>
                                             </ul>
                                         </div>
                                         <div class="pull-left">

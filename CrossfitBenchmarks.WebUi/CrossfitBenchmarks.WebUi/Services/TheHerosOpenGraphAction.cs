@@ -27,6 +27,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             parameters["og:url"] = String.Format("{0}{1}", Constants.RootDomain, "facebookobjects/heroworkout");
             parameters["og:title"] = "Hero WOD";
             parameters["score"] = "220";
+            parameters["workout_name"] = "SampleWorkoutName";
 
             //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);

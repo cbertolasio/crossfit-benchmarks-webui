@@ -74,6 +74,11 @@ namespace CrossFitTools.Web.Controllers
             }
         }
 
+        public ActionResult DeleteLogEntry(int id)
+        {
+            return new CustomJsonResult { Data = new { result = webServiceApi.DeleteLogEntry(id) }};
+        }
+
         public LoggerController(ICrossfitBenchmarksServices webServiceApi, IOpenGraphServices openGraph, ILogger logger)
         {
             this.logger = logger;

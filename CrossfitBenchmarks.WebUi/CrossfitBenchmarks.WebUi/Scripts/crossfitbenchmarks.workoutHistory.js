@@ -26,6 +26,30 @@ CFBM.WorkoutHistory = (function () {
             return "";
 
         }, this);
+
+        self.deleteItem = function(data,event) {
+            console.log("delete: " + data.WorkoutLogId());
+            var workoutLogId = data.WorkoutLogId();
+            CFBM.Site.post("/Logger/DeleteLogEntry",
+                { id: workoutLogId },
+                function (data, textStatus) {
+                    console.log("success:" + data.result);
+                    if (data.result)
+                    {
+                        var itemToRemove = ko.utils.arrayFirst(self.value(), function (item) {
+                            return item.WorkoutLogId() === workoutLogId;
+                        });
+
+                        self.value.remove(itemToRemove);
+                    }
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                });
+        };
     }
 
     function ready(rootContainer){

@@ -13,6 +13,7 @@ namespace CrossfitBenchmarks.WebUi.Services
 {
     public interface ICrossfitBenchmarksServices
     {
+        bool DeleteLogEntry(int workoutLogEntryId);
         WorkoutLogEntryDto CreateLogEntry(LogEntryDto dto);
         string GetSummary();
         IEnumerable<WorkoutLogEntryDto> GetTheGirls();
@@ -49,6 +50,23 @@ namespace CrossfitBenchmarks.WebUi.Services
 
             var response = client.Execute<WorkoutLogEntryDto>(request);
             return response.Data;
+        }
+
+        public bool DeleteLogEntry(int workoutLogEntryId)
+        {
+            var client = new RestSharp.RestClient(HttpClientUtilities.GetBaseUri().ToString());
+            var request = new RestSharp.RestRequest("LogEntry", RestSharp.Method.DELETE);
+            request.AddAuthorizationHeader(tokenProvider, scope);
+            request.AddParameter("id", workoutLogEntryId);
+            request.AddParameter("ip", claimsProvider.GetIdentityProvider());
+            request.AddParameter("nid", claimsProvider.GetNameIdentifier());
+
+            var response = client.Execute(request);
+            if (response.ErrorException != null)
+            {
+                throw response.ErrorException;
+            }
+            return Boolean.Parse(response.Content);
         }
 
         public string GetSummary()

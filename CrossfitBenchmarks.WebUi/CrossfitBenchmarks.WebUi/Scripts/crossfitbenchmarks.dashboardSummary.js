@@ -40,16 +40,44 @@ CFBM.Dashboard = (function () {
         self.getHrefToWorkoutHistory = function(data) {
             return "/Workout/History?id=" + data.WorkoutId();
         };
+
+        self.deleteItem = function (data, event) {
+            console.log("delete: " + data.WorkoutLogId());
+            var workoutLogId = data.WorkoutLogId();
+            CFBM.Site.post("/Logger/DeleteLogEntry",
+                { id: workoutLogId },
+                function (data, textStatus) {
+                    console.log("success:" + data.result);
+                    if (data.result) {
+                        var itemToRemove = ko.utils.arrayFirst(self.value(), function (item) {
+                            return item.WorkoutLogId() === workoutLogId;
+                        });
+
+                        self.value.remove(itemToRemove);
+
+                        refreshHistory();
+                    }
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                },
+                function (jqXHR, statusText) {
+                    console.log("Status: " + jqXHR.status + " " + jqXHR.statusText);
+                });
+        };
     }
 
-    function onSaveSuccessful(data) {
-        console.log("save successful...", data);
+    function refreshHistory() {
         $.get("/Dashboard/History", null, function (data) {
             console.log(data);
             var history = data;
             ko.mapping.fromJS($.parseJSON(history), viewModel);
         }, "json");
+    };
 
+    function onSaveSuccessful(data) {
+        console.log("save successful...", data);
+        refreshHistory();
         
         toggleView();
     };

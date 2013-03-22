@@ -29,6 +29,7 @@ namespace CrossfitBenchmarks.WebUi.Services
             parameters["og:url"] = uri;
             parameters["og:title"] = "Personal Record";
             parameters["score"] = "2:30";
+            parameters["workout_name"] = "SampleWorkoutName";
 
             //jbloggs 100005300791368 jbloggs_oooawbp_jbloggs@tfbnw.net 
             var result = client.Post("me/everywod:log", parameters);

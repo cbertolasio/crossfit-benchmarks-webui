@@ -31,7 +31,8 @@ namespace CrossfitBenchmarks.WebUi
                         "~/Scripts/crossfitbenchmarks.site.js",
                         "~/Scripts/crossfitbenchmarks.calculator.js",
                         "~/Scripts/crossfitbenchmarks.benchmarks.js",
-                        "~/Scripts/crossfitbenchmarks.dashboardSummary.js"
+                        "~/Scripts/crossfitbenchmarks.dashboardSummary.js",
+                        "~/Scripts/crossfitbenchmarks.workoutHistory.js"
                         ));
 
             

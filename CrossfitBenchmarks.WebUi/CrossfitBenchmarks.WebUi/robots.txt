@@ -1,0 +1,43 @@
+﻿User-agent: *
+Disallow: /content/
+Disallow: /views/
+Allow: /
+Disallow: /scripts/
+
+User-agent: bingbot
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+User-agent: Slurp
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+User-agent: MSNBot
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+User-agent: Googlebot-Mobile
+Allow: /
+Disallow: /content/
+Disallow: /views/
+Disallow: /scripts/
+
+Sitemap: http://everywod.azurewebsites.net/sitemap.xml

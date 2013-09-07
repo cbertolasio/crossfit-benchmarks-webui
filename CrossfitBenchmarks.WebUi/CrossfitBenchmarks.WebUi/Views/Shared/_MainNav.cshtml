@@ -1,0 +1,34 @@
+﻿<ul class="nav">
+    <li class="@Html.IsActiveLink("Index", "Home")">
+        <a href="/"><i class="icon-home icon-white"></i>&nbsp;&nbsp;Home</a>
+    </li>
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" id="drop1" role="button" href="#" data-toggle="dropdown"><i class="icon-edit icon-white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            @Html.MenuLink("Summary", "Index", "Dashboard")
+            <li class="divider"></li>
+            @Html.MenuLink("Benchmarks", "Index", "Logger", new { @val = "benchmark" })
+            @Html.MenuLink("The Girls", "Index", "Logger", new { @val = "thegirls" })
+            @Html.MenuLink("The Heroes", "Index", "Logger", new { @val = "theheroes" })
+            <li class="divider"></li>
+            @Html.MenuLink("% Calculator", "Index", "Calculator")
+        </ul>
+
+    </li>
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" id="drop2" role="button" href="#" data-toggle="dropdown">
+            <i class="icon-user icon-white"></i><b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            @Html.MenuLink("Profile", "Profile", "Dashboard", new { @val = "benchmark" })
+            @Html.MenuLink("Settings", "Settings", "Dashboard", new { @val = "thegirls" })
+            <li class="divider"></li>
+            @Html.MenuLink("Sign Out", "Logout", "Home")
+        </ul>
+    </li>
+
+
+</ul>

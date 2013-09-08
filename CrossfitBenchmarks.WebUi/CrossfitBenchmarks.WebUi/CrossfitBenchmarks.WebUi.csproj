@@ -234,6 +234,7 @@
     <Compile Include="Utility\TokenProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="concept-one.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-timepicker.css" />
@@ -241,7 +242,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Content\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\images\corner.png" />
+    <Content Include="Content\images\crossfit_weights.jpeg" />
     <Content Include="Content\images\ew-fbObject-x1500.jpg" />
     <Content Include="Content\images\ew-logo-x128.jpg" />
     <Content Include="Content\images\ew-logo-x16.jpg" />
@@ -252,10 +259,12 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\logo-banner-x155.png" />
+    <Content Include="Content\images\logo-main-large_01-transparent.png" />
     <Content Include="Content\images\logo-main-large_01.png" />
     <Content Include="Content\images\logo-web-banner-x155.png" />
     <Content Include="Content\images\more.png" />
     <Content Include="Content\images\bars.png" />
+    <Content Include="Content\reset.css" />
     <Content Include="Content\themes\base\images\glyphicons-halflings-white.png" />
     <Content Include="Content\themes\base\images\glyphicons-halflings.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -312,8 +321,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\unapproved.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Readme.txt" />

@@ -1,0 +1,305 @@
+﻿* {
+	margin: 0;
+}
+
+html {
+	height: 100%;
+	min-height: 100%;
+	background-image: url(/content/images/crossfit_weights.jpeg);
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+body {
+	height: 100%;
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	background-color: rgba(32, 32, 32, 0.6);
+}
+
+a, a:link, a:visited {
+	color: #c2e57d;
+	text-decoration: underline;
+}
+
+	a:hover {
+		color: #fff;
+	}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -80px;
+}
+
+nav {
+	background-color: #000;
+}
+
+	nav > div {
+		padding: 20px 0;
+		width: 80%;
+		margin: 0 auto;
+		color: #808080;
+	}
+
+header {
+	margin: 15px 0;
+}
+
+	header > div {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+		header > div img {
+			padding-right: 10px;
+			float: left;
+		}
+
+		header > div > h1 {
+			float: left;
+			font-size: 58px;
+			font-family: Georgia, 'Times New Roman', serif;
+			color: #099;
+		}
+
+			header > div > h1 > em {
+				font-style: italic;
+				font-weight: bold;
+				color: #69c1c1;
+				border-bottom: solid 1px #69c1c1;
+			}
+
+article {
+	margin-top: 25px;
+}
+
+	article > div {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+footer, .push {
+	height: 80px;
+}
+
+footer {
+	background-color: #333333;
+}
+
+	footer > div {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+		footer > div > p {
+			font-size: 12px;
+			padding: 10px 0;
+			line-height: 135%;
+		}
+
+			footer > div > p > em {
+				font-weight: bold;
+				color: #da2525;
+			}
+
+.column-one {
+	width: 55%;
+	float: left;
+}
+
+.column-two {
+	width: 45%;
+	float: left;
+}
+
+.top-five {
+	color: #fff;
+	font-size: 12px;
+	line-height: 135%;
+}
+
+	.top-five > div {
+		margin-left: 10px;
+	}
+
+	.top-five > h1 {
+		margin-bottom: 10px;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 24px;
+		color: #93cb23;
+	}
+
+.account {
+	color: #fff;
+	font-size: 12px;
+	line-height: 135%;
+}
+
+	.account > div {
+		margin-left: 10px;
+	}
+
+	.account > h1 {
+		margin-bottom: 5px;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 24px;
+		color: #93cb23;
+	}
+
+	.account ul {
+		margin-top: 10px;
+	}
+
+		.account ul li {
+			font-size: 16px;
+			margin-left: 20px;
+		}
+
+a.social-sign-in {
+	color: #c2e57d;
+	text-decoration: underline;
+	line-height: 160%;
+}
+
+	a.social-sign-in > i {
+		margin-right: 6px;
+		text-decoration: none;
+	}
+
+	a.social-sign-in i[class^="icon-"], a.social-sign-in i[class*=" icon-"] {
+		text-decoration: none;
+		margin-right: 6px;
+		color: #fff;
+	}
+
+	a.social-sign-in:hover {
+		color: #fff;
+	}
+
+.marketing {
+	color: #fff;
+	font-size: 12px;
+	line-height: 135%;
+}
+
+	.marketing > div {
+		margin-left: 10px;
+	}
+
+	.marketing > h1 {
+		margin: 30px 0 5px 0;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 24px;
+		color: #93cb23;
+	}
+
+.ordered-item {
+}
+
+	.ordered-item .item {
+		float: left;
+		width: 10%;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 48px;
+		color: #69c1c1;
+		border-top: 1px solid #69c1c1;
+	}
+
+	.ordered-item .description {
+		float: left;
+		width: 80%;
+		font-size: 14px;
+		line-height: 135%;
+		color: #fff;
+		border-top: 1px solid #69c1c1;
+		border-right: 1px solid #69c1c1;
+		/*border-bottom: 1px solid #69c1c1;*/
+		-webkit-border-top-right-radius: 5px;
+		/*-webkit-border-bottom-right-radius: 4px;*/
+		-moz-border-radius-topright: 5px;
+		/*-moz-border-radius-bottomright: 4px;*/
+		border-top-right-radius: 5px;
+		/*border-bottom-right-radius: 4px;*/
+		padding: 10px;
+		margin: 0 0 15px 0;
+	}
+
+.cf:before,
+.cf:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	*zoom: 1;
+}
+
+/* #region background colors */
+.background-light-red {
+	background-color: #da2525;
+}
+
+.background-red {
+	background-color: #8e0c0c;
+}
+
+.background-light-blue {
+	background-color: #69c1c1;
+}
+
+.background-blue {
+	background-color: #168383;
+}
+
+.background-light-green {
+	background-color: #c2e57d;
+}
+
+.background-green {
+	background-color: #93cb23;
+}
+/* #endregion */
+
+/* #region font colors */
+.font-light-red {
+	color: #da2525;
+}
+
+.font-red {
+	color: #8e0c0c;
+}
+
+.font-light-blue {
+	color: #69c1c1;
+}
+
+.font-blue {
+	color: #168383;
+}
+
+.font-light-green {
+	color: #c2e57d;
+}
+
+.font-green {
+	color: #93cb23;
+}
+/* #endregion */
+
+/* #region site overrides */
+
+/* #endregion */
+
+/* #region bootstrap overrides*/
+
+/* #endregion */

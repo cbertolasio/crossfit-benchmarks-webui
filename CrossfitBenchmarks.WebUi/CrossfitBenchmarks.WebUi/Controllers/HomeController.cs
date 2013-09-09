@@ -9,6 +9,11 @@ namespace CrossFitTools.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Features()
+        {
+            return View("Features");
+        }
+
         public ActionResult Logout() {
             WSFederationAuthenticationModule authModule = FederatedAuthentication.WSFederationAuthenticationModule;
             //WSFederationAuthenticationModule.FederatedSignOut(new Uri(authModule.Issuer), new Uri(authModule.Realm));

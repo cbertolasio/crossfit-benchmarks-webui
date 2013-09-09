@@ -6,7 +6,6 @@ using System.Web.Routing;
 
 namespace CrossfitBenchmarks.WebUi
 {
-
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -14,9 +13,15 @@ namespace CrossfitBenchmarks.WebUi
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name:"Features",
+                url: "Features",
+                defaults: new { controller = "Home", action = "Features", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional}
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

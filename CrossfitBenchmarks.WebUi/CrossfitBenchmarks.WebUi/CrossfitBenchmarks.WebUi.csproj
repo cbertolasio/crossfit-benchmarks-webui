@@ -332,6 +332,7 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Readme.txt" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-timepicker.js" />
     <Content Include="Scripts\bootstrap-timepicker.min.js" />
@@ -361,6 +362,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -434,6 +436,10 @@
     <Content Include="Views\Dashboard\ButtonToolbar.cshtml" />
     <Content Include="Views\Workout\History.cshtml" />
     <Content Include="Views\Shared\_NewsletterSignup.cshtml" />
+    <Content Include="Views\Home\Features.cshtml" />
+    <Content Include="Views\Home\FeaturesContent.cshtml" />
+    <Content Include="Views\Shared\_MainNav.cshtml" />
+    <Content Include="Views\Shared\_RightNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

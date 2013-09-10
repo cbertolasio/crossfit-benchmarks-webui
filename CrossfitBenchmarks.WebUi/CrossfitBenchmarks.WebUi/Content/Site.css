@@ -180,7 +180,7 @@ small.summary-note {
     }
 
     a.facebook {
-        background: url("images/facebook.png") no-repeat;
+        background: url("/content/images/facebook.png") no-repeat;
     }
 
 .popover-container

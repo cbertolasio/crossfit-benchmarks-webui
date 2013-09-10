@@ -22,7 +22,7 @@ body {
 
 a, a:link, a:visited {
 	/*color: #c2e57d;*/
-	color: #254692;
+     color: #0160a4
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -241,7 +241,7 @@ ol > li > p {
 		}
 
 a.social-sign-in {
-	color: #254692;
+	color: #0160a4;
 	font-weight: normal;
 	text-decoration: underline;
 	font-size: 14px;
@@ -319,7 +319,7 @@ form {
 
 .btn-sign-up {
 	height: 26px;
-	background-color: #254692;
+	background-color: #0160a4;
 	border: none;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;

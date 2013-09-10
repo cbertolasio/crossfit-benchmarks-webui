@@ -22,7 +22,7 @@ body {
 
 a, a:link, a:visited {
 	/*color: #c2e57d;*/
-     color: #0160a4
+     color: #0160a4;
 	font-weight: bold;
 	text-decoration: underline;
 }
